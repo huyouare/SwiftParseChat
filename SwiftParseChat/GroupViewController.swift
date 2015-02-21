@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class GroupViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate {
     
