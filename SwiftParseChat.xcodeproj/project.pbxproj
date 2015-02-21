@@ -9,11 +9,21 @@
 /* Begin PBXBuildFile section */
 		831C19171A97F5CA000FD6D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19161A97F5CA000FD6D0 /* AppDelegate.swift */; };
 		831C19191A97F5CA000FD6D0 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19181A97F5CA000FD6D0 /* FirstViewController.swift */; };
-		831C191B1A97F5CA000FD6D0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C191A1A97F5CA000FD6D0 /* SecondViewController.swift */; };
 		831C191E1A97F5CA000FD6D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831C191C1A97F5CA000FD6D0 /* Main.storyboard */; };
 		831C19201A97F5CA000FD6D0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 831C191F1A97F5CA000FD6D0 /* Images.xcassets */; };
 		831C19231A97F5CA000FD6D0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831C19211A97F5CA000FD6D0 /* LaunchScreen.xib */; };
 		831C192F1A97F5CA000FD6D0 /* SwiftParseChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C192E1A97F5CA000FD6D0 /* SwiftParseChatTests.swift */; };
+		831C19421A98085B000FD6D0 /* chat_blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831C193B1A98085B000FD6D0 /* chat_blank@2x.png */; };
+		831C19431A98085B000FD6D0 /* messages_blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831C193C1A98085B000FD6D0 /* messages_blank@2x.png */; };
+		831C19441A98085B000FD6D0 /* profile_blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831C193D1A98085B000FD6D0 /* profile_blank@2x.png */; };
+		831C19451A98085B000FD6D0 /* tab_group@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831C193E1A98085B000FD6D0 /* tab_group@2x.png */; };
+		831C19461A98085B000FD6D0 /* tab_messages@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831C193F1A98085B000FD6D0 /* tab_messages@2x.png */; };
+		831C19471A98085B000FD6D0 /* tab_private@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831C19401A98085B000FD6D0 /* tab_private@2x.png */; };
+		831C19481A98085B000FD6D0 /* tab_profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831C19411A98085B000FD6D0 /* tab_profile@2x.png */; };
+		831C194A1A98090E000FD6D0 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19491A98090E000FD6D0 /* GroupViewController.swift */; };
+		831C194C1A980970000FD6D0 /* PrivateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C194B1A980970000FD6D0 /* PrivateViewController.swift */; };
+		831C194E1A9809A4000FD6D0 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C194D1A9809A4000FD6D0 /* MessagesViewController.swift */; };
+		831C19501A9809C7000FD6D0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +41,23 @@
 		831C19151A97F5CA000FD6D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		831C19161A97F5CA000FD6D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		831C19181A97F5CA000FD6D0 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		831C191A1A97F5CA000FD6D0 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		831C191D1A97F5CA000FD6D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		831C191F1A97F5CA000FD6D0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		831C19221A97F5CA000FD6D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		831C19281A97F5CA000FD6D0 /* SwiftParseChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftParseChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		831C192D1A97F5CA000FD6D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		831C192E1A97F5CA000FD6D0 /* SwiftParseChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftParseChatTests.swift; sourceTree = "<group>"; };
+		831C193B1A98085B000FD6D0 /* chat_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_blank@2x.png"; sourceTree = "<group>"; };
+		831C193C1A98085B000FD6D0 /* messages_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages_blank@2x.png"; sourceTree = "<group>"; };
+		831C193D1A98085B000FD6D0 /* profile_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_blank@2x.png"; sourceTree = "<group>"; };
+		831C193E1A98085B000FD6D0 /* tab_group@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_group@2x.png"; sourceTree = "<group>"; };
+		831C193F1A98085B000FD6D0 /* tab_messages@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_messages@2x.png"; sourceTree = "<group>"; };
+		831C19401A98085B000FD6D0 /* tab_private@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_private@2x.png"; sourceTree = "<group>"; };
+		831C19411A98085B000FD6D0 /* tab_profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_profile@2x.png"; sourceTree = "<group>"; };
+		831C19491A98090E000FD6D0 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		831C194B1A980970000FD6D0 /* PrivateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateViewController.swift; sourceTree = "<group>"; };
+		831C194D1A9809A4000FD6D0 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +99,14 @@
 		831C19131A97F5CA000FD6D0 /* SwiftParseChat */ = {
 			isa = PBXGroup;
 			children = (
+				831C19391A9807CF000FD6D0 /* Resources */,
+				831C19381A9807C4000FD6D0 /* Classes */,
 				831C19161A97F5CA000FD6D0 /* AppDelegate.swift */,
 				831C19181A97F5CA000FD6D0 /* FirstViewController.swift */,
-				831C191A1A97F5CA000FD6D0 /* SecondViewController.swift */,
+				831C19491A98090E000FD6D0 /* GroupViewController.swift */,
+				831C194D1A9809A4000FD6D0 /* MessagesViewController.swift */,
+				831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */,
+				831C194B1A980970000FD6D0 /* PrivateViewController.swift */,
 				831C191C1A97F5CA000FD6D0 /* Main.storyboard */,
 				831C191F1A97F5CA000FD6D0 /* Images.xcassets */,
 				831C19211A97F5CA000FD6D0 /* LaunchScreen.xib */,
@@ -113,6 +138,35 @@
 				831C192D1A97F5CA000FD6D0 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		831C19381A9807C4000FD6D0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		831C19391A9807CF000FD6D0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				831C193A1A980843000FD6D0 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		831C193A1A980843000FD6D0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				831C193B1A98085B000FD6D0 /* chat_blank@2x.png */,
+				831C193C1A98085B000FD6D0 /* messages_blank@2x.png */,
+				831C193D1A98085B000FD6D0 /* profile_blank@2x.png */,
+				831C193E1A98085B000FD6D0 /* tab_group@2x.png */,
+				831C193F1A98085B000FD6D0 /* tab_messages@2x.png */,
+				831C19401A98085B000FD6D0 /* tab_private@2x.png */,
+				831C19411A98085B000FD6D0 /* tab_profile@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,9 +249,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				831C19481A98085B000FD6D0 /* tab_profile@2x.png in Resources */,
 				831C191E1A97F5CA000FD6D0 /* Main.storyboard in Resources */,
+				831C19421A98085B000FD6D0 /* chat_blank@2x.png in Resources */,
+				831C19451A98085B000FD6D0 /* tab_group@2x.png in Resources */,
+				831C19431A98085B000FD6D0 /* messages_blank@2x.png in Resources */,
+				831C19471A98085B000FD6D0 /* tab_private@2x.png in Resources */,
 				831C19231A97F5CA000FD6D0 /* LaunchScreen.xib in Resources */,
 				831C19201A97F5CA000FD6D0 /* Images.xcassets in Resources */,
+				831C19461A98085B000FD6D0 /* tab_messages@2x.png in Resources */,
+				831C19441A98085B000FD6D0 /* profile_blank@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +276,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				831C191B1A97F5CA000FD6D0 /* SecondViewController.swift in Sources */,
+				831C19501A9809C7000FD6D0 /* ProfileViewController.swift in Sources */,
+				831C194E1A9809A4000FD6D0 /* MessagesViewController.swift in Sources */,
+				831C194C1A980970000FD6D0 /* PrivateViewController.swift in Sources */,
+				831C194A1A98090E000FD6D0 /* GroupViewController.swift in Sources */,
 				831C19171A97F5CA000FD6D0 /* AppDelegate.swift in Sources */,
 				831C19191A97F5CA000FD6D0 /* FirstViewController.swift in Sources */,
 			);
@@ -409,6 +473,7 @@
 				831C19341A97F5CB000FD6D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		831C19351A97F5CB000FD6D0 /* Build configuration list for PBXNativeTarget "SwiftParseChatTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +482,7 @@
 				831C19371A97F5CB000FD6D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
