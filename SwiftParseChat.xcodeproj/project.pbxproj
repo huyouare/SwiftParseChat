@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		831C19171A97F5CA000FD6D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19161A97F5CA000FD6D0 /* AppDelegate.swift */; };
-		831C19191A97F5CA000FD6D0 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19181A97F5CA000FD6D0 /* FirstViewController.swift */; };
 		831C191E1A97F5CA000FD6D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831C191C1A97F5CA000FD6D0 /* Main.storyboard */; };
 		831C19201A97F5CA000FD6D0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 831C191F1A97F5CA000FD6D0 /* Images.xcassets */; };
 		831C19231A97F5CA000FD6D0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831C19211A97F5CA000FD6D0 /* LaunchScreen.xib */; };
@@ -42,6 +41,7 @@
 		831C19711A981565000FD6D0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19701A981565000FD6D0 /* libsqlite3.dylib */; };
 		831C19741A981731000FD6D0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19721A981731000FD6D0 /* FacebookSDK.framework */; };
 		831C19751A981731000FD6D0 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19731A981731000FD6D0 /* FBAudienceNetwork.framework */; };
+		831C19781A981AF6000FD6D0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19771A981AF6000FD6D0 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +58,6 @@
 		831C19111A97F5CA000FD6D0 /* SwiftParseChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftParseChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		831C19151A97F5CA000FD6D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		831C19161A97F5CA000FD6D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		831C19181A97F5CA000FD6D0 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		831C191D1A97F5CA000FD6D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		831C191F1A97F5CA000FD6D0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		831C19221A97F5CA000FD6D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -95,6 +94,7 @@
 		831C19721A981731000FD6D0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		831C19731A981731000FD6D0 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		831C19761A9818CF000FD6D0 /* SwiftParseChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftParseChat-Bridging-Header.h"; sourceTree = "<group>"; };
+		831C19771A981AF6000FD6D0 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +159,6 @@
 				831C19391A9807CF000FD6D0 /* Resources */,
 				831C19381A9807C4000FD6D0 /* Classes */,
 				831C19161A97F5CA000FD6D0 /* AppDelegate.swift */,
-				831C19181A97F5CA000FD6D0 /* FirstViewController.swift */,
 				831C19491A98090E000FD6D0 /* GroupViewController.swift */,
 				831C194D1A9809A4000FD6D0 /* MessagesViewController.swift */,
 				831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */,
@@ -168,6 +167,7 @@
 				831C191F1A97F5CA000FD6D0 /* Images.xcassets */,
 				831C19211A97F5CA000FD6D0 /* LaunchScreen.xib */,
 				831C19141A97F5CA000FD6D0 /* Supporting Files */,
+				831C19771A981AF6000FD6D0 /* Utilities.swift */,
 			);
 			path = SwiftParseChat;
 			sourceTree = "<group>";
@@ -358,12 +358,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				831C19781A981AF6000FD6D0 /* Utilities.swift in Sources */,
 				831C19501A9809C7000FD6D0 /* ProfileViewController.swift in Sources */,
 				831C194E1A9809A4000FD6D0 /* MessagesViewController.swift in Sources */,
 				831C194C1A980970000FD6D0 /* PrivateViewController.swift in Sources */,
 				831C194A1A98090E000FD6D0 /* GroupViewController.swift in Sources */,
 				831C19171A97F5CA000FD6D0 /* AppDelegate.swift in Sources */,
-				831C19191A97F5CA000FD6D0 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
