@@ -42,6 +42,7 @@
 		831C19741A981731000FD6D0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19721A981731000FD6D0 /* FacebookSDK.framework */; };
 		831C19751A981731000FD6D0 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19731A981731000FD6D0 /* FBAudienceNetwork.framework */; };
 		831C19781A981AF6000FD6D0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19771A981AF6000FD6D0 /* Utilities.swift */; };
+		831C197A1A9823A8000FD6D0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19791A9823A8000FD6D0 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		831C19731A981731000FD6D0 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		831C19761A9818CF000FD6D0 /* SwiftParseChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftParseChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		831C19771A981AF6000FD6D0 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		831C19791A9823A8000FD6D0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				831C19391A9807CF000FD6D0 /* Resources */,
 				831C19381A9807C4000FD6D0 /* Classes */,
 				831C19161A97F5CA000FD6D0 /* AppDelegate.swift */,
+				831C19791A9823A8000FD6D0 /* Constants.swift */,
 				831C19491A98090E000FD6D0 /* GroupViewController.swift */,
 				831C194D1A9809A4000FD6D0 /* MessagesViewController.swift */,
 				831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */,
@@ -362,6 +365,7 @@
 				831C19501A9809C7000FD6D0 /* ProfileViewController.swift in Sources */,
 				831C194E1A9809A4000FD6D0 /* MessagesViewController.swift in Sources */,
 				831C194C1A980970000FD6D0 /* PrivateViewController.swift in Sources */,
+				831C197A1A9823A8000FD6D0 /* Constants.swift in Sources */,
 				831C194A1A98090E000FD6D0 /* GroupViewController.swift in Sources */,
 				831C19171A97F5CA000FD6D0 /* AppDelegate.swift in Sources */,
 			);

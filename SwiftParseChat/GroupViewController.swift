@@ -7,18 +7,20 @@
 //
 
 import UIKit
-import Parse
+// Parse loaded from SwiftParseChat-Bridging-Header.h
 
 class GroupViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate {
     
-    var chatrooms = []
+    var chatrooms: [AnyObject]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        // Currentuser login
-        self.loadChatRooms()
+        if PFUser.currentUser() != nil {
+            self.loadChatRooms()
+        } else {
+            Utilities.loginUser(self)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -27,8 +29,14 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
     }
     
     func loadChatRooms() {
-        //PFQuery
-        //Add objects from array
+        var query = PFQuery(className: PF_CHATROOMS_CLASS_NAME)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!)  in
+            if error == nil {
+                self.chatrooms.removeAll()
+                self.chatrooms.extend(objects)
+            }
+        }
     }
     
     @IBAction func newButtonPressed(sender: UIBarButtonItem) {
