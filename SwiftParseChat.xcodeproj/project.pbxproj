@@ -55,8 +55,11 @@
 		839A20E01A99E207003248CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A20DF1A99E207003248CE /* Social.framework */; };
 		839A20E21A99E20D003248CE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A20E11A99E20D003248CE /* Accounts.framework */; };
 		839A20E41A99E244003248CE /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A20E31A99E244003248CE /* libstdc++.6.dylib */; };
+		839A20E91A99E372003248CE /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 839A20E61A99E372003248CE /* ProgressHUD.bundle */; };
+		839A20EA1A99E372003248CE /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A20E81A99E372003248CE /* ProgressHUD.m */; };
+		839A20EB1A99E475003248CE /* ProgressHUD.h in Sources */ = {isa = PBXBuildFile; fileRef = 839A20E71A99E372003248CE /* ProgressHUD.h */; };
+		839A20ED1A99E9D7003248CE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A20EC1A99E9D7003248CE /* LoginViewController.swift */; };
 		83C839A41A9977E3007AC2AC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C839A31A9977E3007AC2AC /* RegisterViewController.swift */; };
-		83C839A61A997832007AC2AC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C839A51A997832007AC2AC /* LoginViewController.swift */; };
 		83C839A81A997857007AC2AC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C839A71A997857007AC2AC /* WelcomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -126,8 +129,11 @@
 		839A20DF1A99E207003248CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		839A20E11A99E20D003248CE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		839A20E31A99E244003248CE /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
+		839A20E61A99E372003248CE /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		839A20E71A99E372003248CE /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		839A20E81A99E372003248CE /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		839A20EC1A99E9D7003248CE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 		83C839A31A9977E3007AC2AC /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		83C839A51A997832007AC2AC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		83C839A71A997857007AC2AC /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		9C3EFC78E4A942DCAC620294 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -260,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				839A20E31A99E244003248CE /* libstdc++.6.dylib */,
+				839A20E51A99E372003248CE /* ProgressHUD */,
 				839A20E11A99E20D003248CE /* Accounts.framework */,
 				839A20DF1A99E207003248CE /* Social.framework */,
 				839A20BD1A99D1F0003248CE /* PKHUD */,
@@ -302,11 +309,21 @@
 			path = PKHUD;
 			sourceTree = "<group>";
 		};
+		839A20E51A99E372003248CE /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				839A20E61A99E372003248CE /* ProgressHUD.bundle */,
+				839A20E71A99E372003248CE /* ProgressHUD.h */,
+				839A20E81A99E372003248CE /* ProgressHUD.m */,
+			);
+			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
 		83C839A91A997885007AC2AC /* User */ = {
 			isa = PBXGroup;
 			children = (
+				839A20EC1A99E9D7003248CE /* LoginViewController.swift */,
 				83C839A31A9977E3007AC2AC /* RegisterViewController.swift */,
-				83C839A51A997832007AC2AC /* LoginViewController.swift */,
 				83C839A71A997857007AC2AC /* WelcomeViewController.swift */,
 			);
 			name = User;
@@ -417,6 +434,7 @@
 				831C19481A98085B000FD6D0 /* tab_profile@2x.png in Resources */,
 				831C191E1A97F5CA000FD6D0 /* Main.storyboard in Resources */,
 				831C19421A98085B000FD6D0 /* chat_blank@2x.png in Resources */,
+				839A20E91A99E372003248CE /* ProgressHUD.bundle in Resources */,
 				831C19451A98085B000FD6D0 /* tab_group@2x.png in Resources */,
 				839A20CB1A99D1F0003248CE /* Images.xcassets in Resources */,
 				831C19431A98085B000FD6D0 /* messages_blank@2x.png in Resources */,
@@ -476,8 +494,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				839A20EB1A99E475003248CE /* ProgressHUD.h in Sources */,
+				839A20EA1A99E372003248CE /* ProgressHUD.m in Sources */,
 				839A20C91A99D1F0003248CE /* HUDContentView.swift in Sources */,
 				839A20CA1A99D1F0003248CE /* HUDController.swift in Sources */,
+				839A20ED1A99E9D7003248CE /* LoginViewController.swift in Sources */,
 				839A20C71A99D1F0003248CE /* FrameView.swift in Sources */,
 				83C839A41A9977E3007AC2AC /* RegisterViewController.swift in Sources */,
 				831C19781A981AF6000FD6D0 /* Utilities.swift in Sources */,
@@ -490,7 +511,6 @@
 				839A20C81A99D1F0003248CE /* HUDAssets.swift in Sources */,
 				831C197A1A9823A8000FD6D0 /* Constants.swift in Sources */,
 				831C194A1A98090E000FD6D0 /* GroupViewController.swift in Sources */,
-				83C839A61A997832007AC2AC /* LoginViewController.swift in Sources */,
 				831C19171A97F5CA000FD6D0 /* AppDelegate.swift in Sources */,
 				839A20CD1A99D1F0003248CE /* Window.swift in Sources */,
 			);
@@ -624,6 +644,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"/Users/jessehu/ios/SwiftParseChat/**",
 				);
 				INFOPLIST_FILE = SwiftParseChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -645,6 +666,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"/Users/jessehu/ios/SwiftParseChat/**",
 				);
 				INFOPLIST_FILE = SwiftParseChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

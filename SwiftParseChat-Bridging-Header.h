@@ -9,3 +9,4 @@
 #import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <ProgressHUD.h>
