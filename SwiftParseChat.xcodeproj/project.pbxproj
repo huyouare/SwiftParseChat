@@ -43,6 +43,7 @@
 		831C19751A981731000FD6D0 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19731A981731000FD6D0 /* FBAudienceNetwork.framework */; };
 		831C19781A981AF6000FD6D0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19771A981AF6000FD6D0 /* Utilities.swift */; };
 		831C197A1A9823A8000FD6D0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19791A9823A8000FD6D0 /* Constants.swift */; };
+		836AF4BB1A994C830057E827 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836AF4BA1A994C830057E827 /* Messages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		831C19761A9818CF000FD6D0 /* SwiftParseChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftParseChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		831C19771A981AF6000FD6D0 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		831C19791A9823A8000FD6D0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		836AF4BA1A994C830057E827 /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				831C19161A97F5CA000FD6D0 /* AppDelegate.swift */,
 				831C19791A9823A8000FD6D0 /* Constants.swift */,
 				831C19491A98090E000FD6D0 /* GroupViewController.swift */,
+				836AF4BA1A994C830057E827 /* Messages.swift */,
 				831C194D1A9809A4000FD6D0 /* MessagesViewController.swift */,
 				831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */,
 				831C194B1A980970000FD6D0 /* PrivateViewController.swift */,
@@ -362,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				831C19781A981AF6000FD6D0 /* Utilities.swift in Sources */,
+				836AF4BB1A994C830057E827 /* Messages.swift in Sources */,
 				831C19501A9809C7000FD6D0 /* ProfileViewController.swift in Sources */,
 				831C194E1A9809A4000FD6D0 /* MessagesViewController.swift in Sources */,
 				831C194C1A980970000FD6D0 /* PrivateViewController.swift in Sources */,

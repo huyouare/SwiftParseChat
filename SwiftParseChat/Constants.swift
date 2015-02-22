@@ -51,7 +51,7 @@ let PF_CHAT_VIDEO						= "video"                   //	File
 let PF_CHAT_CREATEDAT					= "createdAt"               //	Date
 
 /* Chatrooms */
-let PF_CHATROOMS_CLASS_NAME				= "ChatRooms"               //	Class name
+let PF_CHATROOMS_CLASS_NAME				= "Chatrooms"               //	Class name
 let PF_CHATROOMS_NAME					= "name"					//	String
 
 /* Messages*/

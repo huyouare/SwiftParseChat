@@ -11,7 +11,7 @@ import UIKit
 
 class GroupViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate {
     
-    var chatrooms: [AnyObject]! = []
+    var chatrooms: [PFObject]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,9 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
             (objects: [AnyObject]!, error: NSError!)  in
             if error == nil {
                 self.chatrooms.removeAll()
-                self.chatrooms.extend(objects)
+                self.chatrooms.extend(objects as [PFObject]!)
+            } else {
+                //ProgressHUD.showError("Network error")
             }
         }
     }
@@ -54,11 +56,21 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
             var textField = alertView.textFieldAtIndex(0);
             if let text = textField!.text {
                 if countElements(text) > 0 {
-                    // Save PFObject
+                    var object = PFObject(className: PF_CHATROOMS_CLASS_NAME)
+                    object[PF_CHATROOMS_NAME] = text
+                    object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) -> Void in
+                        if success {
+                            self.loadChatRooms()
+                        } else {
+                            //ProgressHUD.showError("Network error")
+                        }
+                    })
                 }
             }
         }
     }
+    
+    // MARK: - TableView Data Source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -70,7 +82,37 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
-        cell.textLabel?.text = "Hello"
+        
+        var chatroom = self.chatrooms[indexPath.row]
+        cell.textLabel?.text = chatroom[PF_CHATROOMS_NAME] as? String
+        
+        var query = PFQuery(className: PF_CHAT_CLASS_NAME)
+        query.whereKey(PF_CHAT_ROOMID, equalTo: chatroom.objectId)
+        query.orderByDescending(PF_CHAT_CREATEDAT)
+        query.limit = 1000
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                if let chat = objects.first as? PFObject {
+                    let date = NSDate()
+                    let seconds = date.timeIntervalSinceDate(chat.createdAt)
+                    let elapsed = Utilities.timeElapsed(seconds);
+                    cell.detailTextLabel?.text = "\(objects.count) messages \(elapsed)"
+                }
+            } else {
+                cell.detailTextLabel?.text = "No message"
+            }
+        }
+        
         return cell
+    }
+    
+    // MARK: - TableView Delegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        var chatroom = chatrooms[indexPath.row]
+        let roomId = chatroom.objectId
+        
     }
 }
