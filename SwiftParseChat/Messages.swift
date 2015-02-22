@@ -9,6 +9,7 @@
 import Foundation
 
 class Messages {
+    
     class func startPrivateChat(user1: PFUser, user2: PFUser) -> String {
         let id1 = user1.objectId
         let id2 = user2.objectId
@@ -89,30 +90,24 @@ class Messages {
     
     class func clearMessageCounter(roomId: String) {
         var query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
-        
+        query.whereKey(PF_MESSAGES_ROOMID, equalTo: roomId)
+        query.whereKey(PF_MESSAGES_USER, equalTo: PFUser.currentUser())
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                for message in objects as [PFObject]! {
+                    message[PF_MESSAGES_COUNTER] = 0
+                    message.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError!) -> Void in
+                        if error != nil {
+                            println("ClearMessageCounter save error.")
+                            println(error)
+                        }
+                    })
+                }
+            } else {
+                println("ClearMessageCounter save error.")
+                println(error)
+            }
+        }
     }
-//    //-------------------------------------------------------------------------------------------------------------------------------------------------
-//    void ClearMessageCounter(NSString *roomId)
-//    //-------------------------------------------------------------------------------------------------------------------------------------------------
-//    {
-//    PFQuery *query = [PFQuery queryWithClassName:PF_MESSAGES_CLASS_NAME];
-//    [query whereKey:PF_MESSAGES_ROOMID equalTo:roomId];
-//    [query whereKey:PF_MESSAGES_USER equalTo:[PFUser currentUser]];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-//    {
-//    if (error == nil)
-//    {
-//    for (PFObject *message in objects)
-//    {
-//				message[PF_MESSAGES_COUNTER] = @0;
-//				[message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-//				{
-//    if (error != nil) NSLog(@"ClearMessageCounter save error.");
-//				}];
-//    }
-//    }
-//    else NSLog(@"ClearMessageCounter query error.");
-//    }];
-//    }
 
 }
