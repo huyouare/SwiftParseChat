@@ -291,7 +291,7 @@
         <!--Register-->
         <scene sceneID="yV4-tb-a84">
             <objects>
-                <tableViewController id="cWU-bd-GZR" sceneMemberID="viewController">
+                <tableViewController id="cWU-bd-GZR" customClass="RegisterViewController" customModule="SwiftParseChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="bHm-3d-NLn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -356,6 +356,9 @@
                                                             <integer key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="registerButtonPressed:" destination="cWU-bd-GZR" eventType="touchUpInside" id="byG-oA-ILG"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -369,6 +372,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Register" id="0SO-XE-ZsL"/>
+                    <connections>
+                        <outlet property="emailField" destination="fLR-SQ-qYo" id="uM2-0e-GYs"/>
+                        <outlet property="nameField" destination="dCJ-Zg-fZo" id="gsE-ke-Xs4"/>
+                        <outlet property="passwordField" destination="MdI-Wk-S9F" id="A7Y-pB-50e"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQT-aJ-P05" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
