@@ -15,12 +15,16 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
-        if PFUser.currentUser() != nil {
-            self.loadChatRooms()
-        } else {
-            Utilities.loginUser(self)
-        }
+        //        if PFUser.currentUser() != nil {
+        self.loadChatRooms()
+        //        } else {
+        //            Utilities.loginUser(self)
+        //        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,8 +39,10 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
             if error == nil {
                 self.chatrooms.removeAll()
                 self.chatrooms.extend(objects as [PFObject]!)
+                self.tableView.reloadData()
             } else {
                 //ProgressHUD.showError("Network error")
+                println(error)
             }
         }
     }
@@ -63,6 +69,7 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
                             self.loadChatRooms()
                         } else {
                             //ProgressHUD.showError("Network error")
+                            println(error)
                         }
                     })
                 }
@@ -114,5 +121,7 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
         var chatroom = chatrooms[indexPath.row]
         let roomId = chatroom.objectId
         
+        Messages.createMessageItem(PFUser(), roomId: roomId, description: chatroom[PF_CHATROOMS_NAME] as String)
+        // Segue to chatroom
     }
 }
