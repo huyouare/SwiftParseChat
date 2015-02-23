@@ -1,10 +1,13 @@
 PODS:
+  - Alamofire (1.1.4)
   - MBProgressHUD (0.9)
 
 DEPENDENCIES:
+  - Alamofire (~> 1.1)
   - MBProgressHUD (~> 0.8)
 
 SPEC CHECKSUMS:
+  Alamofire: 524225da382071ee3e6d0badd0ee4b4dc36740de
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.36.0.beta.2
