@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F733180E20B4B5DB2EF8E13 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A70FB85D99A4537AA0A5A3F /* libPods.a */; };
+		6255F48A9544045E8AB00268 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E792D971850373ACD6EB87A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		831C19171A97F5CA000FD6D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19161A97F5CA000FD6D0 /* AppDelegate.swift */; };
 		831C191E1A97F5CA000FD6D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831C191C1A97F5CA000FD6D0 /* Main.storyboard */; };
 		831C19201A97F5CA000FD6D0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 831C191F1A97F5CA000FD6D0 /* Images.xcassets */; };
@@ -52,13 +52,12 @@
 		8348BEC41A9AB1E000A50EE6 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEBC1A9AB1E000A50EE6 /* Window.swift */; };
 		8348BEC51A9AB1E000A50EE6 /* WindowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEBD1A9AB1E000A50EE6 /* WindowRootViewController.swift */; };
 		8348BEC71A9AB31500A50EE6 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEC61A9AB31500A50EE6 /* PushNotification.swift */; };
+		8348BECA1A9AC1D300A50EE6 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A20E81A99E372003248CE /* ProgressHUD.m */; };
 		836AF4BB1A994C830057E827 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836AF4BA1A994C830057E827 /* Messages.swift */; };
 		839A20E01A99E207003248CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A20DF1A99E207003248CE /* Social.framework */; };
 		839A20E21A99E20D003248CE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A20E11A99E20D003248CE /* Accounts.framework */; };
 		839A20E41A99E244003248CE /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A20E31A99E244003248CE /* libstdc++.6.dylib */; };
 		839A20E91A99E372003248CE /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 839A20E61A99E372003248CE /* ProgressHUD.bundle */; };
-		839A20EA1A99E372003248CE /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A20E81A99E372003248CE /* ProgressHUD.m */; };
-		839A20EB1A99E475003248CE /* ProgressHUD.h in Sources */ = {isa = PBXBuildFile; fileRef = 839A20E71A99E372003248CE /* ProgressHUD.h */; };
 		839A20ED1A99E9D7003248CE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A20EC1A99E9D7003248CE /* LoginViewController.swift */; };
 		83C839A41A9977E3007AC2AC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C839A31A9977E3007AC2AC /* RegisterViewController.swift */; };
 		83C839A81A997857007AC2AC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C839A71A997857007AC2AC /* WelcomeViewController.swift */; };
@@ -75,7 +74,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0042DAF9BD00609F7937E134 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		22DAA0ADDDA852AE91CC7023 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4A70FB85D99A4537AA0A5A3F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E792D971850373ACD6EB87A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		831C19111A97F5CA000FD6D0 /* SwiftParseChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftParseChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		831C19151A97F5CA000FD6D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		831C19161A97F5CA000FD6D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,7 +116,7 @@
 		831C19701A981565000FD6D0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		831C19721A981731000FD6D0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		831C19731A981731000FD6D0 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
-		831C19761A9818CF000FD6D0 /* SwiftParseChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftParseChat-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		831C19761A9818CF000FD6D0 /* SwiftParseChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SwiftParseChat-Bridging-Header.h"; path = "SwiftParseChat/SwiftParseChat-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		831C19771A981AF6000FD6D0 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		831C19791A9823A8000FD6D0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8348BEB51A9AB1E000A50EE6 /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
@@ -134,10 +136,9 @@
 		839A20E61A99E372003248CE /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		839A20E71A99E372003248CE /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		839A20E81A99E372003248CE /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
-		839A20EC1A99E9D7003248CE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
+		839A20EC1A99E9D7003248CE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		83C839A31A9977E3007AC2AC /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		83C839A71A997857007AC2AC /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		9C3EFC78E4A942DCAC620294 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +152,6 @@
 				839A20E01A99E207003248CE /* Social.framework in Frameworks */,
 				831C19711A981565000FD6D0 /* libsqlite3.dylib in Frameworks */,
 				831C196F1A98155A000FD6D0 /* libz.dylib in Frameworks */,
-				0F733180E20B4B5DB2EF8E13 /* libPods.a in Frameworks */,
 				831C196D1A981550000FD6D0 /* SystemConfiguration.framework in Frameworks */,
 				831C196B1A98154C000FD6D0 /* StoreKit.framework in Frameworks */,
 				831C19691A981546000FD6D0 /* Security.framework in Frameworks */,
@@ -166,6 +166,7 @@
 				831C195B1A9814B0000FD6D0 /* ParseUI.framework in Frameworks */,
 				831C19751A981731000FD6D0 /* FBAudienceNetwork.framework in Frameworks */,
 				831C195A1A9814B0000FD6D0 /* ParseFacebookUtils.framework in Frameworks */,
+				6255F48A9544045E8AB00268 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,7 +186,8 @@
 				831C19131A97F5CA000FD6D0 /* SwiftParseChat */,
 				831C192B1A97F5CA000FD6D0 /* SwiftParseChatTests */,
 				831C19121A97F5CA000FD6D0 /* Products */,
-				9C3EFC78E4A942DCAC620294 /* Pods.xcconfig */,
+				BA1D0AD88CD4A1615707E353 /* Pods */,
+				E0C7DE20595F2582990BD048 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -353,6 +355,23 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		BA1D0AD88CD4A1615707E353 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0042DAF9BD00609F7937E134 /* Pods.debug.xcconfig */,
+				22DAA0ADDDA852AE91CC7023 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E0C7DE20595F2582990BD048 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E792D971850373ACD6EB87A /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -365,6 +384,7 @@
 				831C190E1A97F5CA000FD6D0 /* Frameworks */,
 				831C190F1A97F5CA000FD6D0 /* Resources */,
 				A256B58E294B4E24B1CB5C3E /* Copy Pods Resources */,
+				5F588849184EFCFB84895520 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -461,6 +481,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5F588849184EFCFB84895520 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		732892520EB249828928D66D /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -488,7 +523,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -498,8 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				839A20EB1A99E475003248CE /* ProgressHUD.h in Sources */,
-				839A20EA1A99E372003248CE /* ProgressHUD.m in Sources */,
+				8348BECA1A9AC1D300A50EE6 /* ProgressHUD.m in Sources */,
 				839A20ED1A99E9D7003248CE /* LoginViewController.swift in Sources */,
 				83C839A41A9977E3007AC2AC /* RegisterViewController.swift in Sources */,
 				831C19781A981AF6000FD6D0 /* Utilities.swift in Sources */,
@@ -638,7 +672,7 @@
 		};
 		831C19331A97F5CB000FD6D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C3EFC78E4A942DCAC620294 /* Pods.xcconfig */;
+			baseConfigurationReference = 0042DAF9BD00609F7937E134 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -657,13 +691,14 @@
 				INFOPLIST_FILE = SwiftParseChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftParseChat-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftParseChat/SwiftParseChat-Bridging-Header.h";
+				VALID_ARCHS = "armv7s armv7 arm64";
 			};
 			name = Debug;
 		};
 		831C19341A97F5CB000FD6D0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C3EFC78E4A942DCAC620294 /* Pods.xcconfig */;
+			baseConfigurationReference = 22DAA0ADDDA852AE91CC7023 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -682,7 +717,8 @@
 				INFOPLIST_FILE = SwiftParseChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftParseChat-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftParseChat/SwiftParseChat-Bridging-Header.h";
+				VALID_ARCHS = "armv7s armv7 arm64";
 			};
 			name = Release;
 		};

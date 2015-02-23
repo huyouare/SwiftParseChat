@@ -13,9 +13,13 @@ class Utilities {
         // Present Welcome View Controller
     }
     
-    // TODO
-    class func resizeImage(image: UIImage, width: CGFloat, height: CGFloat) -> UIImage {
-        return image
+    class func resizeImage(var image: UIImage, width: CGFloat, height: CGFloat) -> UIImage {
+        var size = CGSizeMake(width, height);
+        UIGraphicsBeginImageContextWithOptions(size, false, 0);
+        image.drawInRect(CGRectMake(0, 0, size.width, size.height));
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return image;
     }
     
     class func postNotification(notification: String) {
