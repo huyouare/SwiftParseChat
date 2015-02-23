@@ -250,8 +250,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVi-m8-Ujk">
-                                <rect key="frame" x="20" y="440" width="280" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sA-e3-d2z">
+                                <rect key="frame" x="20" y="478" width="280" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="xGH-p6-rVe"/>
+                                </constraints>
+                                <state key="normal" title="Register"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="cWU-bd-GZR" kind="push" id="5im-sL-aHV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVi-m8-Ujk">
+                                <rect key="frame" x="20" y="420" width="280" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="mqr-an-AoY"/>
@@ -266,8 +282,8 @@
                                     <segue destination="oHt-4D-Sgw" kind="push" id="09r-Z8-shZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Z6-GE-ZTG">
-                                <rect key="frame" x="20" y="382" width="280" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Z6-GE-ZTG">
+                                <rect key="frame" x="20" y="362" width="280" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kaw-cP-BpP"/>
@@ -280,22 +296,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="facebookLogin:" destination="tGE-fG-8Z7" eventType="touchUpInside" id="lAZ-Ef-Bkp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sA-e3-d2z">
-                                <rect key="frame" x="20" y="498" width="280" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="xGH-p6-rVe"/>
-                                </constraints>
-                                <state key="normal" title="Register"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="cWU-bd-GZR" kind="push" id="5im-sL-aHV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -372,7 +372,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5GG-xZ-aHz" id="Whu-h3-TRB">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eq1-eQ-cyB">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eq1-eQ-cyB">
                                                     <rect key="frame" x="20" y="5" width="280" height="50"/>
                                                     <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal" title="Register"/>
@@ -386,6 +386,13 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Eq1-eQ-cyB" firstAttribute="top" secondItem="Whu-h3-TRB" secondAttribute="topMargin" constant="-3" id="69w-JX-9NK"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Eq1-eQ-cyB" secondAttribute="bottom" constant="-4" id="Ipd-4x-yTF"/>
+                                                <constraint firstItem="Eq1-eQ-cyB" firstAttribute="centerX" secondItem="Whu-h3-TRB" secondAttribute="centerX" id="WPR-n7-uxa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Eq1-eQ-cyB" secondAttribute="trailing" constant="12" id="beW-4D-oLD"/>
+                                                <constraint firstItem="Eq1-eQ-cyB" firstAttribute="leading" secondItem="Whu-h3-TRB" secondAttribute="leadingMargin" constant="12" id="ka7-z4-IoV"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -449,7 +456,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bMj-de-mAS" id="ijw-7s-CXt">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQS-6N-Y4W">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQS-6N-Y4W">
                                                     <rect key="frame" x="20" y="5" width="280" height="50"/>
                                                     <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -467,6 +474,13 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="wQS-6N-Y4W" secondAttribute="trailing" constant="12" id="3xh-j5-IdX"/>
+                                                <constraint firstItem="wQS-6N-Y4W" firstAttribute="leading" secondItem="ijw-7s-CXt" secondAttribute="leadingMargin" constant="12" id="AOE-Qm-knR"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="wQS-6N-Y4W" secondAttribute="bottom" constant="-4" id="F78-gM-p6K"/>
+                                                <constraint firstItem="wQS-6N-Y4W" firstAttribute="top" secondItem="ijw-7s-CXt" secondAttribute="topMargin" constant="-3" id="fpl-TY-fky"/>
+                                                <constraint firstItem="wQS-6N-Y4W" firstAttribute="centerX" secondItem="ijw-7s-CXt" secondAttribute="centerX" id="l1R-cg-g8j"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
