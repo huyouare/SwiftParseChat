@@ -24,7 +24,6 @@
 		831C194C1A980970000FD6D0 /* PrivateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C194B1A980970000FD6D0 /* PrivateViewController.swift */; };
 		831C194E1A9809A4000FD6D0 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C194D1A9809A4000FD6D0 /* MessagesViewController.swift */; };
 		831C19501A9809C7000FD6D0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */; };
-		831C19581A9814B0000FD6D0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19531A9814B0000FD6D0 /* Parse.framework */; };
 		831C19591A9814B0000FD6D0 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19541A9814B0000FD6D0 /* ParseCrashReporting.framework */; };
 		831C195A1A9814B0000FD6D0 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19551A9814B0000FD6D0 /* ParseFacebookUtils.framework */; };
 		831C195B1A9814B0000FD6D0 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19561A9814B0000FD6D0 /* ParseUI.framework */; };
@@ -43,15 +42,16 @@
 		831C19751A981731000FD6D0 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19731A981731000FD6D0 /* FBAudienceNetwork.framework */; };
 		831C19781A981AF6000FD6D0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19771A981AF6000FD6D0 /* Utilities.swift */; };
 		831C197A1A9823A8000FD6D0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19791A9823A8000FD6D0 /* Constants.swift */; };
+		8348BEB31A9AB16200A50EE6 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19531A9814B0000FD6D0 /* Parse.framework */; };
+		8348BEBE1A9AB1E000A50EE6 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEB51A9AB1E000A50EE6 /* FrameView.swift */; };
+		8348BEBF1A9AB1E000A50EE6 /* HUDAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEB61A9AB1E000A50EE6 /* HUDAssets.swift */; };
+		8348BEC01A9AB1E000A50EE6 /* HUDContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEB71A9AB1E000A50EE6 /* HUDContentView.swift */; };
+		8348BEC11A9AB1E000A50EE6 /* HUDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEB81A9AB1E000A50EE6 /* HUDController.swift */; };
+		8348BEC21A9AB1E000A50EE6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8348BEB91A9AB1E000A50EE6 /* Images.xcassets */; };
+		8348BEC31A9AB1E000A50EE6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8348BEBA1A9AB1E000A50EE6 /* Info.plist */; };
+		8348BEC41A9AB1E000A50EE6 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEBC1A9AB1E000A50EE6 /* Window.swift */; };
+		8348BEC51A9AB1E000A50EE6 /* WindowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEBD1A9AB1E000A50EE6 /* WindowRootViewController.swift */; };
 		836AF4BB1A994C830057E827 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836AF4BA1A994C830057E827 /* Messages.swift */; };
-		839A20C71A99D1F0003248CE /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A20BE1A99D1F0003248CE /* FrameView.swift */; };
-		839A20C81A99D1F0003248CE /* HUDAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A20BF1A99D1F0003248CE /* HUDAssets.swift */; };
-		839A20C91A99D1F0003248CE /* HUDContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A20C01A99D1F0003248CE /* HUDContentView.swift */; };
-		839A20CA1A99D1F0003248CE /* HUDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A20C11A99D1F0003248CE /* HUDController.swift */; };
-		839A20CB1A99D1F0003248CE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 839A20C21A99D1F0003248CE /* Images.xcassets */; };
-		839A20CC1A99D1F0003248CE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 839A20C31A99D1F0003248CE /* Info.plist */; };
-		839A20CD1A99D1F0003248CE /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A20C51A99D1F0003248CE /* Window.swift */; };
-		839A20CE1A99D1F0003248CE /* WindowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A20C61A99D1F0003248CE /* WindowRootViewController.swift */; };
 		839A20E01A99E207003248CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A20DF1A99E207003248CE /* Social.framework */; };
 		839A20E21A99E20D003248CE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A20E11A99E20D003248CE /* Accounts.framework */; };
 		839A20E41A99E244003248CE /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A20E31A99E244003248CE /* libstdc++.6.dylib */; };
@@ -116,16 +116,16 @@
 		831C19761A9818CF000FD6D0 /* SwiftParseChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftParseChat-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		831C19771A981AF6000FD6D0 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		831C19791A9823A8000FD6D0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8348BEB51A9AB1E000A50EE6 /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
+		8348BEB61A9AB1E000A50EE6 /* HUDAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDAssets.swift; sourceTree = "<group>"; };
+		8348BEB71A9AB1E000A50EE6 /* HUDContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDContentView.swift; sourceTree = "<group>"; };
+		8348BEB81A9AB1E000A50EE6 /* HUDController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDController.swift; sourceTree = "<group>"; };
+		8348BEB91A9AB1E000A50EE6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8348BEBA1A9AB1E000A50EE6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8348BEBB1A9AB1E000A50EE6 /* PKHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKHUD.h; sourceTree = "<group>"; };
+		8348BEBC1A9AB1E000A50EE6 /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		8348BEBD1A9AB1E000A50EE6 /* WindowRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowRootViewController.swift; sourceTree = "<group>"; };
 		836AF4BA1A994C830057E827 /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
-		839A20BE1A99D1F0003248CE /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
-		839A20BF1A99D1F0003248CE /* HUDAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDAssets.swift; sourceTree = "<group>"; };
-		839A20C01A99D1F0003248CE /* HUDContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDContentView.swift; sourceTree = "<group>"; };
-		839A20C11A99D1F0003248CE /* HUDController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDController.swift; sourceTree = "<group>"; };
-		839A20C21A99D1F0003248CE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		839A20C31A99D1F0003248CE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		839A20C41A99D1F0003248CE /* PKHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKHUD.h; sourceTree = "<group>"; };
-		839A20C51A99D1F0003248CE /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
-		839A20C61A99D1F0003248CE /* WindowRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowRootViewController.swift; sourceTree = "<group>"; };
 		839A20DF1A99E207003248CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		839A20E11A99E20D003248CE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		839A20E31A99E244003248CE /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
@@ -143,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8348BEB31A9AB16200A50EE6 /* Parse.framework in Frameworks */,
 				839A20E41A99E244003248CE /* libstdc++.6.dylib in Frameworks */,
 				839A20E21A99E20D003248CE /* Accounts.framework in Frameworks */,
 				839A20E01A99E207003248CE /* Social.framework in Frameworks */,
@@ -159,7 +160,6 @@
 				831C19611A981532000FD6D0 /* CoreGraphics.framework in Frameworks */,
 				831C195F1A98152C000FD6D0 /* CFNetwork.framework in Frameworks */,
 				831C195D1A981528000FD6D0 /* AudioToolbox.framework in Frameworks */,
-				831C19581A9814B0000FD6D0 /* Parse.framework in Frameworks */,
 				831C19591A9814B0000FD6D0 /* ParseCrashReporting.framework in Frameworks */,
 				831C195B1A9814B0000FD6D0 /* ParseUI.framework in Frameworks */,
 				831C19751A981731000FD6D0 /* FBAudienceNetwork.framework in Frameworks */,
@@ -180,8 +180,6 @@
 		831C19081A97F5CA000FD6D0 = {
 			isa = PBXGroup;
 			children = (
-				831C19761A9818CF000FD6D0 /* SwiftParseChat-Bridging-Header.h */,
-				831C19511A981482000FD6D0 /* Frameworks */,
 				831C19131A97F5CA000FD6D0 /* SwiftParseChat */,
 				831C192B1A97F5CA000FD6D0 /* SwiftParseChatTests */,
 				831C19121A97F5CA000FD6D0 /* Products */,
@@ -201,6 +199,8 @@
 		831C19131A97F5CA000FD6D0 /* SwiftParseChat */ = {
 			isa = PBXGroup;
 			children = (
+				831C19761A9818CF000FD6D0 /* SwiftParseChat-Bridging-Header.h */,
+				831C19511A981482000FD6D0 /* Frameworks */,
 				831C19391A9807CF000FD6D0 /* Resources */,
 				831C19161A97F5CA000FD6D0 /* AppDelegate.swift */,
 				831C19791A9823A8000FD6D0 /* Constants.swift */,
@@ -265,11 +265,11 @@
 		831C19511A981482000FD6D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8348BEB41A9AB1E000A50EE6 /* PKHUD */,
 				839A20E31A99E244003248CE /* libstdc++.6.dylib */,
 				839A20E51A99E372003248CE /* ProgressHUD */,
 				839A20E11A99E20D003248CE /* Accounts.framework */,
 				839A20DF1A99E207003248CE /* Social.framework */,
-				839A20BD1A99D1F0003248CE /* PKHUD */,
 				831C19701A981565000FD6D0 /* libsqlite3.dylib */,
 				831C196E1A98155A000FD6D0 /* libz.dylib */,
 				831C19721A981731000FD6D0 /* FacebookSDK.framework */,
@@ -291,20 +291,21 @@
 				4A70FB85D99A4537AA0A5A3F /* libPods.a */,
 			);
 			name = Frameworks;
+			path = ../Frameworks;
 			sourceTree = "<group>";
 		};
-		839A20BD1A99D1F0003248CE /* PKHUD */ = {
+		8348BEB41A9AB1E000A50EE6 /* PKHUD */ = {
 			isa = PBXGroup;
 			children = (
-				839A20BE1A99D1F0003248CE /* FrameView.swift */,
-				839A20BF1A99D1F0003248CE /* HUDAssets.swift */,
-				839A20C01A99D1F0003248CE /* HUDContentView.swift */,
-				839A20C11A99D1F0003248CE /* HUDController.swift */,
-				839A20C21A99D1F0003248CE /* Images.xcassets */,
-				839A20C31A99D1F0003248CE /* Info.plist */,
-				839A20C41A99D1F0003248CE /* PKHUD.h */,
-				839A20C51A99D1F0003248CE /* Window.swift */,
-				839A20C61A99D1F0003248CE /* WindowRootViewController.swift */,
+				8348BEB51A9AB1E000A50EE6 /* FrameView.swift */,
+				8348BEB61A9AB1E000A50EE6 /* HUDAssets.swift */,
+				8348BEB71A9AB1E000A50EE6 /* HUDContentView.swift */,
+				8348BEB81A9AB1E000A50EE6 /* HUDController.swift */,
+				8348BEB91A9AB1E000A50EE6 /* Images.xcassets */,
+				8348BEBA1A9AB1E000A50EE6 /* Info.plist */,
+				8348BEBB1A9AB1E000A50EE6 /* PKHUD.h */,
+				8348BEBC1A9AB1E000A50EE6 /* Window.swift */,
+				8348BEBD1A9AB1E000A50EE6 /* WindowRootViewController.swift */,
 			);
 			path = PKHUD;
 			sourceTree = "<group>";
@@ -436,14 +437,14 @@
 				831C19421A98085B000FD6D0 /* chat_blank@2x.png in Resources */,
 				839A20E91A99E372003248CE /* ProgressHUD.bundle in Resources */,
 				831C19451A98085B000FD6D0 /* tab_group@2x.png in Resources */,
-				839A20CB1A99D1F0003248CE /* Images.xcassets in Resources */,
 				831C19431A98085B000FD6D0 /* messages_blank@2x.png in Resources */,
 				831C19471A98085B000FD6D0 /* tab_private@2x.png in Resources */,
 				831C19231A97F5CA000FD6D0 /* LaunchScreen.xib in Resources */,
-				839A20CC1A99D1F0003248CE /* Info.plist in Resources */,
 				831C19201A97F5CA000FD6D0 /* Images.xcassets in Resources */,
+				8348BEC21A9AB1E000A50EE6 /* Images.xcassets in Resources */,
 				831C19461A98085B000FD6D0 /* tab_messages@2x.png in Resources */,
 				831C19441A98085B000FD6D0 /* profile_blank@2x.png in Resources */,
+				8348BEC31A9AB1E000A50EE6 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,23 +497,23 @@
 			files = (
 				839A20EB1A99E475003248CE /* ProgressHUD.h in Sources */,
 				839A20EA1A99E372003248CE /* ProgressHUD.m in Sources */,
-				839A20C91A99D1F0003248CE /* HUDContentView.swift in Sources */,
-				839A20CA1A99D1F0003248CE /* HUDController.swift in Sources */,
 				839A20ED1A99E9D7003248CE /* LoginViewController.swift in Sources */,
-				839A20C71A99D1F0003248CE /* FrameView.swift in Sources */,
 				83C839A41A9977E3007AC2AC /* RegisterViewController.swift in Sources */,
 				831C19781A981AF6000FD6D0 /* Utilities.swift in Sources */,
-				839A20CE1A99D1F0003248CE /* WindowRootViewController.swift in Sources */,
+				8348BEBF1A9AB1E000A50EE6 /* HUDAssets.swift in Sources */,
+				8348BEC01A9AB1E000A50EE6 /* HUDContentView.swift in Sources */,
 				83C839A81A997857007AC2AC /* WelcomeViewController.swift in Sources */,
 				836AF4BB1A994C830057E827 /* Messages.swift in Sources */,
 				831C19501A9809C7000FD6D0 /* ProfileViewController.swift in Sources */,
 				831C194E1A9809A4000FD6D0 /* MessagesViewController.swift in Sources */,
+				8348BEC41A9AB1E000A50EE6 /* Window.swift in Sources */,
 				831C194C1A980970000FD6D0 /* PrivateViewController.swift in Sources */,
-				839A20C81A99D1F0003248CE /* HUDAssets.swift in Sources */,
 				831C197A1A9823A8000FD6D0 /* Constants.swift in Sources */,
 				831C194A1A98090E000FD6D0 /* GroupViewController.swift in Sources */,
+				8348BEBE1A9AB1E000A50EE6 /* FrameView.swift in Sources */,
+				8348BEC51A9AB1E000A50EE6 /* WindowRootViewController.swift in Sources */,
 				831C19171A97F5CA000FD6D0 /* AppDelegate.swift in Sources */,
-				839A20CD1A99D1F0003248CE /* Window.swift in Sources */,
+				8348BEC11A9AB1E000A50EE6 /* HUDController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,11 +641,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"/Users/jessehu/ios/SwiftParseChat/**",
+					/Users/jessehu/ios/SwiftParseChat,
+					/Users/jessehu/ios/SwiftParseChat/Frameworks,
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				INFOPLIST_FILE = SwiftParseChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -662,11 +666,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"/Users/jessehu/ios/SwiftParseChat/**",
+					/Users/jessehu/ios/SwiftParseChat,
+					/Users/jessehu/ios/SwiftParseChat/Frameworks,
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				INFOPLIST_FILE = SwiftParseChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

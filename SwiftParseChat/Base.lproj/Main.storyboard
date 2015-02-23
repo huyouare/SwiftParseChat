@@ -437,6 +437,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
+                                                        <action selector="loginButtonPressed:" destination="oHt-4D-Sgw" eventType="touchUpInside" id="6dT-mn-vwK"/>
                                                         <action selector="registerButtonPressed:" destination="cWU-bd-GZR" eventType="touchUpInside" id="dqo-QT-ZPG"/>
                                                     </connections>
                                                 </button>
@@ -452,6 +453,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Login" id="alK-Yv-3af"/>
+                    <connections>
+                        <outlet property="emailField" destination="fVD-im-SQf" id="hd0-PX-GbR"/>
+                        <outlet property="passwordField" destination="RDc-tQ-RIi" id="krm-tv-gBv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ceX-qF-DQt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
