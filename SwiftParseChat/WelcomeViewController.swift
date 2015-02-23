@@ -31,8 +31,13 @@ class WelcomeViewController: UIViewController {
                     self.userLoggedIn(user)
                 }
             } else {
+                println(error)
                 if let info = error.userInfo {
-                    ProgressHUD.showError(info["error"] as String)
+                    println(info)
+                    for (key, value) in info {
+                        println(value as String)
+                    }
+                    ProgressHUD.showError(info["error"] as? String)
                 }
             }
         })
