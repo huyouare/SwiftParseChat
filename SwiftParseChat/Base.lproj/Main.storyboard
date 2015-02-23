@@ -235,7 +235,7 @@
         <!--Welcome-->
         <scene sceneID="T8C-T3-kFb">
             <objects>
-                <viewController id="tGE-fG-8Z7" sceneMemberID="viewController">
+                <viewController id="tGE-fG-8Z7" customClass="WelcomeViewController" customModule="SwiftParseChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Wk-Xc-VV5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -426,19 +426,22 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bMj-de-mAS" id="ijw-7s-CXt">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tFb-ve-kNX">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wQS-6N-Y4W">
                                                     <rect key="frame" x="20" y="5" width="280" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <state key="normal" title="Login"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <state key="normal" title="Login">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="loginButtonPressed:" destination="oHt-4D-Sgw" eventType="touchUpInside" id="6dT-mn-vwK"/>
-                                                        <action selector="registerButtonPressed:" destination="cWU-bd-GZR" eventType="touchUpInside" id="dqo-QT-ZPG"/>
+                                                        <action selector="loginButtonPressed:" destination="oHt-4D-Sgw" eventType="touchUpInside" id="yJW-wS-x2b"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
