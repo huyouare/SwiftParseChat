@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class WelcomeViewController: UITableViewController {
+class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,5 +113,5 @@ class WelcomeViewController: UITableViewController {
         ProgressHUD.showSuccess("Welcome back, \(user[PF_USER_FULLNAME])!")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
 }

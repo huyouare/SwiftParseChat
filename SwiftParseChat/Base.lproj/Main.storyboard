@@ -235,6 +235,7 @@
         <!--Welcome-->
         <scene sceneID="T8C-T3-kFb">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e4o-8E-6Zy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="tGE-fG-8Z7" customClass="WelcomeViewController" customModule="SwiftParseChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Wk-Xc-VV5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -278,13 +279,15 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="facebookLogin:" destination="tGE-fG-8Z7" eventType="touchUpInside" id="lAZ-Ef-Bkp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="4Z8-bw-nN2"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e4o-8E-6Zy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-608" y="821"/>
         </scene>
