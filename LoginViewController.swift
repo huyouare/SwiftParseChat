@@ -46,7 +46,7 @@ class LoginViewController: UITableViewController {
         ProgressHUD.show("Signing in...", interaction: true)
         PFUser.logInWithUsernameInBackground(email, password: password) { (user: PFUser!, error: NSError!) -> Void in
             if user != nil {
-                //ParsePushUserAssign
+                PushNotication.parsePushUserAssign()
                 ProgressHUD.showSuccess("Welcome back, \(user[PF_USER_FULLNAME])!")
                 self.dismissViewControllerAnimated(true, completion: nil)
             } else {

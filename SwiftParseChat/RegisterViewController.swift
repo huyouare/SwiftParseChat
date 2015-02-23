@@ -62,8 +62,7 @@ class RegisterViewController: UITableViewController {
         user[PF_USER_FULLNAME_LOWER] = name.lowercaseString
         user.signUpInBackgroundWithBlock { (succeeded: Bool, error: NSError!) -> Void in
             if error == nil {
-                // TODO: Notification methods
-//                ParsePushUserAssign()
+                PushNotication.parsePushUserAssign()
                 ProgressHUD.showSuccess("Succeeded.")
                 self.dismissViewControllerAnimated(true, completion: nil)
             } else {
