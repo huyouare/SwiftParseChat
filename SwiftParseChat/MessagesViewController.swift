@@ -20,6 +20,9 @@ class MessagesViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    class func refreshMessagesView() {
+        
+    }
     
 }
 
