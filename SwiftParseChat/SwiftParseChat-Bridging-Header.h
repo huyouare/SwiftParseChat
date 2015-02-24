@@ -10,3 +10,4 @@
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <ProgressHUD/ProgressHUD.h>
+#import <Pods-JSQMessagesViewController-umbrella.h>
