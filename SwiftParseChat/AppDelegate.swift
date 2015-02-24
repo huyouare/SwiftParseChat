@@ -31,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
         }
+
+//        FBLoginView.self
         
         return true
     }
