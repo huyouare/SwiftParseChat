@@ -42,6 +42,9 @@
 		831C19751A981731000FD6D0 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19731A981731000FD6D0 /* FBAudienceNetwork.framework */; };
 		831C19781A981AF6000FD6D0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19771A981AF6000FD6D0 /* Utilities.swift */; };
 		831C197A1A9823A8000FD6D0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19791A9823A8000FD6D0 /* Constants.swift */; };
+		832554E81A9B39A60022F867 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832554E71A9B39A60022F867 /* ChatViewController.swift */; };
+		832554EE1A9BB8F60022F867 /* JSQMessagesKeyboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832554ED1A9BB8F60022F867 /* JSQMessagesKeyboardController.m */; };
+		832554F01A9BB90A0022F867 /* JSQMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832554EF1A9BB90A0022F867 /* JSQMessagesViewController.m */; };
 		8348BEB31A9AB16200A50EE6 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19531A9814B0000FD6D0 /* Parse.framework */; };
 		8348BEBE1A9AB1E000A50EE6 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEB51A9AB1E000A50EE6 /* FrameView.swift */; };
 		8348BEBF1A9AB1E000A50EE6 /* HUDAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEB61A9AB1E000A50EE6 /* HUDAssets.swift */; };
@@ -119,6 +122,9 @@
 		831C19761A9818CF000FD6D0 /* SwiftParseChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SwiftParseChat-Bridging-Header.h"; path = "SwiftParseChat/SwiftParseChat-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		831C19771A981AF6000FD6D0 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		831C19791A9823A8000FD6D0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		832554E71A9B39A60022F867 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		832554ED1A9BB8F60022F867 /* JSQMessagesKeyboardController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JSQMessagesKeyboardController.m; path = Pods/JSQMessagesViewController/JSQMessagesViewController/Controllers/JSQMessagesKeyboardController.m; sourceTree = "<group>"; };
+		832554EF1A9BB90A0022F867 /* JSQMessagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JSQMessagesViewController.m; path = Pods/JSQMessagesViewController/JSQMessagesViewController/Controllers/JSQMessagesViewController.m; sourceTree = "<group>"; };
 		8348BEB51A9AB1E000A50EE6 /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		8348BEB61A9AB1E000A50EE6 /* HUDAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDAssets.swift; sourceTree = "<group>"; };
 		8348BEB71A9AB1E000A50EE6 /* HUDContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDContentView.swift; sourceTree = "<group>"; };
@@ -183,6 +189,8 @@
 		831C19081A97F5CA000FD6D0 = {
 			isa = PBXGroup;
 			children = (
+				832554EF1A9BB90A0022F867 /* JSQMessagesViewController.m */,
+				832554ED1A9BB8F60022F867 /* JSQMessagesKeyboardController.m */,
 				831C19131A97F5CA000FD6D0 /* SwiftParseChat */,
 				831C192B1A97F5CA000FD6D0 /* SwiftParseChatTests */,
 				831C19121A97F5CA000FD6D0 /* Products */,
@@ -207,6 +215,7 @@
 				831C19511A981482000FD6D0 /* Frameworks */,
 				831C19391A9807CF000FD6D0 /* Resources */,
 				831C19161A97F5CA000FD6D0 /* AppDelegate.swift */,
+				832554E71A9B39A60022F867 /* ChatViewController.swift */,
 				831C19791A9823A8000FD6D0 /* Constants.swift */,
 				83C839AA1A9978A2007AC2AC /* Tabs */,
 				83C839AB1A9978F6007AC2AC /* Utilities */,
@@ -533,6 +542,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				832554F01A9BB90A0022F867 /* JSQMessagesViewController.m in Sources */,
+				832554EE1A9BB8F60022F867 /* JSQMessagesKeyboardController.m in Sources */,
 				8348BECA1A9AC1D300A50EE6 /* ProgressHUD.m in Sources */,
 				839A20ED1A99E9D7003248CE /* LoginViewController.swift in Sources */,
 				83C839A41A9977E3007AC2AC /* RegisterViewController.swift in Sources */,
@@ -542,6 +553,7 @@
 				83C839A81A997857007AC2AC /* WelcomeViewController.swift in Sources */,
 				836AF4BB1A994C830057E827 /* Messages.swift in Sources */,
 				831C19501A9809C7000FD6D0 /* ProfileViewController.swift in Sources */,
+				832554E81A9B39A60022F867 /* ChatViewController.swift in Sources */,
 				831C194E1A9809A4000FD6D0 /* MessagesViewController.swift in Sources */,
 				8348BEC41A9AB1E000A50EE6 /* Window.swift in Sources */,
 				8348BEC71A9AB31500A50EE6 /* PushNotification.swift in Sources */,
@@ -684,9 +696,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					/Users/jessehu/ios/SwiftParseChat,
-					/Users/jessehu/ios/SwiftParseChat/Frameworks,
 					"\"$(SRCROOT)/Frameworks\"",
+					"$(PODS_ROOT)/**",
 				);
 				INFOPLIST_FILE = SwiftParseChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -710,9 +721,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					/Users/jessehu/ios/SwiftParseChat,
-					/Users/jessehu/ios/SwiftParseChat/Frameworks,
 					"\"$(SRCROOT)/Frameworks\"",
+					"$(PODS_ROOT)/**",
 				);
 				INFOPLIST_FILE = SwiftParseChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
