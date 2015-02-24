@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-JSQMessagesViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-JSQSystemSoundPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,12 +37,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>432476FCB1F60269AF55B212</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7ACAA5A2FDEF5CEEB3A35C35</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7DB9396F6739D70B217FEBF1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>854B2C6F6BCC1A675A8D3BCA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A53B1D25F2A06D94B46DE1D3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AB4A0B6B401D2A07439CE406</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B77FF9199A1EA9C3717197FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
