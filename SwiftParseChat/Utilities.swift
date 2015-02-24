@@ -9,8 +9,13 @@
 import Foundation
 
 class Utilities {
+    
+    // TODO: Make this actually work
     class func loginUser(target: AnyObject) {
-        // Present Welcome View Controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let welcomeVC = storyboard.instantiateViewControllerWithIdentifier("navigationVC") as UINavigationController
+        target.presentViewController(welcomeVC, animated: true, completion: nil)
+        
     }
     
     class func resizeImage(var image: UIImage, width: CGFloat, height: CGFloat) -> UIImage {
