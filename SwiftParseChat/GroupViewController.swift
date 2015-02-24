@@ -19,12 +19,13 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        //        if PFUser.currentUser() != nil {
-        self.loadChatRooms()
-        //        } else {
-        //            Utilities.loginUser(self)
-        //        }
+
+        if PFUser.currentUser() != nil {
+            self.loadChatRooms()
+        }
+        else {
+            Utilities.loginUser(self)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,7 +42,7 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
                 self.chatrooms.extend(objects as [PFObject]!)
                 self.tableView.reloadData()
             } else {
-                //ProgressHUD.showError("Network error")
+                ProgressHUD.showError("Network error")
                 println(error)
             }
         }
@@ -68,7 +69,7 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
                         if success {
                             self.loadChatRooms()
                         } else {
-                            //ProgressHUD.showError("Network error")
+                            ProgressHUD.showError("Network error")
                             println(error)
                         }
                     })
