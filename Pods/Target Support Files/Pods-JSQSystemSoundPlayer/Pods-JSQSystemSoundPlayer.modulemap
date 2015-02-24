@@ -1,0 +1,6 @@
+framework module JSQSystemSoundPlayer {
+  umbrella header "Pods-JSQSystemSoundPlayer-umbrella.h"
+
+  export *
+  module * { export * }
+}
