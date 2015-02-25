@@ -70,10 +70,10 @@
             </objects>
             <point key="canvasLocation" x="756.26666666666665" y="-1048.9066666666668"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--View Controller-->
         <scene sceneID="cwq-oH-mfM">
             <objects>
-                <viewController id="0wk-ai-jpb" customClass="ChatViewController" customModule="SwiftParseChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0wk-ai-jpb" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wpH-Yf-crF"/>
                         <viewControllerLayoutGuide type="bottom" id="Gbe-A9-OGC"/>
