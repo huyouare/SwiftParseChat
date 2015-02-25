@@ -1,19 +1,13 @@
 PODS:
   - Alamofire (1.1.4)
-  - JSQMessagesViewController (6.1.3):
-    - JSQSystemSoundPlayer (~> 2.0.1)
-  - JSQSystemSoundPlayer (2.0.1)
   - MBProgressHUD (0.9)
 
 DEPENDENCIES:
   - Alamofire (~> 1.1)
-  - JSQMessagesViewController
   - MBProgressHUD (~> 0.8)
 
 SPEC CHECKSUMS:
   Alamofire: 524225da382071ee3e6d0badd0ee4b4dc36740de
-  JSQMessagesViewController: e93a288a9662d4519c95a28a8c0eec10beae1bfc
-  JSQSystemSoundPlayer: 55528c699a283aae2220d3ae7b8b527d2ecef4b4
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
 
 COCOAPODS: 0.36.0.beta.2
