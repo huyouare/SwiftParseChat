@@ -62,8 +62,8 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
     // Mark: - Backend methods
     
     func loadMessages() {
-        if isLoading == false {
-            isLoading = true
+        if self.isLoading == false {
+            self.isLoading = true
             var lastMessage = messages.last
             
             var query = PFQuery(className: PF_CHAT_CLASS_NAME)
@@ -77,7 +77,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
             query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]!, error: NSError!) -> Void in
                 if error == nil {
                     self.automaticallyScrollsToMostRecentMessage = false
-                    for object in objects as [PFObject]! {
+                    for object in (objects as [PFObject]!).reverse() {
                         self.addMessage(object)
                     }
                     if objects.count > 0 {
@@ -88,6 +88,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
                 } else {
                     ProgressHUD.showError("Network error")
                 }
+                self.isLoading = false;
             })
         }
     }
@@ -166,6 +167,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
             if error == nil {
                 JSQSystemSoundPlayer.jsq_playMessageSentSound()
                 self.loadMessages()
+                println("loadMessages from sendMessage")
             } else {
                 ProgressHUD.showError("Network error")
             }
@@ -314,7 +316,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, didTapCellAtIndexPath indexPath: NSIndexPath!, touchLocation: CGPoint) {
-        println("didTapeCellAtIndexPath")
+        println("didTapCellAtIndexPath")
     }
     
     // MARK: - UIActionSheetDelegate
