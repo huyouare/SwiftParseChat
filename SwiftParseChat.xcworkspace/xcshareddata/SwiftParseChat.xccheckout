@@ -12,6 +12,8 @@
 	<dict>
 		<key>1AE78C9356749352D2E92F71DBB4DA9C993B6A62</key>
 		<string>https://github.com/huyouare/SwiftParseChat.git</string>
+		<key>3295696B2ABB63B244A5608CBC7B986155E10CBC</key>
+		<string>https://github.com/jessesquires/JSQSystemSoundPlayer.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SwiftParseChat.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>1AE78C9356749352D2E92F71DBB4DA9C993B6A62</key>
 		<string>..</string>
+		<key>3295696B2ABB63B244A5608CBC7B986155E10CBC</key>
+		<string>../../JSQSystemSoundPlayer</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/huyouare/SwiftParseChat.git</string>
@@ -28,6 +32,14 @@
 	<string>1AE78C9356749352D2E92F71DBB4DA9C993B6A62</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3295696B2ABB63B244A5608CBC7B986155E10CBC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>JSQSystemSoundPlayer</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
