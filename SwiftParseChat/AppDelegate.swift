@@ -73,12 +73,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         installation.saveInBackgroundWithBlock { (succeeed: Bool, error: NSError!) -> Void in
             if error != nil {
                 println(error)
+                println("didRegisterForRemoteNotificationsWithDeviceToken")
             }
         }
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         println(error)
+        println("didFailToRegisterForRemoteNotificationsWithError")
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
