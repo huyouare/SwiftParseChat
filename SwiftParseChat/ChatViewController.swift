@@ -1,4 +1,4 @@
-//
+ //
 //  ChatViewController.swift
 //  SwiftParseChat
 //
@@ -44,8 +44,8 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
         blankAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "chat_blank"), diameter: 30)
         
         isLoading = false
-        //self.loadMessages()
-        // ClearMessageCounter(roomId);
+        self.loadMessages()
+        Messages.clearMessageCounter(roomId);
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -320,10 +320,8 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
     // MARK: - UIActionSheetDelegate
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        println("Camera not yet supported")
         if buttonIndex != actionSheet.cancelButtonIndex {
-//            switch actionSheet {
-////            case 0: 
-//            }
         }
     }
     
