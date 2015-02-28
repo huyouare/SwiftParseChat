@@ -120,9 +120,19 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         var chatroom = chatrooms[indexPath.row]
-        let roomId = chatroom.objectId
+        let roomId = chatroom.objectId as String
         
         Messages.createMessageItem(PFUser(), roomId: roomId, description: chatroom[PF_CHATROOMS_NAME] as String)
-        // Segue to chatroom
+        
+        self.performSegueWithIdentifier("groupChatSegue", sender: roomId)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "groupChatSegue" {
+            let chatVC = segue.destinationViewController as ChatViewController
+            chatVC.hidesBottomBarWhenPushed = true
+            let roomId = sender as String
+            chatVC.roomId = roomId
+        }
     }
 }
