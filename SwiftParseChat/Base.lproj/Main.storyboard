@@ -483,7 +483,6 @@
         <!--Profile-->
         <scene sceneID="5ny-Sg-hda">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7VD-k0-wlw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="gXq-AQ-zq3" customClass="ProfileViewController" customModule="SwiftParseChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bNg-F3-Xkc"/>
@@ -496,6 +495,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pRc-fL-eoK" customClass="PFImageView">
                                 <rect key="frame" x="125" y="72" width="70" height="70"/>
                             </imageView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZf-mw-yN3">
+                                <rect key="frame" x="125" y="72" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="S32-Gs-OMo"/>
+                                    <constraint firstAttribute="height" constant="70" id="b3B-RG-Rxx"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="photoButtonPressed:" destination="gXq-AQ-zq3" eventType="touchUpInside" id="CKq-Uh-JOv"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Psw-Ty-x1a">
                                 <rect key="frame" x="15" y="150" width="290" height="60"/>
                                 <constraints>
@@ -524,19 +536,6 @@
                                     <action selector="saveButtonPressed:" destination="gXq-AQ-zq3" eventType="touchUpInside" id="6nd-Qw-fkP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZf-mw-yN3">
-                                <rect key="frame" x="125" y="72" width="70" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="S32-Gs-OMo"/>
-                                    <constraint firstAttribute="height" constant="70" id="b3B-RG-Rxx"/>
-                                </constraints>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="photoButtonPressed:" destination="gXq-AQ-zq3" eventType="touchUpInside" id="CKq-Uh-JOv"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -557,12 +556,20 @@
                             <constraint firstItem="eZf-mw-yN3" firstAttribute="top" secondItem="bNg-F3-Xkc" secondAttribute="bottom" constant="8" id="yTs-VN-sxc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="Vmv-hU-acT"/>
+                    <navigationItem key="navigationItem" title="Profile" id="Vmv-hU-acT">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="2tw-wl-Xbz">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="gXq-AQ-zq3" id="kvq-14-LIP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="imageButton" destination="eZf-mw-yN3" id="9MD-g5-NuU"/>
                         <outlet property="nameField" destination="Psw-Ty-x1a" id="EAP-4V-jmG"/>
                         <outlet property="userImageView" destination="pRc-fL-eoK" id="Lco-gr-JvA"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7VD-k0-wlw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="756" y="891"/>
         </scene>
