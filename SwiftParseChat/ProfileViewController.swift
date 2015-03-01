@@ -98,7 +98,7 @@ class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePic
     }
     
     @IBAction func photoButtonPressed(sender: UIButton) {
-        // Camera
+        Camera.shouldStartPhotoLibrary(self, canEdit: true)
     }
     
     @IBAction func saveButtonPressed(sender: UIButton) {
