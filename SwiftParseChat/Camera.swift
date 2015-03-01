@@ -9,33 +9,89 @@
 import UIKit
 import MobileCoreServices
 
-func shouldStartCamera(target: AnyObject, canEdit: Bool) -> Bool {
+class Camera {
     
-    if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-        return false
-    }
-    
-    let type = kUTTypeImage as String
-    let imagePicker = UIImagePickerController()
-    let available = contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.Camera) as [String]!, type)
-    
-    if available {
-        imagePicker.mediaTypes = [type]
-        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-        
-        if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Rear) {
-            imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Rear
-        } else if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Front) {
-            imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+    class func shouldStartCamera(target: AnyObject, canEdit: Bool) -> Bool {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            return false
         }
-    } else {
-        return false
+        
+        let type = kUTTypeImage as String
+        let imagePicker = UIImagePickerController()
+        let available = contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.Camera) as [String]!, type)
+        
+        if available {
+            imagePicker.mediaTypes = [type]
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+            
+            if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Rear) {
+                imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Rear
+            } else if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Front) {
+                imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+            }
+        } else {
+            return false
+        }
+        
+        imagePicker.allowsEditing = canEdit
+        imagePicker.showsCameraControls = true
+        imagePicker.delegate = target as ChatViewController
+        target.presentViewController(imagePicker, animated: true, completion: nil)
+        
+        return true
+    }
+
+    class func shouldStartPhotoLibrary(target: AnyObject, canEdit: Bool) -> Bool {
+        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) && !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
+            return false
+        }
+        
+        let type = kUTTypeImage as String
+        let imagePicker = UIImagePickerController()
+        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) && contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.PhotoLibrary) as [String]!, type) {
+            imagePicker.mediaTypes = [type]
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        }
+        else if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) && contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.SavedPhotosAlbum) as [String]!, type) {
+            imagePicker.mediaTypes = [type]
+            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+        }
+        else {
+            return false
+        }
+        
+        imagePicker.allowsEditing = canEdit
+        imagePicker.delegate = target as ChatViewController
+        target.presentViewController(imagePicker, animated: true, completion: nil)
+        
+        return true
     }
     
-    imagePicker.allowsEditing = canEdit
-    imagePicker.showsCameraControls = true
-    imagePicker.delegate = target as ChatViewController
-    target.presentViewController(imagePicker, animated: true, completion: nil)
-    
-    return true
+    class func shouldStartVideoLibrary(target: AnyObject, canEdit: Bool) -> Bool {
+        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) && !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
+            return false
+        }
+        
+        let type = kUTTypeMovie as String
+        let imagePicker = UIImagePickerController()
+        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) && contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.PhotoLibrary) as [String]!, type) {
+            imagePicker.mediaTypes = [type]
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        }
+        else if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) && contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.SavedPhotosAlbum) as [String]!, type) {
+            imagePicker.mediaTypes = [type]
+            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+        }
+        else {
+            return false
+        }
+        
+        imagePicker.allowsEditing = canEdit
+        imagePicker.delegate = target as ChatViewController
+        target.presentViewController(imagePicker, animated: true, completion: nil)
+        
+        return true
+    }
 }
