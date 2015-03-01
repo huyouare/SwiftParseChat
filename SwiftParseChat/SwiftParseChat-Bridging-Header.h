@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <ProgressHUD/ProgressHUD.h>
