@@ -89,7 +89,7 @@
                   symbolName = "SwiftParseChat.ChatViewController.loadMessages (SwiftParseChat.ChatViewController)() -&gt; ()"
                   moduleName = "SwiftParseChat"
                   urlString = "file:///Users/jessehu/ios/SwiftParseChat/SwiftParseChat/ChatViewController.swift"
-                  timestampString = "446793384.924556"
+                  timestampString = "446865879.037949"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "77"
@@ -103,7 +103,7 @@
                   symbolName = "SwiftParseChat.ChatViewController.(loadMessages (SwiftParseChat.ChatViewController) -&gt; () -&gt; ()).(closure #1)"
                   moduleName = "SwiftParseChat"
                   urlString = "file:///Users/jessehu/ios/SwiftParseChat/SwiftParseChat/ChatViewController.swift"
-                  timestampString = "446793384.92477"
+                  timestampString = "446865879.038243"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "77"
@@ -135,11 +135,11 @@
                   symbolName = "SwiftParseChat.ChatViewController.loadMessages (SwiftParseChat.ChatViewController)() -&gt; ()"
                   moduleName = "SwiftParseChat"
                   urlString = "file:///Users/jessehu/ios/SwiftParseChat/SwiftParseChat/ChatViewController.swift"
-                  timestampString = "446793384.925685"
+                  timestampString = "446865879.039407"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
                   offsetFromSymbolStart = "6020">
                </Location>
                <Location
@@ -149,11 +149,11 @@
                   symbolName = "SwiftParseChat.ChatViewController.loadMessages (SwiftParseChat.ChatViewController)() -&gt; ()"
                   moduleName = "SwiftParseChat"
                   urlString = "file:///Users/jessehu/ios/SwiftParseChat/SwiftParseChat/ChatViewController.swift"
-                  timestampString = "446793384.925842"
+                  timestampString = "446865879.039647"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
                   offsetFromSymbolStart = "7357">
                </Location>
             </Locations>
@@ -203,6 +203,70 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
             endingLineNumber = "53"
+            landmarkName = "viewDidAppear(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftParseChat/ProfileViewController.swift"
+            timestampString = "446865485.070874"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftParseChat/ProfileViewController.swift"
+            timestampString = "446865488.128319"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "viewDidAppear(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftParseChat/ProfileViewController.swift"
+            timestampString = "446865490.908482"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "viewDidAppear(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftParseChat/ProfileViewController.swift"
+            timestampString = "446865492.70866"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "5">
          </BreakpointContent>

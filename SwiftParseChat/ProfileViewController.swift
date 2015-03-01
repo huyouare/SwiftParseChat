@@ -8,11 +8,15 @@
 
 import UIKit
 
-class ProfileViewController: UITableViewController {
+class ProfileViewController: UIViewController {
+    
+    @IBOutlet var userImageView: PFImageView!
+    @IBOutlet var nameField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard"))
     }
     
     override func didReceiveMemoryWarning() {
@@ -20,5 +24,31 @@ class ProfileViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let currentUser = PFUser.currentUser() {
+            self.loadUser()
+        } else {
+            Utilities.loginUser(self)
+        }
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    func loadUser() {
+        var user = PFUser.currentUser()
+        
+        userImageView.file = user[PF_USER_PICTURE] as PFFile
+        userImageView.loadInBackground { (image: UIImage!, error: NSError!) -> Void in
+            if error != nil {
+                println(error)
+            }
+        }
+        
+        nameField.text = user[PF_USER_FULLNAME] as String
+    }
     
 }
