@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate {
+class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var userImageView: PFImageView!
     @IBOutlet var nameField: UITextField!

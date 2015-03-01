@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import MediaPlayer
 
-class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource, UIActionSheetDelegate, UIImagePickerControllerDelegate {
+class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var timer: NSTimer = NSTimer()
     var isLoading: Bool = false
