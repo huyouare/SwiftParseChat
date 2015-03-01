@@ -322,8 +322,14 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
     // MARK: - UIActionSheetDelegate
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        println("Camera not yet supported")
         if buttonIndex != actionSheet.cancelButtonIndex {
+            if buttonIndex == 0 {
+                Camera.shouldStartCamera(self, canEdit: true)
+            } else if buttonIndex == 1 {
+                Camera.shouldStartPhotoLibrary(self, canEdit: true)
+            } else if buttonIndex == 2 {
+                Camera.shouldStartVideoLibrary(self, canEdit: true)
+            }
         }
     }
     
