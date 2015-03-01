@@ -12,7 +12,8 @@ class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePic
     
     @IBOutlet var userImageView: PFImageView!
     @IBOutlet var nameField: UITextField!
-    
+    @IBOutlet var imageButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +36,8 @@ class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePic
         
         userImageView.layer.cornerRadius = userImageView.frame.size.width / 2;
         userImageView.layer.masksToBounds = true;
+        imageButton.layer.cornerRadius = userImageView.frame.size.width / 2;
+        imageButton.layer.masksToBounds = true;
     }
     
     func dismissKeyboard() {
@@ -82,7 +85,10 @@ class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePic
     func logout() {
         var actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Log out")
         actionSheet.showFromTabBar(self.tabBarController?.tabBar)
-        
+    }
+    
+    @IBAction func logoutButtonPressed(sender: UIBarButtonItem) {
+        self.logout()
     }
     
     // MARK: - UIActionSheetDelegate
@@ -129,6 +135,15 @@ class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePic
         
         var thumbnailFile = PFFile(name: "thumbnail.jpg", data: UIImageJPEGRepresentation(image, 0.6))
         thumbnailFile.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError!) -> Void in
+            if error != nil {
+                ProgressHUD.showError("Network error")
+            }
+        }
+        
+        var user = PFUser.currentUser()
+        user[PF_USER_PICTURE] = pictureFile
+        user[PF_USER_THUMBNAIL] = thumbnailFile
+        user.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError!) -> Void in
             if error != nil {
                 ProgressHUD.showError("Network error")
             }
