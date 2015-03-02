@@ -116,8 +116,8 @@ class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePic
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         var image = info[UIImagePickerControllerEditedImage] as UIImage
-        if image.size.width > 140 {
-            image = Images.resizeImage(image, width: 140, height: 140)!
+        if image.size.width > 280 {
+            image = Images.resizeImage(image, width: 280, height: 280)!
         }
         
         var pictureFile = PFFile(name: "picture.jpg", data: UIImageJPEGRepresentation(image, 0.6))
@@ -129,8 +129,8 @@ class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePic
         
         userImageView.image = image
         
-        if image.size.width > 30 {
-            image = Images.resizeImage(image, width: 30, height: 30)!
+        if image.size.width > 60 {
+            image = Images.resizeImage(image, width: 60, height: 60)!
         }
         
         var thumbnailFile = PFFile(name: "thumbnail.jpg", data: UIImageJPEGRepresentation(image, 0.6))
