@@ -209,6 +209,21 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
         }
     }
     
+    // MARK: - UIActionSheetDelegate
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex != actionSheet.cancelButtonIndex {
+            let user = users1[indexSelected.row]
+            if buttonIndex == 0 {
+                self.sendMail(user)
+            } else if buttonIndex == 1 {
+                self.sendSMS(user)
+            }
+        }
+    }
+    
+    // MARK: - Mail sending method
+    
     
     
 }
