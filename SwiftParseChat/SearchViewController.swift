@@ -84,7 +84,6 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
         
         let user = self.users[indexPath.row]
         cell.textLabel?.text = user[PF_USER_FULLNAME] as? String
-        println(user[PF_USER_EMAILCOPY])
         
         return cell
     }
