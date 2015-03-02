@@ -9,6 +9,10 @@
 import UIKit
 
 class SearchViewController: UITableViewController {
+    
+    var users = [PFUser]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

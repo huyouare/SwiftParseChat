@@ -37,11 +37,8 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
             self.addressBook.fieldsMask = APContactField.Default | APContactField.Emails
 
             self.addressBook.sortDescriptors = [NSSortDescriptor(key: "firstName", ascending: true), NSSortDescriptor(key: "lastName", ascending: true)]
-            // TODO: Maybe mask for emails
-            //self.addressBook.filterBlock = {(contact: APContact!) -> Bool in
-            //    return contact.emails.count > 0
-            //}
             self.addressBook.loadContacts({ (contacts: [AnyObject]!, error: NSError!) -> Void in
+                // TODO: Add actiivtyIndicator
                 // self.activity.stopAnimating()
                 if contacts != nil {
                     for contact in contacts as [APContact]! {
@@ -75,8 +72,6 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
                 emails += userEmails as [String]
             }
         }
-        
-        println(emails)
         
         var user = PFUser.currentUser()
         
@@ -214,9 +209,9 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         if buttonIndex != actionSheet.cancelButtonIndex {
             let user = users1[indexSelected.row]
-            if buttonIndex == 0 {
+            if buttonIndex == 1 {
                 self.sendMail(user)
-            } else if buttonIndex == 1 {
+            } else if buttonIndex == 2 {
                 self.sendSMS(user)
             }
         }
@@ -252,13 +247,13 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
     func sendSMS(user: APContact) {
         if MFMessageComposeViewController.canSendText() {
             var messageCompose = MFMessageComposeViewController()
-            // TODO: Use primary phone rather than all emails
+            // TODO: Use primary phone rather than all numbers
             messageCompose.recipients = user.phones as [String]!
             messageCompose.body = MESSAGE_INVITE
             messageCompose.messageComposeDelegate = self
             self.presentViewController(messageCompose, animated: true, completion: nil)
         } else {
-            ProgressHUD.showError("SMS could not be sent")
+            ProgressHUD.showError("SMS cannot be sent")
         }
     }
     
