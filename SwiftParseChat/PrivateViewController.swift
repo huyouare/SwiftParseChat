@@ -10,7 +10,7 @@ import UIKit
 import AddressBook
 import MessageUI
 
-class PrivateViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate {
+class PrivateViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, MFMailComposeViewControllerDelegate {
     
     var users1 = [APContact]()
     var users2 = [PFUser]()
@@ -224,6 +224,27 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
     
     // MARK: - Mail sending method
     
+    func sendMail(user: APContact) {
+        if MFMailComposeViewController.canSendMail() {
+            var mailCompose = MFMailComposeViewController()
+            // TODO: Use one email rather than all emails
+            mailCompose.setToRecipients(user.emails as [String]!)
+            mailCompose.setSubject("")
+            mailCompose.setMessageBody(MESSAGE_INVITE, isHTML: true)
+            mailCompose.mailComposeDelegate = self
+            self.presentViewController(mailCompose, animated: true, completion: nil)
+        } else {
+            ProgressHUD.showError("Email not configured")
+        }
+    }
     
+    // MARK: - MailComposeViewControllerDelegate
+    
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        if result == MFMailComposeResultSent {
+            ProgressHUD.showSuccess("Invitation sent successfully")
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
 }
