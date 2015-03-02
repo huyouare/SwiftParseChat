@@ -84,6 +84,7 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
         
         let user = self.users[indexPath.row]
         cell.textLabel?.text = user[PF_USER_FULLNAME] as? String
+        println(user[PF_USER_EMAILCOPY])
         
         return cell
     }
@@ -94,7 +95,7 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let user1 = PFUser.currentUser()
-        let user2 = PFUser.currentUser()
+        let user2 = users[indexPath.row]
         let roomId = Messages.startPrivateChat(user1, user2: user2)
         
         self.performSegueWithIdentifier("searchChatSegue", sender: roomId)
