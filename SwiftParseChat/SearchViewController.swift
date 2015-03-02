@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
+class SearchViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     var users = [PFUser]()
     
@@ -71,7 +71,7 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
     
     // MARK: - UITableViewDataSource
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
@@ -83,14 +83,14 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
         let user = self.users[indexPath.row]
-        cell.textLabel?.text = user[PF_USER_FULLNAME]
+        cell.textLabel?.text = user[PF_USER_FULLNAME] as? String
         
         return cell
     }
     
     // MARK: - UITableViewDelegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let user1 = PFUser.currentUser()
@@ -110,5 +110,33 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
             chatVC.roomId = roomId
         }
     }
+    
+    // MARK: - UISearchBarDelegate
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if countElements(searchText) > 0 {
+            self.searchUsers(searchText.lowercaseString)
+        } else {
+            self.loadUsers()
+        }
+    }
 
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        self.searchBar.text = ""
+        self.searchBar.resignFirstResponder()
+        
+        self.loadUsers()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
