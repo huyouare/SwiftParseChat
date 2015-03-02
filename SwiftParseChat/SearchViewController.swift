@@ -15,6 +15,8 @@ class SearchViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.loadUsers()
     }
     
     override func didReceiveMemoryWarning() {
@@ -23,5 +25,23 @@ class SearchViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+    }
+    
+    func loadUsers() {
+        var user = PFUser.currentUser()
+        
+        var query = PFQuery(className: PF_USER_CLASS_NAME)
+        query.whereKey(PF_USER_OBJECTID, notEqualTo: user.objectId)
+        query.orderByAscending(PF_USER_FULLNAME)
+        query.limit = 1000
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                self.users.removeAll(keepCapacity: false)
+                self.users += objects as [PFUser]!
+                self.tableView.reloadData()
+            } else {
+                ProgressHUD.showError("Network error")
+            }
+        }
     }
 }
