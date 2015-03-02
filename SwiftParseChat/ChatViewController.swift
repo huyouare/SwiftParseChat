@@ -167,7 +167,6 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
             if error == nil {
                 JSQSystemSoundPlayer.jsq_playMessageSentSound()
                 self.loadMessages()
-                println("loadMessages from sendMessage")
             } else {
                 ProgressHUD.showError("Network error")
             }
@@ -207,8 +206,8 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         var user = self.users[indexPath.item]
         if self.avatars[user.objectId] == nil {
-            var thumbnailFile = user[PF_USER_THUMBNAIL] as PFFile
-            thumbnailFile.getDataInBackgroundWithBlock({ (imageData: NSData!, error: NSError!) -> Void in
+            var thumbnailFile = user[PF_USER_THUMBNAIL] as? PFFile
+            thumbnailFile?.getDataInBackgroundWithBlock({ (imageData: NSData!, error: NSError!) -> Void in
                 if error == nil {
                     self.avatars[user.objectId as String] = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(data: imageData), diameter: 30)
                     self.collectionView.reloadData()
@@ -260,7 +259,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
         if message.senderId == self.senderId {
             cell.textView.textColor = UIColor.blackColor()
         } else {
-            cell.textView.textColor = UIColor.blueColor()
+            cell.textView.textColor = UIColor.whiteColor()
         }
         return cell
     }
