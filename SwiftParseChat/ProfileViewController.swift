@@ -47,7 +47,7 @@ class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePic
     func loadUser() {
         var user = PFUser.currentUser()
         
-        userImageView.file = user[PF_USER_PICTURE] as PFFile
+        userImageView.file = user[PF_USER_PICTURE] as? PFFile
         userImageView.loadInBackground { (image: UIImage!, error: NSError!) -> Void in
             if error != nil {
                 println(error)
