@@ -10,7 +10,7 @@ import UIKit
 import AddressBook
 import MessageUI
 
-class PrivateViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, MFMailComposeViewControllerDelegate {
+class PrivateViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
     
     var users1 = [APContact]()
     var users2 = [PFUser]()
@@ -241,8 +241,32 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
     // MARK: - MailComposeViewControllerDelegate
     
     func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
-        if result == MFMailComposeResultSent {
-            ProgressHUD.showSuccess("Invitation sent successfully")
+        if result.value == MFMailComposeResultSent.value {
+            ProgressHUD.showSuccess("Invitation email sent successfully")
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: - SMS sending method
+    
+    func sendSMS(user: APContact) {
+        if MFMessageComposeViewController.canSendText() {
+            var messageCompose = MFMessageComposeViewController()
+            // TODO: Use primary phone rather than all emails
+            messageCompose.recipients = user.phones as [String]!
+            messageCompose.body = MESSAGE_INVITE
+            messageCompose.messageComposeDelegate = self
+            self.presentViewController(messageCompose, animated: true, completion: nil)
+        } else {
+            ProgressHUD.showError("SMS could not be sent")
+        }
+    }
+    
+    // MARK: - MessageComposeViewControllerDelegate
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+        if result.value == MessageComposeResultSent.value {
+            ProgressHUD.showSuccess("Invitation SMS sent successfully")
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
