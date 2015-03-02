@@ -66,7 +66,7 @@ class WelcomeViewController: UIViewController {
                 var image = UIImage(data: data! as NSData)!
                 
                 if image.size.width > 140 {
-                    image = Utilities.resizeImage(image, width: 140, height: 140)
+                    image = Images.resizeImage(image, width: 140, height: 140)!
                 }
                 var filePicture = PFFile(name: "picture.jpg", data: UIImageJPEGRepresentation(image, 0.6))
                 filePicture.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) -> Void in
@@ -76,7 +76,7 @@ class WelcomeViewController: UIViewController {
                 })
                 
                 if image.size.width > 30 {
-                    image = Utilities.resizeImage(image, width: 30, height: 30)
+                    image = Images.resizeImage(image, width: 30, height: 30)!
                 }
                 var fileThumbnail = PFFile(name: "thumbnail.jpg", data: UIImageJPEGRepresentation(image, 0.6))
                 fileThumbnail.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) -> Void in
