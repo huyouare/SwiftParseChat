@@ -10,10 +10,11 @@ import UIKit
 import AddressBook
 import MessageUI
 
-class PrivateViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
+class PrivateViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate {
     
     var users1 = [APContact]()
     var users2 = [PFUser]()
+    var indexSelected: NSIndexPath!
     
     // activity: UIActivityIndicatorView
     
@@ -173,7 +174,13 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
             
             self.performSegueWithIdentifier("privateChatSegue", sender: roomId)
         }
+        else if indexPath.section == 1 {
+            self.indexSelected = indexPath
+            self.inviteUser(self.users1[indexPath.row])
+        }
     }
+    
+    // MARK: - Prepare for segue to private chatVC
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "privateChatSegue" {
@@ -183,5 +190,25 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
             chatVC.roomId = roomId
         }
     }
-
+    
+    // MARK: - Invite helper method
+    
+    func inviteUser(user: APContact) {
+        let emailsCount = countElements(user.emails)
+        let phonesCount = countElements(user.phones)
+        
+        if emailsCount > 0 && phonesCount > 0 {
+            let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Email invitation", "SMS invitation")
+            actionSheet.showFromTabBar(self.tabBarController?.tabBar)
+        } else if emailsCount > 0 && phonesCount == 0 {
+            self.sendMail(user)
+        } else if emailsCount == 0 && phonesCount > 0 {
+            self.sendSMS(user)
+        } else {
+            ProgressHUD.showError("Contact has no email or phone number")
+        }
+    }
+    
+    
+    
 }
