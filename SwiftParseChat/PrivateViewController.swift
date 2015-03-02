@@ -40,6 +40,7 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
             self.addressBook.loadContacts({ (contacts: [AnyObject]!, error: NSError!) -> Void in
                 // TODO: Add actiivtyIndicator
                 // self.activity.stopAnimating()
+                self.users1.removeAll(keepCapacity: false)
                 if contacts != nil {
                     for contact in contacts as [APContact]! {
                         self.users1.append(contact)
@@ -108,7 +109,8 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
             }
         }
         
-        self.users1.filter { !contains(removeUsers, $0) }
+        let filtered = self.users1.filter { !contains(removeUsers, $0) }
+        self.users1 = filtered
     }
     
     // MARK: - UITableViewDataSource 
