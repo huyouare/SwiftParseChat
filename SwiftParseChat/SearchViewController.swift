@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController {
+class SearchViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
     
     var users = [PFUser]()
     
@@ -66,6 +66,49 @@ class SearchViewController: UITableViewController {
     }
     
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    // MARK: - UITableViewDataSource
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.users.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+        
+        let user = self.users[indexPath.row]
+        cell.textLabel?.text = user[PF_USER_FULLNAME]
+        
+        return cell
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let user1 = PFUser.currentUser()
+        let user2 = PFUser.currentUser()
+        let roomId = Messages.startPrivateChat(user1, user2: user2)
+        
+        self.performSegueWithIdentifier("searchChatSegue", sender: roomId)
+    }
+
+    // MARK: - Prepare for segue to private chatVC
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "searchChatSegue" {
+            let chatVC = segue.destinationViewController as ChatViewController
+            chatVC.hidesBottomBarWhenPushed = true
+            let roomId = sender as String
+            chatVC.roomId = roomId
+        }
+    }
+
 }

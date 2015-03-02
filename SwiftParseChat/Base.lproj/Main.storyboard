@@ -202,6 +202,7 @@
                     <connections>
                         <outlet property="searchBar" destination="VR0-tO-7IA" id="DQY-4j-luT"/>
                         <outlet property="searchDisplayController" destination="O24-2r-0rL" id="gLJ-44-Rti"/>
+                        <segue destination="0wk-ai-jpb" kind="push" identifier="searchChatSegue" id="S6c-Fp-UrQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ei-pQ-r43" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -687,6 +688,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="LEU-gI-rj6"/>
+        <segue reference="S6c-Fp-UrQ"/>
     </inferredMetricsTieBreakers>
 </document>
