@@ -157,13 +157,13 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
             cell.detailTextLabel?.text = (email != nil) ? email : phone
         }
         
-        cell.detailTextLabel?.text = UIColor.lightGrayColor()
+        cell.detailTextLabel?.textColor = UIColor.lightGrayColor()
         return cell
     }
     
     // MARK: - UITableViewDelegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if indexPath.section == 0 {
@@ -171,7 +171,16 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
             let user2 = users2[indexPath.row]
             let roomId = Messages.startPrivateChat(user1, user2: user2)
             
-            var chatView = 
+            self.performSegueWithIdentifier("privateChatSegue", sender: roomId)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "privateChatSegue" {
+            let chatVC = segue.destinationViewController as ChatViewController
+            chatVC.hidesBottomBarWhenPushed = true
+            let roomId = sender as String
+            chatVC.roomId = roomId
         }
     }
 

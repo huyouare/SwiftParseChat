@@ -137,6 +137,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="PzO-io-hKR" id="WXS-Hx-UNV"/>
+                        <segue destination="0wk-ai-jpb" kind="push" identifier="privateChatSegue" id="LEU-gI-rj6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ILf-f1-6k3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -664,4 +665,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="LEU-gI-rj6"/>
+    </inferredMetricsTieBreakers>
 </document>
