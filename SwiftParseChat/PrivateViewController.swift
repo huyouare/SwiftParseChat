@@ -10,7 +10,7 @@ import UIKit
 import AddressBook
 import MessageUI
 
-class PrivateViewController: UITableViewController {
+class PrivateViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
     
     var users1 = [APContact]()
     var users2 = [PFUser]()
@@ -113,6 +113,66 @@ class PrivateViewController: UITableViewController {
         }
         
         self.users1.filter { !contains(removeUsers, $0) }
+    }
+    
+    // MARK: - UITableViewDataSource 
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return users2.count
+        }
+        if section == 1 {
+            return users1.count
+        }
+        return 0
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 && users2.count > 0 {
+            return "Registered users"
+        }
+        if section == 1 && users1.count > 0 {
+            return "Non-registered users"
+        }
+        return nil
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+        
+        if indexPath.section == 0 {
+            let user = users2[indexPath.row]
+            cell.textLabel?.text = user[PF_USER_FULLNAME] as? String
+            cell.detailTextLabel?.text = user[PF_USER_EMAILCOPY] as? String
+        }
+        else if indexPath.section == 1 {
+            let user = users1[indexPath.row]
+            let email = user.emails.first as? String
+            let phone = user.phones.first as? String
+            cell.textLabel?.text = "\(user.firstName) \(user.lastName)"
+            cell.detailTextLabel?.text = (email != nil) ? email : phone
+        }
+        
+        cell.detailTextLabel?.text = UIColor.lightGrayColor()
+        return cell
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        if indexPath.section == 0 {
+            let user1 = PFUser.currentUser()
+            let user2 = users2[indexPath.row]
+            let roomId = Messages.startPrivateChat(user1, user2: user2)
+            
+            var chatView = 
+        }
     }
 
 }
