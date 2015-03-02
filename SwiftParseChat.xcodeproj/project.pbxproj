@@ -110,6 +110,11 @@
 		83C839A41A9977E3007AC2AC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C839A31A9977E3007AC2AC /* RegisterViewController.swift */; };
 		83C839A81A997857007AC2AC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C839A71A997857007AC2AC /* WelcomeViewController.swift */; };
 		83ED1DE01AA2E46E00198FBF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ED1DDF1AA2E46E00198FBF /* SearchViewController.swift */; };
+		83ED1DF01AA413E500198FBF /* APAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED1DE41AA413E500198FBF /* APAddress.m */; };
+		83ED1DF11AA413E500198FBF /* APAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED1DE61AA413E500198FBF /* APAddressBook.m */; };
+		83ED1DF21AA413E500198FBF /* APContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED1DE81AA413E500198FBF /* APContact.m */; };
+		83ED1DF31AA413E500198FBF /* APPhoneWithLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED1DEA1AA413E500198FBF /* APPhoneWithLabel.m */; };
+		83ED1DF41AA413E500198FBF /* APSocialProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED1DEC1AA413E500198FBF /* APSocialProfile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -294,6 +299,18 @@
 		83C839A31A9977E3007AC2AC /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		83C839A71A997857007AC2AC /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		83ED1DDF1AA2E46E00198FBF /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		83ED1DE31AA413E500198FBF /* APAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAddress.h; sourceTree = "<group>"; };
+		83ED1DE41AA413E500198FBF /* APAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAddress.m; sourceTree = "<group>"; };
+		83ED1DE51AA413E500198FBF /* APAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAddressBook.h; sourceTree = "<group>"; };
+		83ED1DE61AA413E500198FBF /* APAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAddressBook.m; sourceTree = "<group>"; };
+		83ED1DE71AA413E500198FBF /* APContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APContact.h; sourceTree = "<group>"; };
+		83ED1DE81AA413E500198FBF /* APContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APContact.m; sourceTree = "<group>"; };
+		83ED1DE91AA413E500198FBF /* APPhoneWithLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPhoneWithLabel.h; sourceTree = "<group>"; };
+		83ED1DEA1AA413E500198FBF /* APPhoneWithLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPhoneWithLabel.m; sourceTree = "<group>"; };
+		83ED1DEB1AA413E500198FBF /* APSocialProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APSocialProfile.h; sourceTree = "<group>"; };
+		83ED1DEC1AA413E500198FBF /* APSocialProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APSocialProfile.m; sourceTree = "<group>"; };
+		83ED1DED1AA413E500198FBF /* APTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APTypes.h; sourceTree = "<group>"; };
+		83ED1DEF1AA413E500198FBF /* APAddressBook-Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "APAddressBook-Bridging.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -427,6 +444,7 @@
 		831C19511A981482000FD6D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83ED1DE11AA413E500198FBF /* APAddressBook */,
 				83B4F5C51AA1718300C09791 /* JSQSystemSoundPlayer */,
 				83B4F5281AA1713B00C09791 /* JSQMessagesViewController */,
 				8348BEB41A9AB1E000A50EE6 /* PKHUD */,
@@ -682,6 +700,41 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		83ED1DE11AA413E500198FBF /* APAddressBook */ = {
+			isa = PBXGroup;
+			children = (
+				83ED1DE21AA413E500198FBF /* Core */,
+				83ED1DEE1AA413E500198FBF /* Swift */,
+			);
+			path = APAddressBook;
+			sourceTree = "<group>";
+		};
+		83ED1DE21AA413E500198FBF /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				83ED1DE31AA413E500198FBF /* APAddress.h */,
+				83ED1DE41AA413E500198FBF /* APAddress.m */,
+				83ED1DE51AA413E500198FBF /* APAddressBook.h */,
+				83ED1DE61AA413E500198FBF /* APAddressBook.m */,
+				83ED1DE71AA413E500198FBF /* APContact.h */,
+				83ED1DE81AA413E500198FBF /* APContact.m */,
+				83ED1DE91AA413E500198FBF /* APPhoneWithLabel.h */,
+				83ED1DEA1AA413E500198FBF /* APPhoneWithLabel.m */,
+				83ED1DEB1AA413E500198FBF /* APSocialProfile.h */,
+				83ED1DEC1AA413E500198FBF /* APSocialProfile.m */,
+				83ED1DED1AA413E500198FBF /* APTypes.h */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		83ED1DEE1AA413E500198FBF /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				83ED1DEF1AA413E500198FBF /* APAddressBook-Bridging.h */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
 		BA1D0AD88CD4A1615707E353 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -885,6 +938,7 @@
 			files = (
 				8348BECA1A9AC1D300A50EE6 /* ProgressHUD.m in Sources */,
 				83B4F5B21AA1713B00C09791 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
+				83ED1DF21AA413E500198FBF /* APContact.m in Sources */,
 				839A20ED1A99E9D7003248CE /* LoginViewController.swift in Sources */,
 				83C839A41A9977E3007AC2AC /* RegisterViewController.swift in Sources */,
 				83B4F5AB1AA1713B00C09791 /* JSQMessagesAvatarImage.m in Sources */,
@@ -894,11 +948,13 @@
 				8348BEC01A9AB1E000A50EE6 /* HUDContentView.swift in Sources */,
 				83B4F5A01AA1713B00C09791 /* JSQMessagesAvatarImageFactory.m in Sources */,
 				83B4F5981AA1713B00C09791 /* NSString+JSQMessages.m in Sources */,
+				83ED1DF41AA413E500198FBF /* APSocialProfile.m in Sources */,
 				83B4F5B91AA1713B00C09791 /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				83B4F5A31AA1713B00C09791 /* JSQMessagesTimestampFormatter.m in Sources */,
 				83B4F59D1AA1713B00C09791 /* JSQMessagesKeyboardController.m in Sources */,
 				83B4F5B81AA1713B00C09791 /* JSQMessagesLabel.m in Sources */,
 				83B4F5971AA1713B00C09791 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
+				83ED1DF11AA413E500198FBF /* APAddressBook.m in Sources */,
 				83B4F5AE1AA1713B00C09791 /* JSQVideoMediaItem.m in Sources */,
 				83B4F59A1AA1713B00C09791 /* UIDevice+JSQMessages.m in Sources */,
 				83B4F5B11AA1713B00C09791 /* JSQMessagesCollectionViewCell.m in Sources */,
@@ -923,11 +979,13 @@
 				83B4F5BE1AA1713B00C09791 /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				83B4F59E1AA1713B00C09791 /* JSQMessagesViewController.m in Sources */,
 				831C194E1A9809A4000FD6D0 /* MessagesViewController.swift in Sources */,
+				83ED1DF01AA413E500198FBF /* APAddress.m in Sources */,
 				83B4F5A41AA1713B00C09791 /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				83B4F5B61AA1713B00C09791 /* JSQMessagesComposerTextView.m in Sources */,
 				83B4F59C1AA1713B00C09791 /* UIView+JSQMessages.m in Sources */,
 				8348BEC41A9AB1E000A50EE6 /* Window.swift in Sources */,
 				8348BEC71A9AB31500A50EE6 /* PushNotification.swift in Sources */,
+				83ED1DF31AA413E500198FBF /* APPhoneWithLabel.m in Sources */,
 				83B4F5AD1AA1713B00C09791 /* JSQPhotoMediaItem.m in Sources */,
 				831C194C1A980970000FD6D0 /* PrivateViewController.swift in Sources */,
 				831C197A1A9823A8000FD6D0 /* Constants.swift in Sources */,

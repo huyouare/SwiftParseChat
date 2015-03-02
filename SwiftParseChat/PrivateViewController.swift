@@ -32,7 +32,7 @@ class PrivateViewController: UITableViewController {
             ABAddressBookRequestAccessWithCompletion(addressBook, { (granted: Bool, error: CFError!) -> Void in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     if granted {
-                        self.loadAddressBook()
+//                        self.loadAddressBook()
                     }
                 })
             })
