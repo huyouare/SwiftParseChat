@@ -10,21 +10,11 @@ import Foundation
 
 class Utilities {
     
-    // TODO: Make this actually work
     class func loginUser(target: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let welcomeVC = storyboard.instantiateViewControllerWithIdentifier("navigationVC") as UINavigationController
         target.presentViewController(welcomeVC, animated: true, completion: nil)
         
-    }
-    
-    class func resizeImage(var image: UIImage, width: CGFloat, height: CGFloat) -> UIImage {
-        var size = CGSizeMake(width, height);
-        UIGraphicsBeginImageContextWithOptions(size, false, 0);
-        image.drawInRect(CGRectMake(0, 0, size.width, size.height));
-        image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        return image;
     }
     
     class func postNotification(notification: String) {
