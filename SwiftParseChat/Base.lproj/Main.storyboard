@@ -143,7 +143,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Private" id="Ofw-vK-Ykr">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="bGw-x4-hG6">
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="bGw-x4-hG6">
                             <connections>
                                 <segue destination="QhS-Ef-jJI" kind="push" id="oN0-NI-yLr"/>
                             </connections>
@@ -166,10 +166,10 @@
             </objects>
             <point key="canvasLocation" x="756" y="-411"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="LaV-vf-T2R">
             <objects>
-                <tableViewController id="QhS-Ef-jJI" sceneMemberID="viewController">
+                <tableViewController id="QhS-Ef-jJI" customClass="SearchViewController" customModule="SwiftParseChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xsr-HL-ZMW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,8 +192,15 @@
                             <outlet property="delegate" destination="QhS-Ef-jJI" id="li7-zI-ptf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="6Wm-gl-fZ2"/>
+                    <navigationItem key="navigationItem" id="6Wm-gl-fZ2">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="g72-2X-KyV">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="QhS-Ef-jJI" id="i1C-Y9-5C6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="VR0-tO-7IA" id="DQY-4j-luT"/>
                         <outlet property="searchDisplayController" destination="O24-2r-0rL" id="gLJ-44-Rti"/>
                     </connections>
                 </tableViewController>
