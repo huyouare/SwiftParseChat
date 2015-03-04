@@ -8,10 +8,12 @@
 
 import UIKit
 
-class MessagesViewController: UITableViewController {
+class MessagesViewController: UITableViewController, UIActionSheetDelegate {
     
     var messages = [PFObject]()
     // UITableViewController already declares refreshControl
+    
+    @IBOutlet var composeButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +21,9 @@ class MessagesViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "cleanup", name: NOTIFICATION_USER_LOGGED_OUT, object: nil)
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl?.addTarget(self, action: "loadMessages", forControlEvents: UIControlEvents.ValueChanged)
-        self.tableView.addSubview(refreshControl)
+        self.refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl?.addTarget(self, action: "loadMessages", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView?.addSubview(self.refreshControl!)
         
         //viewEmpty.hidden = true
     }
@@ -44,26 +46,72 @@ class MessagesViewController: UITableViewController {
     // MARK: - Backend methods
     
     func loadMessages() {
-        let query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
+        var query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
         query.whereKey(PF_MESSAGES_USER, equalTo: PFUser.currentUser())
         query.includeKey(PF_MESSAGES_LASTUSER)
         query.orderByDescending(PF_MESSAGES_UPDATEDACTION)
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
-                messages.removeAll(keepCapacity: false)
-                messages += objects as [PFObject]!
+                self.messages.removeAll(keepCapacity: false)
+                self.messages += objects as [PFObject]!
                 self.tableView.reloadData()
                 self.updateEmptyView()
                 self.updateTabCounter()
             } else {
                 ProgressHUD.showError("Network error")
-                refreshControl?.endRefreshing()
+                self.refreshControl?.endRefreshing()
             }
         }
     }
     
-    class func refreshMessagesView() {
+    // MARK: - Helper methods
+    
+    func updateEmptyView() {
         
     }
     
+    func updateTabCounter() {
+        var total = 0
+        for message in self.messages {
+            total += message[PF_MESSAGES_COUNTER].integerValue
+        }
+        var item = self.tabBarController?.tabBar.items?[1] as UITabBarItem
+        item.badgeValue = (total == 0) ? nil : "\(total)"
+    }
+    
+    // MARK: - User actions
+    
+    func chat(groupId: String) {
+        self.performSegueWithIdentifier("messagesChatSegue", sender: groupId)
+    }
+    
+    func cleanup() {
+        self.messages.removeAll(keepCapacity: false)
+        self.tableView.reloadData()
+        
+        var item = self.tabBarController?.tabBar.items?[1] as UITabBarItem
+        item.badgeValue = nil
+    }
+    
+    func compose() {
+        var actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Single recipient", "Multiple recipients", "Address Book", "Facebook Friends")
+        actionSheet.showFromTabBar(self.tabBarController?.tabBar)
+    }
+
+    // MARK: - Prepare for segue to chatVC
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "messagesChatSegue" {
+            let chatVC = segue.destinationViewController as ChatViewController
+            chatVC.hidesBottomBarWhenPushed = true
+            let roomId = sender as String
+            chatVC.roomId = roomId
+        }
+    }
+
+
+    class func refreshMessagesView() {
+        
+    }
+
 }

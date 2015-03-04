@@ -276,8 +276,11 @@
                             <outlet property="delegate" destination="xJh-IQ-Cb6" id="x38-yp-sor"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Messages" id="PgH-pR-mv5"/>
+                    <navigationItem key="navigationItem" title="Messages" id="PgH-pR-mv5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="oKr-dk-sNJ"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="composeButton" destination="oKr-dk-sNJ" id="IT6-f1-Xe2"/>
                         <segue destination="0wk-ai-jpb" kind="push" identifier="messagesChatSegue" id="Rx5-ve-5Y3"/>
                     </connections>
                 </tableViewController>

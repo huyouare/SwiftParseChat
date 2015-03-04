@@ -30,7 +30,7 @@ class MessagesCell: UITableViewCell {
         let seconds = NSDate().timeIntervalSinceDate(message[PF_MESSAGES_UPDATEDACTION] as NSDate)
         timeElapsedLabel.text = Utilities.timeElapsed(seconds)
         
-        let counter = message[PF_MESSAGES_COUNTER].intValue
+        let counter = message[PF_MESSAGES_COUNTER].integerValue
         counterLabel.text = (counter == 0) ? "" : "\(counter) new"
     }
     
