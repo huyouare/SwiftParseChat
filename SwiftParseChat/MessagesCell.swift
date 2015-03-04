@@ -20,12 +20,12 @@ class MessagesCell: UITableViewCell {
         userImage.layer.cornerRadius = userImage.frame.size.width / 2
         userImage.layer.masksToBounds = true
         
-        lastUser = message[PF_MESSAGES_LASTUSER] as PFUser
+        let lastUser = message[PF_MESSAGES_LASTUSER] as PFUser
         userImage.file = lastUser[PF_USER_PICTURE] as PFFile
         userImage.loadInBackground(nil)
         
-        descriptionLabel.text = message[PF_MESSAGES_DESCRIPTION]
-        lastMessageLabel.text = [PF_MESSAGES_LASTMESSAGE]
+        descriptionLabel.text = message[PF_MESSAGES_DESCRIPTION] as? String
+        lastMessageLabel.text = message[PF_MESSAGES_LASTMESSAGE] as? String
         
         let seconds = NSDate().timeIntervalSinceDate(message[PF_MESSAGES_UPDATEDACTION] as NSDate)
         timeElapsedLabel.text = Utilities.timeElapsed(seconds)
