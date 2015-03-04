@@ -97,14 +97,16 @@ class WelcomeViewController: UIViewController {
                     } else {
                         PFUser.logOut()
                         if let info = error!.userInfo {
-                            ProgressHUD.showError(info["error"] as String)
+                            ProgressHUD.showError("Login error")
+                            println(info["error"] as String)
                         }
                     }
                 })
             } else {
                 PFUser.logOut()
                 if let info = error!.userInfo {
-                    ProgressHUD.showError(info["Facebook photo fetch error"] as String)
+                    ProgressHUD.showError("Login error")
+                    println(info["error"] as String)
                 }
             }
         }
