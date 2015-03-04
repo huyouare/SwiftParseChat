@@ -109,9 +109,48 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate {
         }
     }
 
-
-    class func refreshMessagesView() {
-        
+    // MARK: - UIActionSheetDelegate
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex != actionSheet.cancelButtonIndex {
+            //...
+        }
+    }
+    
+    // MARK: - SelectSingleDelegate
+    
+    // MARK: - SelectMultipleDelegate
+    
+    // MARK: - AddressBookDelegate
+    
+    // MARK: - FacebookFriendsDelegate
+    
+    // MARK: - UITableViewDataSource
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.messages.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("messagesCell") as MessagesCell
+        cell.bindData(self.messages[index.row])
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        Messages.deleteMessageItem(messages[indexPath.row])
+        messages.removeAtIndex(indexPath.row)
+        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        self.updateEmptyView()
+        self.updateTabCounter()
     }
 
 }
