@@ -22,7 +22,6 @@
 		831C19481A98085B000FD6D0 /* tab_profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831C19411A98085B000FD6D0 /* tab_profile@2x.png */; };
 		831C194A1A98090E000FD6D0 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19491A98090E000FD6D0 /* GroupViewController.swift */; };
 		831C194C1A980970000FD6D0 /* PrivateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C194B1A980970000FD6D0 /* PrivateViewController.swift */; };
-		831C194E1A9809A4000FD6D0 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C194D1A9809A4000FD6D0 /* MessagesViewController.swift */; };
 		831C19501A9809C7000FD6D0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */; };
 		831C19591A9814B0000FD6D0 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19541A9814B0000FD6D0 /* ParseCrashReporting.framework */; };
 		831C195A1A9814B0000FD6D0 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19551A9814B0000FD6D0 /* ParseFacebookUtils.framework */; };
@@ -116,6 +115,8 @@
 		83ED1DF31AA413E500198FBF /* APPhoneWithLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED1DEA1AA413E500198FBF /* APPhoneWithLabel.m */; };
 		83ED1DF41AA413E500198FBF /* APSocialProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ED1DEC1AA413E500198FBF /* APSocialProfile.m */; };
 		83ED1DF61AA45CAA00198FBF /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ED1DF51AA45CAA00198FBF /* Images.swift */; };
+		83F02B7C1AA6C3F1008428DF /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F02B7B1AA6C3F1008428DF /* MessagesViewController.swift */; };
+		83F02B7E1AA6C671008428DF /* MessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F02B7D1AA6C671008428DF /* MessagesCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,7 +152,6 @@
 		831C19411A98085B000FD6D0 /* tab_profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_profile@2x.png"; sourceTree = "<group>"; };
 		831C19491A98090E000FD6D0 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		831C194B1A980970000FD6D0 /* PrivateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateViewController.swift; sourceTree = "<group>"; };
-		831C194D1A9809A4000FD6D0 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		831C19521A9814B0000FD6D0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		831C19531A9814B0000FD6D0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -313,6 +313,8 @@
 		83ED1DED1AA413E500198FBF /* APTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APTypes.h; sourceTree = "<group>"; };
 		83ED1DEF1AA413E500198FBF /* APAddressBook-Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "APAddressBook-Bridging.h"; sourceTree = "<group>"; };
 		83ED1DF51AA45CAA00198FBF /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		83F02B7B1AA6C3F1008428DF /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		83F02B7D1AA6C671008428DF /* MessagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -682,11 +684,12 @@
 		83C839AA1A9978A2007AC2AC /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				83F02B7B1AA6C3F1008428DF /* MessagesViewController.swift */,
 				831C19491A98090E000FD6D0 /* GroupViewController.swift */,
-				831C194D1A9809A4000FD6D0 /* MessagesViewController.swift */,
 				831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */,
 				831C194B1A980970000FD6D0 /* PrivateViewController.swift */,
 				83ED1DDF1AA2E46E00198FBF /* SearchViewController.swift */,
+				83F02B7D1AA6C671008428DF /* MessagesCell.swift */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -968,6 +971,7 @@
 				836AF4BB1A994C830057E827 /* Messages.swift in Sources */,
 				83B4F5AA1AA1713B00C09791 /* JSQMessage.m in Sources */,
 				83B4F5A11AA1713B00C09791 /* JSQMessagesBubbleImageFactory.m in Sources */,
+				83F02B7E1AA6C671008428DF /* MessagesCell.swift in Sources */,
 				83B4F5C91AA1718300C09791 /* JSQSystemSoundPlayer.m in Sources */,
 				831C19501A9809C7000FD6D0 /* ProfileViewController.swift in Sources */,
 				83ED1DE01AA2E46E00198FBF /* SearchViewController.swift in Sources */,
@@ -981,11 +985,11 @@
 				83B4F5AC1AA1713B00C09791 /* JSQMessagesBubbleImage.m in Sources */,
 				83B4F5BE1AA1713B00C09791 /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				83B4F59E1AA1713B00C09791 /* JSQMessagesViewController.m in Sources */,
-				831C194E1A9809A4000FD6D0 /* MessagesViewController.swift in Sources */,
 				83ED1DF01AA413E500198FBF /* APAddress.m in Sources */,
 				83B4F5A41AA1713B00C09791 /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				83B4F5B61AA1713B00C09791 /* JSQMessagesComposerTextView.m in Sources */,
 				83B4F59C1AA1713B00C09791 /* UIView+JSQMessages.m in Sources */,
+				83F02B7C1AA6C3F1008428DF /* MessagesViewController.swift in Sources */,
 				8348BEC41A9AB1E000A50EE6 /* Window.swift in Sources */,
 				8348BEC71A9AB31500A50EE6 /* PushNotification.swift in Sources */,
 				83ED1DF31AA413E500198FBF /* APPhoneWithLabel.m in Sources */,
