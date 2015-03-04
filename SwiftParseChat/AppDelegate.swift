@@ -90,7 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             MessagesViewController.refreshMessagesView()
         }
     }
-    
 
 }
 
