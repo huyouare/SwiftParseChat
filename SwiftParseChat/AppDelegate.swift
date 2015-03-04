@@ -83,12 +83,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         println(error)
     }
     
+    // TODO: Rewrite this method with notifications
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        let delay = 4.0 * Double(NSEC_PER_SEC)
-        var time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
-            MessagesViewController.refreshMessagesView()
-        }
+//        let delay = 4.0 * Double(NSEC_PER_SEC)
+//        var time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+//        dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
+//            MessagesViewController.refreshMessagesView()
+//        }
     }
 
 }

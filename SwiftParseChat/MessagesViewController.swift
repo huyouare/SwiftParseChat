@@ -59,8 +59,8 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate {
                 self.updateTabCounter()
             } else {
                 ProgressHUD.showError("Network error")
-                self.refreshControl?.endRefreshing()
             }
+            self.refreshControl?.endRefreshing()
         }
     }
     
@@ -137,7 +137,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("messagesCell") as MessagesCell
-        cell.bindData(self.messages[index.row])
+        cell.bindData(self.messages[indexPath.row])
         return cell
     }
     
@@ -151,6 +151,15 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate {
         self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         self.updateEmptyView()
         self.updateTabCounter()
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let message = messages[indexPath.row] as PFObject
+        self.chat(message[PF_MESSAGES_ROOMID] as String)
     }
 
 }
