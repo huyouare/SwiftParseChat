@@ -55,6 +55,7 @@
 		8348BECA1A9AC1D300A50EE6 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A20E81A99E372003248CE /* ProgressHUD.m */; };
 		8365C3921A9D77F0003FB374 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8365C3911A9D77F0003FB374 /* Default-568h@2x.png */; };
 		836AF4BB1A994C830057E827 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836AF4BA1A994C830057E827 /* Messages.swift */; };
+		83857E271AA84C9500FDF5AD /* SelectSingleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83857E261AA84C9500FDF5AD /* SelectSingleViewController.swift */; };
 		839A20E01A99E207003248CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A20DF1A99E207003248CE /* Social.framework */; };
 		839A20E21A99E20D003248CE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A20E11A99E20D003248CE /* Accounts.framework */; };
 		839A20E41A99E244003248CE /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A20E31A99E244003248CE /* libstdc++.6.dylib */; };
@@ -187,6 +188,7 @@
 		8365C2D31A9C4B77003FB374 /* SwiftParseChat-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SwiftParseChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		8365C3911A9D77F0003FB374 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		836AF4BA1A994C830057E827 /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		83857E261AA84C9500FDF5AD /* SelectSingleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSingleViewController.swift; sourceTree = "<group>"; };
 		839A20DF1A99E207003248CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		839A20E11A99E20D003248CE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		839A20E31A99E244003248CE /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
@@ -685,6 +687,7 @@
 			isa = PBXGroup;
 			children = (
 				83F02B7B1AA6C3F1008428DF /* MessagesViewController.swift */,
+				83857E261AA84C9500FDF5AD /* SelectSingleViewController.swift */,
 				831C19491A98090E000FD6D0 /* GroupViewController.swift */,
 				831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */,
 				831C194B1A980970000FD6D0 /* PrivateViewController.swift */,
@@ -962,6 +965,7 @@
 				83B4F5971AA1713B00C09791 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
 				83ED1DF11AA413E500198FBF /* APAddressBook.m in Sources */,
 				83B4F5AE1AA1713B00C09791 /* JSQVideoMediaItem.m in Sources */,
+				83857E271AA84C9500FDF5AD /* SelectSingleViewController.swift in Sources */,
 				83B4F59A1AA1713B00C09791 /* UIDevice+JSQMessages.m in Sources */,
 				83B4F5B11AA1713B00C09791 /* JSQMessagesCollectionViewCell.m in Sources */,
 				83B4F5B71AA1713B00C09791 /* JSQMessagesInputToolbar.m in Sources */,

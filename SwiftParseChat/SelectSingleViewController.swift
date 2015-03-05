@@ -10,6 +10,8 @@ import UIKit
 
 class SelectSingleViewController: UITableViewController {
 
+    var users = [PFUser]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +20,8 @@ class SelectSingleViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
+        self.loadUsers()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +29,49 @@ class SelectSingleViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    // MARK: - Backend methods
+    
+    func loadUsers() {
+        let user = PFUser.currentUser()
+        var query = PFQuery(className: PF_USER_CLASS_NAME)
+        query.whereKey(PF_USER_OBJECTID, notEqualTo: user.objectId)
+        query.orderByAscending(PF_USER_FULLNAME)
+        query.limit = 1000
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                self.users.removeAll(keepCapacity: false)
+                self.users += objects as [PFUser]!
+                self.tableView.reloadData()
+            } else {
+                ProgressHUD.showError("Network error")
+            }
+        }
+    }
+    
+    func searchUsers(searchLower: String) {
+        let user = PFUser.currentUser()
+        var query = PFQuery(className: PF_USER_CLASS_NAME)
+        query.whereKey(PF_USER_OBJECTID, notEqualTo: user.objectId)
+        query.whereKey(PF_USER_FULLNAME_LOWER, containsString: searchLower)
+        query.orderByAscending(PF_USER_FULLNAME)
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                self.users.removeAll(keepCapacity: false)
+                self.users += objects as [PFUser]!
+            } else {
+                ProgressHUD.showError("Network error")
+            }
+            
+        }
+    }
+    
+    // MARK: - User actions
+    
+    func cancel() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
