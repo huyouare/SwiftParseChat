@@ -90,6 +90,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
 //            MessagesViewController.refreshMessagesView()
 //        }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("reloadMessages", object: nil)
     }
 
 }

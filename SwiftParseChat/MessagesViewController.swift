@@ -20,6 +20,8 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "cleanup", name: NOTIFICATION_USER_LOGGED_OUT, object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadMessages", name: "reloadMessages", object: nil)
+        
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl?.addTarget(self, action: "loadMessages", forControlEvents: UIControlEvents.ValueChanged)
