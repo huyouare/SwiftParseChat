@@ -8,9 +8,16 @@
 
 import UIKit
 
+protocol SelectSingleViewControllerDelegate {
+    func didSelectSingleUser(user: PFUser)
+}
+
 class SelectSingleViewController: UITableViewController {
 
     var users = [PFUser]()
+    var delegate: SelectSingleViewControllerDelegate!
+    
+    @IBOutlet var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,25 +84,24 @@ class SelectSingleViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return self.users.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
 
-        // Configure the cell...
-
+        let user = self.users[indexPath.row]
+        cell.textLabel?.text = user[PF_USER_FULLNAME] as? String
+        
         return cell
     }
-    */
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -130,6 +136,17 @@ class SelectSingleViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            if self.delegate != nil {
+                self.delegate.didSelectSingleUser(self.users[indexPath.row])
+            }
+        })
+    }
 
     /*
     // MARK: - Navigation

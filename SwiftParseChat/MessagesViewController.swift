@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessagesViewController: UITableViewController, UIActionSheetDelegate {
+class MessagesViewController: UITableViewController, UIActionSheetDelegate, SelectSingleViewControllerDelegate {
     
     var messages = [PFObject]()
     // UITableViewController already declares refreshControl
@@ -83,7 +83,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate {
     
     // MARK: - User actions
     
-    func chat(groupId: String) {
+    func openChat(groupId: String) {
         self.performSegueWithIdentifier("messagesChatSegue", sender: groupId)
     }
     
@@ -95,7 +95,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate {
         item.badgeValue = nil
     }
     
-    func compose() {
+    @IBAction func compose(sender: UIBarButtonItem) {
         var actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Single recipient", "Multiple recipients", "Address Book", "Facebook Friends")
         actionSheet.showFromTabBar(self.tabBarController?.tabBar)
     }
@@ -108,18 +108,47 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate {
             chatVC.hidesBottomBarWhenPushed = true
             let roomId = sender as String
             chatVC.roomId = roomId
+        } else if segue.identifier == "selectSingleSegue" {
+            let selectSingleVC = segue.destinationViewController.topViewController as SelectSingleViewController
+            selectSingleVC.delegate = self
         }
+//        } else if segue.identifier == "selectMultipleSegue" {
+//            let selectMultipleVC = segue.destinationViewController as SelectMultipleViewController
+//            selectMultipleVC.delegate = self
+//        }
+        
+            
+//        }segue.identifier == "addressBookSegue" || segue.identifier == "facebookFriendsSegue" {
+////            segue.destinationViewControllers
+//        }
     }
 
     // MARK: - UIActionSheetDelegate
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         if buttonIndex != actionSheet.cancelButtonIndex {
-            //...
+            switch buttonIndex {
+            case 1:
+                self.performSegueWithIdentifier("selectSingleSegue", sender: self)
+            case 2:
+                self.performSegueWithIdentifier("selectMultipleSegue", sender: self)
+            case 3:
+                self.performSegueWithIdentifier("addressBookSegue", sender: self)
+            case 4:
+                self.performSegueWithIdentifier("facebookFriendsSegue", sender: self)
+            default:
+                return
+            }
         }
     }
     
     // MARK: - SelectSingleDelegate
+    
+    func didSelectSingleUser(user2: PFUser) {
+        let user1 = PFUser.currentUser()
+        let groupId = Messages.startPrivateChat(user1, user2: user2)
+        self.openChat(groupId)
+    }
     
     // MARK: - SelectMultipleDelegate
     
@@ -127,7 +156,9 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate {
     
     // MARK: - FacebookFriendsDelegate
     
-    // MARK: - UITableViewDataSource
+
+    
+    // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -161,7 +192,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let message = messages[indexPath.row] as PFObject
-        self.chat(message[PF_MESSAGES_ROOMID] as String)
+        self.openChat(message[PF_MESSAGES_ROOMID] as String)
     }
 
 }
