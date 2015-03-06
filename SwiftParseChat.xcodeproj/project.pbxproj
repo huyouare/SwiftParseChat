@@ -109,6 +109,7 @@
 		83B4F5C91AA1718300C09791 /* JSQSystemSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B4F5C81AA1718300C09791 /* JSQSystemSoundPlayer.m */; };
 		83B4F5CB1AA17C0000C09791 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B4F5CA1AA17C0000C09791 /* MediaPlayer.framework */; };
 		83B4F5CF1AA2AD4600C09791 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4F5CE1AA2AD4600C09791 /* Camera.swift */; };
+		83B8DB961AA986EE00ADE3BB /* FacebookFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8DB951AA986EE00ADE3BB /* FacebookFriendsViewController.swift */; };
 		83C839A41A9977E3007AC2AC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C839A31A9977E3007AC2AC /* RegisterViewController.swift */; };
 		83C839A81A997857007AC2AC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C839A71A997857007AC2AC /* WelcomeViewController.swift */; };
 		83ED1DE01AA2E46E00198FBF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ED1DDF1AA2E46E00198FBF /* SearchViewController.swift */; };
@@ -303,6 +304,7 @@
 		83B4F5C81AA1718300C09791 /* JSQSystemSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSQSystemSoundPlayer.m; path = Classes/JSQSystemSoundPlayer.m; sourceTree = "<group>"; };
 		83B4F5CA1AA17C0000C09791 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		83B4F5CE1AA2AD4600C09791 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		83B8DB951AA986EE00ADE3BB /* FacebookFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookFriendsViewController.swift; sourceTree = "<group>"; };
 		83C839A31A9977E3007AC2AC /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		83C839A71A997857007AC2AC /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		83ED1DDF1AA2E46E00198FBF /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -692,6 +694,7 @@
 			children = (
 				83F02B7B1AA6C3F1008428DF /* MessagesViewController.swift */,
 				83857E261AA84C9500FDF5AD /* SelectSingleViewController.swift */,
+				83B8DB951AA986EE00ADE3BB /* FacebookFriendsViewController.swift */,
 				83678F691AA94C1700A1C63E /* SelectMultipleViewController.swift */,
 				831C19491A98090E000FD6D0 /* GroupViewController.swift */,
 				831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */,
@@ -1000,6 +1003,7 @@
 				83B4F5A41AA1713B00C09791 /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				83B4F5B61AA1713B00C09791 /* JSQMessagesComposerTextView.m in Sources */,
 				83678F6A1AA94C1700A1C63E /* SelectMultipleViewController.swift in Sources */,
+				83B8DB961AA986EE00ADE3BB /* FacebookFriendsViewController.swift in Sources */,
 				83B4F59C1AA1713B00C09791 /* UIView+JSQMessages.m in Sources */,
 				83F02B7C1AA6C3F1008428DF /* MessagesViewController.swift in Sources */,
 				8348BEC41A9AB1E000A50EE6 /* Window.swift in Sources */,

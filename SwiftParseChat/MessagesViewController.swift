@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessagesViewController: UITableViewController, UIActionSheetDelegate, SelectSingleViewControllerDelegate, SelectMultipleViewControllerDelegate, AddressBookViewControllerDelegate {
+class MessagesViewController: UITableViewController, UIActionSheetDelegate, SelectSingleViewControllerDelegate, SelectMultipleViewControllerDelegate, AddressBookViewControllerDelegate, FacebookFriendsViewControllerDelegate {
     
     var messages = [PFObject]()
     // UITableViewController already declares refreshControl
@@ -117,9 +117,9 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
         } else if segue.identifier == "addressBookSegue" {
             let addressBookVC = segue.destinationViewController.topViewController as AddressBookViewController
             addressBookVC.delegate = self
-//        } else if segue.identifier == "facebookFriendsSegue" {
-//            let facebookFriendsVC = segue.destinationViewController.topViewController as FacebookFriendsViewController
-//            facebookFriendsVC.delegate = self
+        } else if segue.identifier == "facebookFriendsSegue" {
+            let facebookFriendsVC = segue.destinationViewController.topViewController as FacebookFriendsViewController
+            facebookFriendsVC.delegate = self
         }
     }
 

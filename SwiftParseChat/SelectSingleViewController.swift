@@ -77,7 +77,7 @@ class SelectSingleViewController: UITableViewController, UISearchBarDelegate {
     
     // MARK: - User actions
     
-    func cancel() {
+    @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -147,10 +147,5 @@ class SelectSingleViewController: UITableViewController, UISearchBarDelegate {
         
         self.loadUsers()
     }
-    
-    @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-
 
 }
