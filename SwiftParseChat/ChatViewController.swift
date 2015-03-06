@@ -134,7 +134,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
         
         if let video = video {
             text = "[Video message]"
-            videoFile = PFFile(name: "video.move", data: NSFileManager.defaultManager().contentsAtPath(video.path!))
+            videoFile = PFFile(name: "video.mp4", data: NSFileManager.defaultManager().contentsAtPath(video.path!))
             
             videoFile.saveInBackgroundWithBlock({ (succeeed: Bool, error: NSError!) -> Void in
                 if error != nil {
