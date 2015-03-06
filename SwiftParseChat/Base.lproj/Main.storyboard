@@ -771,7 +771,7 @@
         <!--Select Multiple-->
         <scene sceneID="UUh-M4-uuh">
             <objects>
-                <tableViewController id="y7D-rf-Sne" sceneMemberID="viewController">
+                <tableViewController id="y7D-rf-Sne" customClass="SelectMultipleViewController" customModule="SwiftParseChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5MV-hD-O3e">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -789,7 +789,22 @@
                             <outlet property="delegate" destination="y7D-rf-Sne" id="E7F-qM-gy6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Select Multiple" id="HnY-p1-uDD"/>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="UZ8-Ep-yqM"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Select Multiple" id="HnY-p1-uDD">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Pjy-bw-U78">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="y7D-rf-Sne" id="qSR-Bp-QOP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="2SK-T6-5bU">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="y7D-rf-Sne" id="ZMd-fg-gCv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DIO-FX-wkG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
