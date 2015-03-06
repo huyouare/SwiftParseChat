@@ -17,6 +17,7 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.searchBar.delegate = self
         self.loadUsers()
     }
     

@@ -288,7 +288,8 @@
                         <segue destination="0wk-ai-jpb" kind="push" identifier="messagesChatSegue" id="Rx5-ve-5Y3"/>
                         <segue destination="pPU-x3-RF2" kind="modal" identifier="selectSingleSegue" id="CeS-gD-Xmz"/>
                         <segue destination="uqH-ZS-B4w" kind="modal" identifier="selectMultipleSegue" id="Klu-2m-QWy"/>
-                        <segue destination="OAW-Rs-8sy" kind="modal" id="yr9-1T-P6H"/>
+                        <segue destination="OAW-Rs-8sy" kind="modal" identifier="addressBookSegue" id="yr9-1T-P6H"/>
+                        <segue destination="8Ue-8h-Cig" kind="modal" identifier="facebookFriendsSegue" id="7iq-bM-a4b"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZe-PC-E0V" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -752,7 +753,13 @@
                             <outlet property="delegate" destination="buN-zm-Fgc" id="4z2-rL-QhB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Select Single" id="YIi-nw-eGx"/>
+                    <navigationItem key="navigationItem" title="Select Single" id="YIi-nw-eGx">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="6zj-2j-Og1">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="buN-zm-Fgc" id="tCx-vU-f81"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="Try-W7-Q1M" id="krN-oQ-5lY"/>
                     </connections>
@@ -761,7 +768,7 @@
             </objects>
             <point key="canvasLocation" x="1858" y="262"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Select Multiple-->
         <scene sceneID="UUh-M4-uuh">
             <objects>
                 <tableViewController id="y7D-rf-Sne" sceneMemberID="viewController">
@@ -782,13 +789,13 @@
                             <outlet property="delegate" destination="y7D-rf-Sne" id="E7F-qM-gy6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="HnY-p1-uDD"/>
+                    <navigationItem key="navigationItem" title="Select Multiple" id="HnY-p1-uDD"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DIO-FX-wkG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1858" y="902"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Address Book-->
         <scene sceneID="WlB-AQ-IKq">
             <objects>
                 <tableViewController id="y3w-wF-n5S" sceneMemberID="viewController">
@@ -809,7 +816,7 @@
                             <outlet property="delegate" destination="y3w-wF-n5S" id="bvg-oV-a0P"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="e7j-Ri-rzW"/>
+                    <navigationItem key="navigationItem" title="Address Book" id="e7j-Ri-rzW"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8L-gY-RLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -869,6 +876,49 @@
             </objects>
             <point key="canvasLocation" x="1406" y="1550"/>
         </scene>
+        <!--Facebook Friends-->
+        <scene sceneID="BVY-8c-vA8">
+            <objects>
+                <tableViewController id="3UX-w6-tqR" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8wy-OO-xwS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1nX-d3-FNA">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1nX-d3-FNA" id="0Sc-Ut-2Of">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3UX-w6-tqR" id="lD3-8K-Seh"/>
+                            <outlet property="delegate" destination="3UX-w6-tqR" id="f6R-fL-VvN"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Facebook Friends" id="PJM-40-voT"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jh0-4z-wxI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1858" y="2216"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kBs-xH-aqx">
+            <objects>
+                <navigationController id="8Ue-8h-Cig" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fcK-8l-3do">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3UX-w6-tqR" kind="relationship" relationship="rootViewController" id="XNH-Df-6aF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dbX-EU-Evi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1406" y="2216"/>
+        </scene>
     </scenes>
     <resources>
         <image name="messages_blank.png" width="50" height="50"/>
@@ -884,6 +934,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Rx5-ve-5Y3"/>
+        <segue reference="S6c-Fp-UrQ"/>
     </inferredMetricsTieBreakers>
 </document>

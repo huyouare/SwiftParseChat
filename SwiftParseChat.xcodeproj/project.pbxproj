@@ -54,6 +54,7 @@
 		8348BEC71A9AB31500A50EE6 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEC61A9AB31500A50EE6 /* PushNotification.swift */; };
 		8348BECA1A9AC1D300A50EE6 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A20E81A99E372003248CE /* ProgressHUD.m */; };
 		8365C3921A9D77F0003FB374 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8365C3911A9D77F0003FB374 /* Default-568h@2x.png */; };
+		83678F6A1AA94C1700A1C63E /* SelectMultipleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83678F691AA94C1700A1C63E /* SelectMultipleViewController.swift */; };
 		836AF4BB1A994C830057E827 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836AF4BA1A994C830057E827 /* Messages.swift */; };
 		83857E271AA84C9500FDF5AD /* SelectSingleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83857E261AA84C9500FDF5AD /* SelectSingleViewController.swift */; };
 		839A20E01A99E207003248CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839A20DF1A99E207003248CE /* Social.framework */; };
@@ -187,6 +188,7 @@
 		8348BEC61A9AB31500A50EE6 /* PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
 		8365C2D31A9C4B77003FB374 /* SwiftParseChat-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SwiftParseChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		8365C3911A9D77F0003FB374 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		83678F691AA94C1700A1C63E /* SelectMultipleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMultipleViewController.swift; sourceTree = "<group>"; };
 		836AF4BA1A994C830057E827 /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		83857E261AA84C9500FDF5AD /* SelectSingleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSingleViewController.swift; sourceTree = "<group>"; };
 		839A20DF1A99E207003248CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -688,6 +690,7 @@
 			children = (
 				83F02B7B1AA6C3F1008428DF /* MessagesViewController.swift */,
 				83857E261AA84C9500FDF5AD /* SelectSingleViewController.swift */,
+				83678F691AA94C1700A1C63E /* SelectMultipleViewController.swift */,
 				831C19491A98090E000FD6D0 /* GroupViewController.swift */,
 				831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */,
 				831C194B1A980970000FD6D0 /* PrivateViewController.swift */,
@@ -992,6 +995,7 @@
 				83ED1DF01AA413E500198FBF /* APAddress.m in Sources */,
 				83B4F5A41AA1713B00C09791 /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				83B4F5B61AA1713B00C09791 /* JSQMessagesComposerTextView.m in Sources */,
+				83678F6A1AA94C1700A1C63E /* SelectMultipleViewController.swift in Sources */,
 				83B4F59C1AA1713B00C09791 /* UIView+JSQMessages.m in Sources */,
 				83F02B7C1AA6C3F1008428DF /* MessagesViewController.swift in Sources */,
 				8348BEC41A9AB1E000A50EE6 /* Window.swift in Sources */,
