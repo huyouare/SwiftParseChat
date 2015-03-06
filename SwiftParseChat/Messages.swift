@@ -22,6 +22,36 @@ class Messages {
         return roomId
     }
 
+    class func startMultipleChat(users: [PFUser]!) -> String {
+        var groupId = ""
+        var description = ""
+        
+        var userIds = [String]()
+        
+        for user in users {
+            userIds.append(user.objectId)
+        }
+        
+        let sorted = userIds.sorted { $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending }
+        
+        for userId in sorted {
+            groupId = groupId + userId
+        }
+        
+        for user in users {
+            if countElements(description) > 0 {
+                description = description + " & "
+            }
+            description = description + (user[PF_USER_FULLNAME] as String)
+        }
+        
+        for user in users {
+            Messages.createMessageItem(user, roomId: groupId, description: description)
+        }
+        
+        return groupId
+    }
+    
     class func createMessageItem(user: PFUser, roomId: String, description: String) {
         var query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
         query.whereKey(PF_MESSAGES_USER, equalTo: user)

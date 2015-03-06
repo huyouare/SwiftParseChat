@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessagesViewController: UITableViewController, UIActionSheetDelegate, SelectSingleViewControllerDelegate {
+class MessagesViewController: UITableViewController, UIActionSheetDelegate, SelectSingleViewControllerDelegate, SelectMultipleViewControllerDelegate {
     
     var messages = [PFObject]()
     // UITableViewController already declares refreshControl
@@ -111,12 +111,11 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
         } else if segue.identifier == "selectSingleSegue" {
             let selectSingleVC = segue.destinationViewController.topViewController as SelectSingleViewController
             selectSingleVC.delegate = self
+        } else if segue.identifier == "selectMultipleSegue" {
+            let selectMultipleVC = segue.destinationViewController.topViewController as SelectMultipleViewController
+            selectMultipleVC.delegate = self
         }
-//        } else if segue.identifier == "selectMultipleSegue" {
-//            let selectMultipleVC = segue.destinationViewController as SelectMultipleViewController
-//            selectMultipleVC.delegate = self
-//        }
-        
+    
             
 //        }segue.identifier == "addressBookSegue" || segue.identifier == "facebookFriendsSegue" {
 ////            segue.destinationViewControllers
@@ -151,6 +150,11 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     }
     
     // MARK: - SelectMultipleDelegate
+    
+    func didSelectMultipleUsers(selectedUsers: [PFUser]!) {
+        let groupId = Messages.startMultipleChat(selectedUsers)
+        self.openChat(groupId)
+    }
     
     // MARK: - AddressBookDelegate
     
