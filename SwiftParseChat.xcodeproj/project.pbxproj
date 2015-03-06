@@ -679,6 +679,17 @@
 			path = JSQSystemSoundPlayer;
 			sourceTree = "<group>";
 		};
+		83B8DB971AA98BEB00ADE3BB /* MessagesCompose */ = {
+			isa = PBXGroup;
+			children = (
+				83857E261AA84C9500FDF5AD /* SelectSingleViewController.swift */,
+				83B8DB951AA986EE00ADE3BB /* FacebookFriendsViewController.swift */,
+				83678F691AA94C1700A1C63E /* SelectMultipleViewController.swift */,
+				8311CFF21AA97FDD0081674A /* AddressBookViewController.swift */,
+			);
+			name = MessagesCompose;
+			sourceTree = "<group>";
+		};
 		83C839A91A997885007AC2AC /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,15 +704,12 @@
 			isa = PBXGroup;
 			children = (
 				83F02B7B1AA6C3F1008428DF /* MessagesViewController.swift */,
-				83857E261AA84C9500FDF5AD /* SelectSingleViewController.swift */,
-				83B8DB951AA986EE00ADE3BB /* FacebookFriendsViewController.swift */,
-				83678F691AA94C1700A1C63E /* SelectMultipleViewController.swift */,
+				83F02B7D1AA6C671008428DF /* MessagesCell.swift */,
+				83B8DB971AA98BEB00ADE3BB /* MessagesCompose */,
 				831C19491A98090E000FD6D0 /* GroupViewController.swift */,
 				831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */,
 				831C194B1A980970000FD6D0 /* PrivateViewController.swift */,
-				8311CFF21AA97FDD0081674A /* AddressBookViewController.swift */,
 				83ED1DDF1AA2E46E00198FBF /* SearchViewController.swift */,
-				83F02B7D1AA6C671008428DF /* MessagesCell.swift */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";

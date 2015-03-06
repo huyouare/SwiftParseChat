@@ -31,11 +31,13 @@ class WelcomeViewController: UIViewController {
                     self.userLoggedIn(user)
                 }
             } else {
-                println(error)
-                if let info = error.userInfo {
-                    println(info)
-                    ProgressHUD.showError(info["error"] as? String)
+                if error != nil {
+                    println(error)
+                    if let info = error.userInfo {
+                        println(info)
+                    }
                 }
+                ProgressHUD.showError("Facebook sign in error")
             }
         })
     }

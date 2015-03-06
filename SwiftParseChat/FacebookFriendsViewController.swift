@@ -39,12 +39,14 @@ class FacebookFriendsViewController: UITableViewController {
         var request = FBRequest.requestForMyFriends()
         request.startWithCompletionHandler { (connection: FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
             if error == nil {
+                
                 var fbIds = [String]()
-                var userData = result as NSDictionary
-                var fbUsers = userData["data"] as NSArray
-                for fbUser in fbUsers {
-                    fbIds.append(fbUser["id"] as String)
-                    println(fbUser["id"] as String)
+                var userData = result as [String : AnyObject]
+                var fbUsersData: AnyObject! = userData["data"]
+                if let fbUsers = fbUsersData as? [AnyObject] {
+                    for fbUser in fbUsers {
+                        fbIds.append(fbUser["id"] as String)
+                    }
                 }
                 
                 var query = PFQuery(className: PF_USER_CLASS_NAME)
@@ -66,82 +68,44 @@ class FacebookFriendsViewController: UITableViewController {
         }
     }
     
-//    // MARK: - User actions
-//    
-//    func cancel() {
-//        self.dismissViewControllerAnimated(true, completion: nil)
-//    }
-//    
-//    // MARK: - Table view data source
-//    
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Potentially incomplete method implementation.
-//        // Return the number of sections.
-//        return 1
-//    }
-//    
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete method implementation.
-//        // Return the number of rows in the section.
-//        return self.users.count
-//    }
-//    
-//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
-//        
-//        let user = self.users[indexPath.row]
-//        cell.textLabel?.text = user[PF_USER_FULLNAME] as? String
-//        
-//        return cell
-//    }
-//    
-//    // MARK: - Table view delegate
-//    
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//        self.dismissViewControllerAnimated(true, completion: { () -> Void in
-//            if self.delegate != nil {
-//                self.delegate.didSelectSingleUser(self.users[indexPath.row])
-//            }
-//        })
-//    }
-//    
-//    // MARK: - UISearchBar Delegate
-//    
-//    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-//        if countElements(searchText) > 0 {
-//            self.searchUsers(searchText.lowercaseString)
-//        } else {
-//            self.loadUsers()
-//        }
-//    }
-//    
-//    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-//        searchBar.setShowsCancelButton(true, animated: true)
-//    }
-//    
-//    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-//        searchBar.setShowsCancelButton(false, animated: true)
-//    }
-//    
-//    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-//        self.searchBarCancelled()
-//    }
-//    
-//    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-//        self.searchBar.resignFirstResponder()
-//    }
-//    
-//    func searchBarCancelled() {
-//        self.searchBar.text = ""
-//        self.searchBar.resignFirstResponder()
-//        
-//        self.loadUsers()
-//    }
+    // MARK: - User actions
     
     @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
+    // MARK: - Table view data source
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Potentially incomplete method implementation.
+        // Return the number of sections.
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete method implementation.
+        // Return the number of rows in the section.
+        return self.users.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        
+        let user = self.users[indexPath.row]
+        cell.textLabel?.text = user[PF_USER_FULLNAME] as? String
+        
+        return cell
+    }
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            if self.delegate != nil {
+                self.delegate.didSelectFacebookUser(self.users[indexPath.row])
+            }
+        })
+    }
 
 }
