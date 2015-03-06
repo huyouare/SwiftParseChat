@@ -777,7 +777,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qWE-j9-pm5">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="qWE-j9-pm5">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qWE-j9-pm5" id="6SX-UJ-XQC">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -789,9 +789,7 @@
                             <outlet property="delegate" destination="y7D-rf-Sne" id="E7F-qM-gy6"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="UZ8-Ep-yqM"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Select Multiple" id="HnY-p1-uDD">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Pjy-bw-U78">
                             <connections>

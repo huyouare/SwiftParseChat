@@ -91,6 +91,9 @@ class SelectMultipleViewController: UITableViewController {
         let user = self.users[indexPath.row]
         cell.textLabel?.text = user[PF_USER_FULLNAME] as? String
         
+        let selected = contains(self.selection, user.objectId)
+        cell.accessoryType = selected ? UITableViewCellAccessoryType.Checkmark : UITableViewCellAccessoryType.None
+        
         return cell
     }
     
@@ -102,7 +105,9 @@ class SelectMultipleViewController: UITableViewController {
         let user = self.users[indexPath.row]
         let selected = contains(self.selection, user.objectId)
         if selected {
-            self.users.removeAtIndex(indexPath.row)
+            if let index = find(self.selection, user.objectId) {
+                self.selection.removeAtIndex(index)
+            }
         } else {
             self.selection.append(user.objectId)
         }
