@@ -20,14 +20,7 @@ class SelectMultipleViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        self.searchBar.delegate = self
         self.loadUsers()
     }
 
@@ -36,7 +29,6 @@ class SelectMultipleViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    
     // MARK: - Backend methods
     
     func loadUsers() {
@@ -56,28 +48,27 @@ class SelectMultipleViewController: UITableViewController {
         }
     }
     
-    func searchUsers(searchLower: String) {
-        let user = PFUser.currentUser()
-        var query = PFQuery(className: PF_USER_CLASS_NAME)
-        query.whereKey(PF_USER_OBJECTID, notEqualTo: user.objectId)
-        query.whereKey(PF_USER_FULLNAME_LOWER, containsString: searchLower)
-        query.orderByAscending(PF_USER_FULLNAME)
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                self.users.removeAll(keepCapacity: false)
-                self.users += objects as [PFUser]!
-                self.tableView.reloadData()
-            } else {
-                ProgressHUD.showError("Network error")
-            }
-            
-        }
-    }
-    
     // MARK: - User actions
     
-    func cancel() {
+    @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
+        if self.selection.count == 0 {
+            ProgressHUD.showError("No recipient selected")
+        } else {
+            self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                var selectedUsers = [PFUser]()
+                for user in self.users {
+                    if contains(self.selection, user.objectId) {
+                        selectedUsers.append(user)
+                    }
+                }
+                selectedUsers.append(PFUser.currentUser())
+                self.delegate.didSelectMultipleUsers(selectedUsers)
+            })
+        }
     }
     
     // MARK: - Table view data source
@@ -107,34 +98,17 @@ class SelectMultipleViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            if self.delegate != nil {
-                self.delegate.didSelectSingleUser(self.users[indexPath.row])
-            }
-        })
-    }
-    
-    // MARK: - User actions
-    
-    @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        let user = self.users[indexPath.row]
+        let selected = contains(self.selection, user.objectId)
+        if selected {
+            self.users.removeAtIndex(indexPath.row)
+        } else {
+            self.selection.append(user.objectId)
+        }
+        
+        self.tableView.reloadData()
     }
 
-    @IBAction func doneButtonPressed(sender: UIBarButtonItem) {
-        if self.selection.count == 0 {
-            ProgressHUD.showError("No recipient selected")
-        } else {
-            self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                var selectedUsers = [PFUser]()
-                for user in self.users {
-                    if contains(self.selection, user.objectId) {
-                        selectedUsers.append(user)
-                    }
-                }
-                selectedUsers.append(PFUser.currentUser())
-                self.delegate.didSelectMultipleUsers(selectedUsers)
-            })
-        }
-    }
     
 }
