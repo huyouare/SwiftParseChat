@@ -194,8 +194,8 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        Messages.deleteMessageItem(messages[indexPath.row])
-        messages.removeAtIndex(indexPath.row)
+        Messages.deleteMessageItem(self.messages[indexPath.row])
+        self.messages.removeAtIndex(indexPath.row)
         self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         self.updateEmptyView()
         self.updateTabCounter()
@@ -206,7 +206,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let message = messages[indexPath.row] as PFObject
+        let message = self.messages[indexPath.row] as PFObject
         self.openChat(message[PF_MESSAGES_GROUPID] as String)
     }
 
