@@ -96,9 +96,9 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
         
         let user1 = PFUser.currentUser()
         let user2 = users[indexPath.row]
-        let roomId = Messages.startPrivateChat(user1, user2: user2)
+        let groupId = Messages.startPrivateChat(user1, user2: user2)
         
-        self.performSegueWithIdentifier("searchChatSegue", sender: roomId)
+        self.performSegueWithIdentifier("searchChatSegue", sender: groupId)
     }
 
     // MARK: - Prepare for segue to private chatVC
@@ -107,8 +107,8 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
         if segue.identifier == "searchChatSegue" {
             let chatVC = segue.destinationViewController as ChatViewController
             chatVC.hidesBottomBarWhenPushed = true
-            let roomId = sender as String
-            chatVC.roomId = roomId
+            let groupId = sender as String
+            chatVC.groupId = groupId
         }
     }
     

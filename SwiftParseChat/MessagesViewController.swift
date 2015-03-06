@@ -106,8 +106,8 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
         if segue.identifier == "messagesChatSegue" {
             let chatVC = segue.destinationViewController as ChatViewController
             chatVC.hidesBottomBarWhenPushed = true
-            let roomId = sender as String
-            chatVC.roomId = roomId
+            let groupId = sender as String
+            chatVC.groupId = groupId
         } else if segue.identifier == "selectSingleSegue" {
             let selectSingleVC = segue.destinationViewController.topViewController as SelectSingleViewController
             selectSingleVC.delegate = self
@@ -207,7 +207,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let message = messages[indexPath.row] as PFObject
-        self.openChat(message[PF_MESSAGES_ROOMID] as String)
+        self.openChat(message[PF_MESSAGES_GROUPID] as String)
     }
 
 }

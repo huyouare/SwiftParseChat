@@ -95,7 +95,7 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
         cell.textLabel?.text = chatroom[PF_CHATROOMS_NAME] as? String
         
         var query = PFQuery(className: PF_CHAT_CLASS_NAME)
-        query.whereKey(PF_CHAT_ROOMID, equalTo: chatroom.objectId)
+        query.whereKey(PF_CHAT_GROUPID, equalTo: chatroom.objectId)
         query.orderByDescending(PF_CHAT_CREATEDAT)
         query.limit = 1000
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
@@ -120,19 +120,19 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         var chatroom = chatrooms[indexPath.row]
-        let roomId = chatroom.objectId as String
+        let groupId = chatroom.objectId as String
         
-        Messages.createMessageItem(PFUser(), roomId: roomId, description: chatroom[PF_CHATROOMS_NAME] as String)
+        Messages.createMessageItem(PFUser(), groupId: groupId, description: chatroom[PF_CHATROOMS_NAME] as String)
         
-        self.performSegueWithIdentifier("groupChatSegue", sender: roomId)
+        self.performSegueWithIdentifier("groupChatSegue", sender: groupId)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "groupChatSegue" {
             let chatVC = segue.destinationViewController as ChatViewController
             chatVC.hidesBottomBarWhenPushed = true
-            let roomId = sender as String
-            chatVC.roomId = roomId
+            let groupId = sender as String
+            chatVC.groupId = groupId
         }
     }
 }

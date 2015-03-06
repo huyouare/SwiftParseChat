@@ -15,7 +15,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
     var timer: NSTimer = NSTimer()
     var isLoading: Bool = false
     
-    var roomId: String = ""
+    var groupId: String = ""
     
     var users = [PFUser]()
     var messages = [JSQMessage]()
@@ -45,7 +45,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
         
         isLoading = false
         self.loadMessages()
-        Messages.clearMessageCounter(roomId);
+        Messages.clearMessageCounter(groupId);
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -67,7 +67,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
             var lastMessage = messages.last
             
             var query = PFQuery(className: PF_CHAT_CLASS_NAME)
-            query.whereKey(PF_CHAT_ROOMID, equalTo: roomId)
+            query.whereKey(PF_CHAT_GROUPID, equalTo: groupId)
             if lastMessage != nil {
                 query.whereKey(PF_CHAT_CREATEDAT, greaterThan: lastMessage?.date)
             }
@@ -155,7 +155,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
         
         var object = PFObject(className: PF_CHAT_CLASS_NAME)
         object[PF_CHAT_USER] = PFUser.currentUser()
-        object[PF_CHAT_ROOMID] = self.roomId
+        object[PF_CHAT_GROUPID] = self.groupId
         object[PF_CHAT_TEXT] = text
         if let videoFile = videoFile {
             object[PF_CHAT_VIDEO] = videoFile
@@ -172,8 +172,8 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
             }
         }
         
-        PushNotication.sendPushNotification(roomId, text: text)
-        Messages.updateMessageCounter(roomId, lastMessage: text)
+        PushNotication.sendPushNotification(groupId, text: text)
+        Messages.updateMessageCounter(groupId, lastMessage: text)
         
         self.finishSendingMessage()
     }

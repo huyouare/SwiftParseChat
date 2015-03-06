@@ -167,9 +167,9 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
         if indexPath.section == 0 {
             let user1 = PFUser.currentUser()
             let user2 = users2[indexPath.row]
-            let roomId = Messages.startPrivateChat(user1, user2: user2)
+            let groupId = Messages.startPrivateChat(user1, user2: user2)
             
-            self.performSegueWithIdentifier("privateChatSegue", sender: roomId)
+            self.performSegueWithIdentifier("privateChatSegue", sender: groupId)
         }
         else if indexPath.section == 1 {
             self.indexSelected = indexPath
@@ -183,8 +183,8 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
         if segue.identifier == "privateChatSegue" {
             let chatVC = segue.destinationViewController as ChatViewController
             chatVC.hidesBottomBarWhenPushed = true
-            let roomId = sender as String
-            chatVC.roomId = roomId
+            let groupId = sender as String
+            chatVC.groupId = groupId
         }
     }
     

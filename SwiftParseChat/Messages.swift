@@ -14,12 +14,12 @@ class Messages {
         let id1 = user1.objectId
         let id2 = user2.objectId
         
-        let roomId = (id1 < id2) ? "\(id1)\(id2)" : "\(id2)\(id1)"
+        let groupId = (id1 < id2) ? "\(id1)\(id2)" : "\(id2)\(id1)"
         
-        createMessageItem(user1, roomId: roomId, description: user2[PF_USER_FULLNAME] as String)
-        createMessageItem(user2, roomId: roomId, description: user1[PF_USER_FULLNAME] as String)
+        createMessageItem(user1, groupId: groupId, description: user2[PF_USER_FULLNAME] as String)
+        createMessageItem(user2, groupId: groupId, description: user1[PF_USER_FULLNAME] as String)
         
-        return roomId
+        return groupId
     }
 
     class func startMultipleChat(users: [PFUser]!) -> String {
@@ -46,22 +46,22 @@ class Messages {
         }
         
         for user in users {
-            Messages.createMessageItem(user, roomId: groupId, description: description)
+            Messages.createMessageItem(user, groupId: groupId, description: description)
         }
         
         return groupId
     }
     
-    class func createMessageItem(user: PFUser, roomId: String, description: String) {
+    class func createMessageItem(user: PFUser, groupId: String, description: String) {
         var query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
         query.whereKey(PF_MESSAGES_USER, equalTo: user)
-        query.whereKey(PF_MESSAGES_ROOMID, equalTo: roomId)
+        query.whereKey(PF_MESSAGES_GROUPID, equalTo: groupId)
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 if objects.count == 0 {
                     var message = PFObject(className: PF_MESSAGES_CLASS_NAME)
                     message[PF_MESSAGES_USER] = user;
-                    message[PF_MESSAGES_ROOMID] = roomId;
+                    message[PF_MESSAGES_GROUPID] = groupId;
                     message[PF_MESSAGES_DESCRIPTION] = description;
                     message[PF_MESSAGES_LASTUSER] = PFUser.currentUser()
                     message[PF_MESSAGES_LASTMESSAGE] = "";
@@ -90,9 +90,9 @@ class Messages {
         }
     }
     
-    class func updateMessageCounter(roomId: String, lastMessage: String) {
+    class func updateMessageCounter(groupId: String, lastMessage: String) {
         var query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
-        query.whereKey(PF_MESSAGES_ROOMID, equalTo: roomId)
+        query.whereKey(PF_MESSAGES_GROUPID, equalTo: groupId)
         query.limit = 1000
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
@@ -118,9 +118,9 @@ class Messages {
         }
     }
     
-    class func clearMessageCounter(roomId: String) {
+    class func clearMessageCounter(groupId: String) {
         var query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
-        query.whereKey(PF_MESSAGES_ROOMID, equalTo: roomId)
+        query.whereKey(PF_MESSAGES_GROUPID, equalTo: groupId)
         query.whereKey(PF_MESSAGES_USER, equalTo: PFUser.currentUser())
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {

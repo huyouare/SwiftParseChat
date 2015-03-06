@@ -392,12 +392,15 @@
 				831C19511A981482000FD6D0 /* Frameworks */,
 				831C19391A9807CF000FD6D0 /* Resources */,
 				831C19161A97F5CA000FD6D0 /* AppDelegate.swift */,
+				831C19791A9823A8000FD6D0 /* Constants.swift */,
 				8365C2D31A9C4B77003FB374 /* SwiftParseChat-Bridging-Header.h */,
 				832554E71A9B39A60022F867 /* ChatViewController.swift */,
-				831C19791A9823A8000FD6D0 /* Constants.swift */,
+				839A20EC1A99E9D7003248CE /* LoginViewController.swift */,
+				83C839A31A9977E3007AC2AC /* RegisterViewController.swift */,
+				83C839A71A997857007AC2AC /* WelcomeViewController.swift */,
+				831C191C1A97F5CA000FD6D0 /* Main.storyboard */,
 				83C839AA1A9978A2007AC2AC /* Tabs */,
 				83C839AB1A9978F6007AC2AC /* Utilities */,
-				831C191C1A97F5CA000FD6D0 /* Main.storyboard */,
 				83C839A91A997885007AC2AC /* User */,
 				831C191F1A97F5CA000FD6D0 /* Images.xcassets */,
 				831C19211A97F5CA000FD6D0 /* LaunchScreen.xib */,
@@ -693,9 +696,6 @@
 		83C839A91A997885007AC2AC /* User */ = {
 			isa = PBXGroup;
 			children = (
-				839A20EC1A99E9D7003248CE /* LoginViewController.swift */,
-				83C839A31A9977E3007AC2AC /* RegisterViewController.swift */,
-				83C839A71A997857007AC2AC /* WelcomeViewController.swift */,
 			);
 			name = User;
 			sourceTree = "<group>";
