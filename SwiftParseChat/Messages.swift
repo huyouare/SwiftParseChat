@@ -98,7 +98,7 @@ class Messages {
             if error == nil {
                 for message in objects as [PFObject]! {
                     var user = message[PF_MESSAGES_USER] as PFUser
-                    if user.objectId == PFUser.currentUser().objectId {
+                    if user.objectId != PFUser.currentUser().objectId {
                         message.incrementKey(PF_MESSAGES_COUNTER) // Increment by 1
                         message[PF_MESSAGES_LASTUSER] = PFUser.currentUser()
                         message[PF_MESSAGES_LASTMESSAGE] = lastMessage
