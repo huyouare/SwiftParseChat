@@ -103,9 +103,10 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
                 let date = NSDate()
                 let seconds = date.timeIntervalSinceDate(chat.createdAt)
                 let elapsed = Utilities.timeElapsed(seconds);
-                cell.detailTextLabel?.text = "\(objects.count) messages \(elapsed)"
+                let countString = (objects.count > 1) ? "\(objects.count) messages" : "\(objects.count) message"
+                cell.detailTextLabel?.text = "\(countString) \(elapsed)"
             } else {
-                cell.detailTextLabel?.text = "No message"
+                cell.detailTextLabel?.text = "0 messages"
             }
             cell.detailTextLabel?.textColor = UIColor.lightGrayColor()
         }
