@@ -253,34 +253,62 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wgg-wV-ZfY" id="aZU-uH-HS6">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="messages_blank.png" translatesAutoresizingMaskIntoConstraints="NO" id="sc5-CF-85O" customClass="PFImageView">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="messages_blank.png" translatesAutoresizingMaskIntoConstraints="NO" id="sc5-CF-85O" customClass="PFImageView">
                                             <rect key="frame" x="10" y="10" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="54O-jY-95X"/>
+                                                <constraint firstAttribute="height" constant="50" id="qVv-tr-8eE"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7E3-XS-Nm3">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7E3-XS-Nm3">
                                             <rect key="frame" x="70" y="13" width="170" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgf-V6-UiL">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgf-V6-UiL">
                                             <rect key="frame" x="70" y="32" width="190" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Just now" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTg-37-OBG">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just now" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTg-37-OBG">
                                             <rect key="frame" x="240" y="13" width="70" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="70" id="VGX-QP-9uL"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.47843137250000001" green="0.7843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 new" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPB-H8-je7">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 new" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPB-H8-je7">
                                             <rect key="frame" x="260" y="32" width="50" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="FsE-hw-9Aq"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="IPB-H8-je7" firstAttribute="trailing" secondItem="rTg-37-OBG" secondAttribute="trailing" id="06i-0P-ghw"/>
+                                        <constraint firstItem="Lgf-V6-UiL" firstAttribute="top" secondItem="aZU-uH-HS6" secondAttribute="topMargin" constant="24" id="4hh-CA-QAa"/>
+                                        <constraint firstItem="Lgf-V6-UiL" firstAttribute="top" secondItem="IPB-H8-je7" secondAttribute="top" id="811-Ad-qFL"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="7E3-XS-Nm3" secondAttribute="bottom" constant="27" id="9vM-80-jCx"/>
+                                        <constraint firstItem="7E3-XS-Nm3" firstAttribute="bottom" secondItem="rTg-37-OBG" secondAttribute="bottom" id="ADs-6f-lhz"/>
+                                        <constraint firstItem="7E3-XS-Nm3" firstAttribute="leading" secondItem="Lgf-V6-UiL" secondAttribute="leading" id="DE0-JG-1W0"/>
+                                        <constraint firstItem="7E3-XS-Nm3" firstAttribute="top" secondItem="aZU-uH-HS6" secondAttribute="topMargin" constant="5" id="FJA-Za-y2a"/>
+                                        <constraint firstItem="IPB-H8-je7" firstAttribute="leading" secondItem="Lgf-V6-UiL" secondAttribute="trailing" id="FdB-st-pCc"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="rTg-37-OBG" secondAttribute="trailing" constant="2" id="HuE-aK-oks"/>
+                                        <constraint firstItem="7E3-XS-Nm3" firstAttribute="leading" secondItem="sc5-CF-85O" secondAttribute="trailing" constant="10" id="JI2-iF-agq"/>
+                                        <constraint firstItem="Lgf-V6-UiL" firstAttribute="baseline" secondItem="IPB-H8-je7" secondAttribute="baseline" id="Pi3-xO-xqo"/>
+                                        <constraint firstItem="sc5-CF-85O" firstAttribute="top" secondItem="aZU-uH-HS6" secondAttribute="topMargin" constant="2" id="TF5-ef-BDJ"/>
+                                        <constraint firstItem="rTg-37-OBG" firstAttribute="top" secondItem="7E3-XS-Nm3" secondAttribute="top" id="U7c-Pb-5Dh"/>
+                                        <constraint firstItem="sc5-CF-85O" firstAttribute="leading" secondItem="aZU-uH-HS6" secondAttribute="leadingMargin" constant="2" id="VlL-R0-jrO"/>
+                                        <constraint firstItem="rTg-37-OBG" firstAttribute="leading" secondItem="7E3-XS-Nm3" secondAttribute="trailing" id="cwR-ug-sA0"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Lgf-V6-UiL" secondAttribute="bottom" constant="8" id="eKb-NO-5nr"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="counterLabel" destination="IPB-H8-je7" id="g4V-Cd-Wwp"/>
@@ -967,6 +995,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="LEU-gI-rj6"/>
+        <segue reference="Rx5-ve-5Y3"/>
     </inferredMetricsTieBreakers>
 </document>
