@@ -859,8 +859,8 @@
         <!--Address Book-->
         <scene sceneID="WlB-AQ-IKq">
             <objects>
-                <tableViewController id="y3w-wF-n5S" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Fj2-DO-YJK">
+                <tableViewController id="y3w-wF-n5S" customClass="AddressBookViewController" customModule="SwiftParseChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="Fj2-DO-YJK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -877,7 +877,13 @@
                             <outlet property="delegate" destination="y3w-wF-n5S" id="bvg-oV-a0P"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Address Book" id="e7j-Ri-rzW"/>
+                    <navigationItem key="navigationItem" title="Address Book" id="e7j-Ri-rzW">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="T81-eX-6gT">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="y3w-wF-n5S" id="rza-oQ-dCg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8L-gY-RLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -995,6 +1001,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Rx5-ve-5Y3"/>
+        <segue reference="y1X-T3-N16"/>
     </inferredMetricsTieBreakers>
 </document>

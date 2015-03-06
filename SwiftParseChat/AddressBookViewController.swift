@@ -118,6 +118,10 @@ class AddressBookViewController: UITableViewController, UIActionSheetDelegate, M
         self.users1 = filtered
     }
     
+    @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     // MARK: - UITableViewDataSource
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
