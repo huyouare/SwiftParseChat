@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessagesViewController: UITableViewController, UIActionSheetDelegate, SelectSingleViewControllerDelegate, SelectMultipleViewControllerDelegate {
+class MessagesViewController: UITableViewController, UIActionSheetDelegate, SelectSingleViewControllerDelegate, SelectMultipleViewControllerDelegate, AddressBookViewControllerDelegate {
     
     var messages = [PFObject]()
     // UITableViewController already declares refreshControl
@@ -114,12 +114,13 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
         } else if segue.identifier == "selectMultipleSegue" {
             let selectMultipleVC = segue.destinationViewController.topViewController as SelectMultipleViewController
             selectMultipleVC.delegate = self
+        } else if segue.identifier == "addressBookSegue" {
+            let addressBookVC = segue.destinationViewController.topViewController as AddressBookViewController
+            addressBookVC.delegate = self
+//        } else if segue.identifier == "facebookFriendsSegue" {
+//            let facebookFriendsVC = segue.destinationViewController.topViewController as FacebookFriendsViewController
+//            facebookFriendsVC.delegate = self
         }
-    
-            
-//        }segue.identifier == "addressBookSegue" || segue.identifier == "facebookFriendsSegue" {
-////            segue.destinationViewControllers
-//        }
     }
 
     // MARK: - UIActionSheetDelegate
@@ -158,9 +159,19 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     
     // MARK: - AddressBookDelegate
     
+    func didSelectAddressBookUser(user2: PFUser) {
+        let user1 = PFUser.currentUser()
+        let groupId = Messages.startPrivateChat(user1, user2: user2)
+        self.openChat(groupId)
+    }
+    
     // MARK: - FacebookFriendsDelegate
     
-
+    func didSelectFacebookUser(user2: PFUser) {
+        let user1 = PFUser.currentUser()
+        let groupId = Messages.startPrivateChat(user1, user2: user2)
+        self.openChat(groupId)
+    }
     
     // MARK: - Table view data source
     

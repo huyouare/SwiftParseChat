@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6255F48A9544045E8AB00268 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E792D971850373ACD6EB87A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8311CFF31AA97FDD0081674A /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8311CFF21AA97FDD0081674A /* AddressBookViewController.swift */; };
 		831C19171A97F5CA000FD6D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19161A97F5CA000FD6D0 /* AppDelegate.swift */; };
 		831C191E1A97F5CA000FD6D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831C191C1A97F5CA000FD6D0 /* Main.storyboard */; };
 		831C19201A97F5CA000FD6D0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 831C191F1A97F5CA000FD6D0 /* Images.xcassets */; };
@@ -136,6 +137,7 @@
 		22DAA0ADDDA852AE91CC7023 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4A70FB85D99A4537AA0A5A3F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E792D971850373ACD6EB87A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8311CFF21AA97FDD0081674A /* AddressBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
 		831C19111A97F5CA000FD6D0 /* SwiftParseChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftParseChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		831C19151A97F5CA000FD6D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		831C19161A97F5CA000FD6D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 				831C19491A98090E000FD6D0 /* GroupViewController.swift */,
 				831C194F1A9809C7000FD6D0 /* ProfileViewController.swift */,
 				831C194B1A980970000FD6D0 /* PrivateViewController.swift */,
+				8311CFF21AA97FDD0081674A /* AddressBookViewController.swift */,
 				83ED1DDF1AA2E46E00198FBF /* SearchViewController.swift */,
 				83F02B7D1AA6C671008428DF /* MessagesCell.swift */,
 			);
@@ -954,6 +957,7 @@
 				839A20ED1A99E9D7003248CE /* LoginViewController.swift in Sources */,
 				83C839A41A9977E3007AC2AC /* RegisterViewController.swift in Sources */,
 				83B4F5AB1AA1713B00C09791 /* JSQMessagesAvatarImage.m in Sources */,
+				8311CFF31AA97FDD0081674A /* AddressBookViewController.swift in Sources */,
 				831C19781A981AF6000FD6D0 /* Utilities.swift in Sources */,
 				8348BEBF1A9AB1E000A50EE6 /* HUDAssets.swift in Sources */,
 				83B4F5AF1AA1713B00C09791 /* JSQMessagesCellTextView.m in Sources */,
