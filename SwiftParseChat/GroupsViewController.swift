@@ -9,9 +9,9 @@
 import UIKit
 // Parse loaded from SwiftParseChat-Bridging-Header.h
 
-class GroupViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate {
+class GroupsViewController: UITableViewController, UIAlertViewDelegate {
     
-    var chatrooms: [PFObject]! = []
+    var groups: [PFObject]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
         super.viewDidAppear(animated)
 
         if PFUser.currentUser() != nil {
-            self.loadChatRooms()
+            self.loadGroups()
         }
         else {
             Utilities.loginUser(self)
@@ -33,13 +33,13 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    func loadChatRooms() {
-        var query = PFQuery(className: PF_CHATROOMS_CLASS_NAME)
+    func loadGroups() {
+        var query = PFQuery(className: PF_GROUPS_CLASS_NAME)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!)  in
             if error == nil {
-                self.chatrooms.removeAll()
-                self.chatrooms.extend(objects as [PFObject]!)
+                self.groups.removeAll()
+                self.groups.extend(objects as [PFObject]!)
                 self.tableView.reloadData()
             } else {
                 ProgressHUD.showError("Network error")
@@ -63,11 +63,11 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
             var textField = alertView.textFieldAtIndex(0);
             if let text = textField!.text {
                 if countElements(text) > 0 {
-                    var object = PFObject(className: PF_CHATROOMS_CLASS_NAME)
-                    object[PF_CHATROOMS_NAME] = text
+                    var object = PFObject(className: PF_GROUPS_CLASS_NAME)
+                    object[PF_GROUPS_NAME] = text
                     object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) -> Void in
                         if success {
-                            self.loadChatRooms()
+                            self.loadGroups()
                         } else {
                             ProgressHUD.showError("Network error")
                             println(error)
@@ -85,17 +85,17 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chatrooms.count
+        return self.groups.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
-        var chatroom = self.chatrooms[indexPath.row]
-        cell.textLabel?.text = chatroom[PF_CHATROOMS_NAME] as? String
+        var group = self.groups[indexPath.row]
+        cell.textLabel?.text = group[PF_GROUPS_NAME] as? String
         
         var query = PFQuery(className: PF_CHAT_CLASS_NAME)
-        query.whereKey(PF_CHAT_GROUPID, equalTo: chatroom.objectId)
+        query.whereKey(PF_CHAT_GROUPID, equalTo: group.objectId)
         query.orderByDescending(PF_CHAT_CREATEDAT)
         query.limit = 1000
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
@@ -119,10 +119,10 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        var chatroom = chatrooms[indexPath.row]
-        let groupId = chatroom.objectId as String
+        var group = self.groups[indexPath.row]
+        let groupId = group.objectId as String
         
-        Messages.createMessageItem(PFUser(), groupId: groupId, description: chatroom[PF_CHATROOMS_NAME] as String)
+        Messages.createMessageItem(PFUser(), groupId: groupId, description: group[PF_GROUPS_NAME] as String)
         
         self.performSegueWithIdentifier("groupChatSegue", sender: groupId)
     }

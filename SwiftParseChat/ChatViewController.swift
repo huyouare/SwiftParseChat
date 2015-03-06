@@ -38,8 +38,8 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
         self.senderId = user.objectId
         self.senderDisplayName = user[PF_USER_FULLNAME] as String
         
-        outgoingBubbleImage = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
-        incomingBubbleImage = bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleGreenColor())
+        outgoingBubbleImage = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
+        incomingBubbleImage = bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
         
         blankAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "chat_blank"), diameter: 30)
         
@@ -257,9 +257,9 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
         
         var message = self.messages[indexPath.item]
         if message.senderId == self.senderId {
-            cell.textView.textColor = UIColor.blackColor()
-        } else {
             cell.textView.textColor = UIColor.whiteColor()
+        } else {
+            cell.textView.textColor = UIColor.blackColor()
         }
         return cell
     }

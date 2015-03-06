@@ -44,20 +44,20 @@ let PF_USER_THUMBNAIL					= "thumbnail"               //	File
 /* Chat */
 let PF_CHAT_CLASS_NAME					= "Chat"					//	Class name
 let PF_CHAT_USER						= "user"					//	Pointer to User Class
-let PF_CHAT_GROUPID						= "groupId"                  //	String
+let PF_CHAT_GROUPID						= "groupId"                 //	String
 let PF_CHAT_TEXT						= "text"					//	String
 let PF_CHAT_PICTURE						= "picture"                 //	File
 let PF_CHAT_VIDEO						= "video"                   //	File
 let PF_CHAT_CREATEDAT					= "createdAt"               //	Date
 
-/* Chatrooms */
-let PF_CHATROOMS_CLASS_NAME				= "Chatrooms"               //	Class name
-let PF_CHATROOMS_NAME					= "name"					//	String
+/* Groups */
+let PF_GROUPS_CLASS_NAME				= "Groups"                  //	Class name
+let PF_GROUPS_NAME                      = "name"					//	String
 
 /* Messages*/
 let PF_MESSAGES_CLASS_NAME				= "Messages"				//	Class name
 let PF_MESSAGES_USER					= "user"					//	Pointer to User Class
-let PF_MESSAGES_GROUPID					= "groupId"                  //	String
+let PF_MESSAGES_GROUPID					= "groupId"                 //	String
 let PF_MESSAGES_DESCRIPTION				= "description"             //	String
 let PF_MESSAGES_LASTUSER				= "lastUser"				//	Pointer to User Class
 let PF_MESSAGES_LASTMESSAGE				= "lastMessage"             //	String

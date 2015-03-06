@@ -107,7 +107,7 @@ class WelcomeViewController: UIViewController {
             } else {
                 PFUser.logOut()
                 if let info = error!.userInfo {
-                    ProgressHUD.showError("Login error")
+                    ProgressHUD.showError("Failed to fetch Facebook photo")
                     println(info["error"] as String)
                 }
             }
