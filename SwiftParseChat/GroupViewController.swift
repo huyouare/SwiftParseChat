@@ -99,16 +99,15 @@ class GroupViewController: UITableViewController, UITableViewDataSource, UITable
         query.orderByDescending(PF_CHAT_CREATEDAT)
         query.limit = 1000
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                if let chat = objects.first as? PFObject {
-                    let date = NSDate()
-                    let seconds = date.timeIntervalSinceDate(chat.createdAt)
-                    let elapsed = Utilities.timeElapsed(seconds);
-                    cell.detailTextLabel?.text = "\(objects.count) messages \(elapsed)"
-                }
+            if let chat = objects.first as? PFObject {
+                let date = NSDate()
+                let seconds = date.timeIntervalSinceDate(chat.createdAt)
+                let elapsed = Utilities.timeElapsed(seconds);
+                cell.detailTextLabel?.text = "\(objects.count) messages \(elapsed)"
             } else {
                 cell.detailTextLabel?.text = "No message"
             }
+            cell.detailTextLabel?.textColor = UIColor.lightGrayColor()
         }
         
         return cell
