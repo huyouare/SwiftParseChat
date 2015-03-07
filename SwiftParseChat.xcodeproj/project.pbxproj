@@ -16,7 +16,6 @@
 		831C192F1A97F5CA000FD6D0 /* SwiftParseChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C192E1A97F5CA000FD6D0 /* SwiftParseChatTests.swift */; };
 		831C19421A98085B000FD6D0 /* chat_blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831C193B1A98085B000FD6D0 /* chat_blank@2x.png */; };
 		831C19431A98085B000FD6D0 /* messages_blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831C193C1A98085B000FD6D0 /* messages_blank@2x.png */; };
-		831C19441A98085B000FD6D0 /* profile_blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831C193D1A98085B000FD6D0 /* profile_blank@2x.png */; };
 		831C19451A98085B000FD6D0 /* tab_group@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831C193E1A98085B000FD6D0 /* tab_group@2x.png */; };
 		831C19461A98085B000FD6D0 /* tab_messages@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831C193F1A98085B000FD6D0 /* tab_messages@2x.png */; };
 		831C19471A98085B000FD6D0 /* tab_private@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831C19401A98085B000FD6D0 /* tab_private@2x.png */; };
@@ -110,6 +109,7 @@
 		83B4F5CB1AA17C0000C09791 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B4F5CA1AA17C0000C09791 /* MediaPlayer.framework */; };
 		83B4F5CF1AA2AD4600C09791 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4F5CE1AA2AD4600C09791 /* Camera.swift */; };
 		83B8DB961AA986EE00ADE3BB /* FacebookFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B8DB951AA986EE00ADE3BB /* FacebookFriendsViewController.swift */; };
+		83B8DB991AAA90AF00ADE3BB /* profile_blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B8DB981AAA90AF00ADE3BB /* profile_blank@2x.png */; };
 		83C839A41A9977E3007AC2AC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C839A31A9977E3007AC2AC /* RegisterViewController.swift */; };
 		83C839A81A997857007AC2AC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C839A71A997857007AC2AC /* WelcomeViewController.swift */; };
 		83ED1DE01AA2E46E00198FBF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ED1DDF1AA2E46E00198FBF /* SearchViewController.swift */; };
@@ -150,7 +150,6 @@
 		831C192E1A97F5CA000FD6D0 /* SwiftParseChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftParseChatTests.swift; sourceTree = "<group>"; };
 		831C193B1A98085B000FD6D0 /* chat_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_blank@2x.png"; sourceTree = "<group>"; };
 		831C193C1A98085B000FD6D0 /* messages_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages_blank@2x.png"; sourceTree = "<group>"; };
-		831C193D1A98085B000FD6D0 /* profile_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_blank@2x.png"; sourceTree = "<group>"; };
 		831C193E1A98085B000FD6D0 /* tab_group@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_group@2x.png"; sourceTree = "<group>"; };
 		831C193F1A98085B000FD6D0 /* tab_messages@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_messages@2x.png"; sourceTree = "<group>"; };
 		831C19401A98085B000FD6D0 /* tab_private@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_private@2x.png"; sourceTree = "<group>"; };
@@ -305,6 +304,7 @@
 		83B4F5CA1AA17C0000C09791 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		83B4F5CE1AA2AD4600C09791 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		83B8DB951AA986EE00ADE3BB /* FacebookFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookFriendsViewController.swift; sourceTree = "<group>"; };
+		83B8DB981AAA90AF00ADE3BB /* profile_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_blank@2x.png"; sourceTree = "<group>"; };
 		83C839A31A9977E3007AC2AC /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		83C839A71A997857007AC2AC /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		83ED1DDF1AA2E46E00198FBF /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -447,7 +447,7 @@
 			children = (
 				831C193B1A98085B000FD6D0 /* chat_blank@2x.png */,
 				831C193C1A98085B000FD6D0 /* messages_blank@2x.png */,
-				831C193D1A98085B000FD6D0 /* profile_blank@2x.png */,
+				83B8DB981AAA90AF00ADE3BB /* profile_blank@2x.png */,
 				831C193E1A98085B000FD6D0 /* tab_group@2x.png */,
 				831C193F1A98085B000FD6D0 /* tab_messages@2x.png */,
 				831C19401A98085B000FD6D0 /* tab_private@2x.png */,
@@ -882,6 +882,7 @@
 				8365C3921A9D77F0003FB374 /* Default-568h@2x.png in Resources */,
 				831C19421A98085B000FD6D0 /* chat_blank@2x.png in Resources */,
 				839A20E91A99E372003248CE /* ProgressHUD.bundle in Resources */,
+				83B8DB991AAA90AF00ADE3BB /* profile_blank@2x.png in Resources */,
 				831C19451A98085B000FD6D0 /* tab_group@2x.png in Resources */,
 				831C19431A98085B000FD6D0 /* messages_blank@2x.png in Resources */,
 				831C19471A98085B000FD6D0 /* tab_private@2x.png in Resources */,
@@ -894,7 +895,6 @@
 				8348BEC21A9AB1E000A50EE6 /* Images.xcassets in Resources */,
 				83B4F5B31AA1713B00C09791 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				831C19461A98085B000FD6D0 /* tab_messages@2x.png in Resources */,
-				831C19441A98085B000FD6D0 /* profile_blank@2x.png in Resources */,
 				8348BEC31A9AB1E000A50EE6 /* Info.plist in Resources */,
 				83B4F5B51AA1713B00C09791 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 			);
