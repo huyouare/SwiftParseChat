@@ -20,8 +20,8 @@ class MessagesCell: UITableViewCell {
         userImage.layer.cornerRadius = userImage.frame.size.width / 2
         userImage.layer.masksToBounds = true
         
-        let lastUser = message[PF_MESSAGES_LASTUSER] as PFUser
-        userImage.file = lastUser[PF_USER_PICTURE] as PFFile
+        let lastUser = message[PF_MESSAGES_LASTUSER] as? PFUser
+        userImage.file = lastUser?[PF_USER_PICTURE] as? PFFile
         userImage.loadInBackground(nil)
         
         descriptionLabel.text = message[PF_MESSAGES_DESCRIPTION] as? String

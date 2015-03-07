@@ -244,6 +244,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="xrf-0j-bD7">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No messages at the moment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJC-nx-bVI">
+                                    <rect key="frame" x="0.0" y="120" width="320" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="anX-XQ-97O"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="KJC-nx-bVI" secondAttribute="trailing" id="AM8-Of-M51"/>
+                                <constraint firstItem="KJC-nx-bVI" firstAttribute="leading" secondItem="xrf-0j-bD7" secondAttribute="leading" id="qP7-SG-6Ba"/>
+                                <constraint firstItem="KJC-nx-bVI" firstAttribute="top" secondItem="xrf-0j-bD7" secondAttribute="top" constant="120" id="zqp-pl-dNZ"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="messagesCell" rowHeight="70" id="wgg-wV-ZfY" customClass="MessagesCell" customModule="SwiftParseChat" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -330,6 +351,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="composeButton" destination="oKr-dk-sNJ" id="IT6-f1-Xe2"/>
+                        <outlet property="emptyView" destination="xrf-0j-bD7" id="utE-Jw-Lde"/>
                         <segue destination="0wk-ai-jpb" kind="push" identifier="messagesChatSegue" id="Rx5-ve-5Y3"/>
                         <segue destination="pPU-x3-RF2" kind="modal" identifier="selectSingleSegue" id="CeS-gD-Xmz"/>
                         <segue destination="uqH-ZS-B4w" kind="modal" identifier="selectMultipleSegue" id="Klu-2m-QWy"/>
@@ -1004,6 +1026,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="y1X-T3-N16"/>
+        <segue reference="Rx5-ve-5Y3"/>
     </inferredMetricsTieBreakers>
 </document>

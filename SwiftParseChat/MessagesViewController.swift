@@ -14,6 +14,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     // UITableViewController already declares refreshControl
     
     @IBOutlet var composeButton: UIBarButtonItem!
+    @IBOutlet var emptyView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
         self.refreshControl?.addTarget(self, action: "loadMessages", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView?.addSubview(self.refreshControl!)
         
-        //viewEmpty.hidden = true
+        self.emptyView?.hidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,7 +70,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     // MARK: - Helper methods
     
     func updateEmptyView() {
-        
+        self.emptyView?.hidden = (self.messages.count != 0)
     }
     
     func updateTabCounter() {
