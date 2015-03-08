@@ -15,9 +15,7 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
     var users1 = [APContact]()
     var users2 = [PFUser]()
     var indexSelected: NSIndexPath!
-    
-    // activity: UIActivityIndicatorView
-    
+
     let addressBook = APAddressBook()
     
     override func viewDidLoad() {
@@ -38,8 +36,6 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
 
             self.addressBook.sortDescriptors = [NSSortDescriptor(key: "firstName", ascending: true), NSSortDescriptor(key: "lastName", ascending: true)]
             self.addressBook.loadContacts({ (contacts: [AnyObject]!, error: NSError!) -> Void in
-                // TODO: Add actiivtyIndicator
-                // self.activity.stopAnimating()
                 self.users1.removeAll(keepCapacity: false)
                 if contacts != nil {
                     for contact in contacts as [APContact]! {

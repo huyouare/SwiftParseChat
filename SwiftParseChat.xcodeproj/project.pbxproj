@@ -459,12 +459,12 @@
 		831C19511A981482000FD6D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				839A20E51A99E372003248CE /* ProgressHUD */,
 				83ED1DE11AA413E500198FBF /* APAddressBook */,
 				83B4F5C51AA1718300C09791 /* JSQSystemSoundPlayer */,
 				83B4F5281AA1713B00C09791 /* JSQMessagesViewController */,
 				8348BEB41A9AB1E000A50EE6 /* PKHUD */,
 				839A20E31A99E244003248CE /* libstdc++.6.dylib */,
-				839A20E51A99E372003248CE /* ProgressHUD */,
 				839A20E11A99E20D003248CE /* Accounts.framework */,
 				839A20DF1A99E207003248CE /* Social.framework */,
 				831C19701A981565000FD6D0 /* libsqlite3.dylib */,
