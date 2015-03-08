@@ -21,7 +21,7 @@ struct Constants {
 
 let DEFAULT_TAB							= 0
 
-let MESSAGE_INVITE						= "Check out NotificationChat. You can download here: https://github.com/relatedcode/NotificationChat"
+let MESSAGE_INVITE						= "Check out SwiftParseChat on GitHub: https://github.com/huyouare/SwiftParseChat"
 
 /* Installation */
 let PF_INSTALLATION_CLASS_NAME			= "_Installation"           //	Class name
