@@ -27,8 +27,12 @@ class MessagesCell: UITableViewCell {
         descriptionLabel.text = message[PF_MESSAGES_DESCRIPTION] as? String
         lastMessageLabel.text = message[PF_MESSAGES_LASTMESSAGE] as? String
         
-        let seconds = NSDate().timeIntervalSinceDate(message[PF_MESSAGES_UPDATEDACTION] as NSDate)
-        timeElapsedLabel.text = Utilities.timeElapsed(seconds)
+//        let seconds = NSDate().timeIntervalSinceDate(message[PF_MESSAGES_UPDATEDACTION] as NSDate)
+//        timeElapsedLabel.text = Utilities.timeElapsed(seconds)
+        println(message[PF_MESSAGES_LASTMESSAGE])
+        println(message[PF_MESSAGES_LASTUSER])
+        println(message[PF_MESSAGES_UPDATEDACTION])
+        timeElapsedLabel.attributedText = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message[PF_MESSAGES_UPDATEDACTION] as? NSDate)
         
         let counter = message[PF_MESSAGES_COUNTER].integerValue
         counterLabel.text = (counter == 0) ? "" : "\(counter) new"
