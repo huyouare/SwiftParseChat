@@ -322,11 +322,11 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         if buttonIndex != actionSheet.cancelButtonIndex {
-            if buttonIndex == 0 {
+            if buttonIndex == 1 {
                 Camera.shouldStartCamera(self, canEdit: true)
-            } else if buttonIndex == 1 {
-                Camera.shouldStartPhotoLibrary(self, canEdit: true)
             } else if buttonIndex == 2 {
+                Camera.shouldStartPhotoLibrary(self, canEdit: true)
+            } else if buttonIndex == 3 {
                 Camera.shouldStartVideoLibrary(self, canEdit: true)
             }
         }
