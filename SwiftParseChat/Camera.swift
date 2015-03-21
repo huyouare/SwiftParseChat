@@ -12,31 +12,45 @@ import MobileCoreServices
 class Camera {
     
     class func shouldStartCamera(target: AnyObject, canEdit: Bool) -> Bool {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) == false {
             return false
         }
         
         let type = kUTTypeImage as String
-        let imagePicker = UIImagePickerController()
-        let available = contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.Camera) as [String]!, type)
+        let cameraUI = UIImagePickerController()
+        
+        let available = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) && contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.Camera) as [String]!, type)
         
         if available {
-            imagePicker.mediaTypes = [type]
-            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+            cameraUI.mediaTypes = [type]
+            cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
             
-            if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Rear) {
-                imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Rear
-            } else if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Front) {
-                imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+            /* Prioritize front or rear camera */
+            if (frontFacing == true) {
+                if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Front) {
+                    cameraUI.cameraDevice = UIImagePickerControllerCameraDevice.Front
+                } else if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Rear) {
+                    cameraUI.cameraDevice = UIImagePickerControllerCameraDevice.Rear
+                }
+            } else {
+                if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Rear) {
+                    cameraUI.cameraDevice = UIImagePickerControllerCameraDevice.Rear
+                } else if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Front) {
+                    cameraUI.cameraDevice = UIImagePickerControllerCameraDevice.Front
+                }
             }
         } else {
             return false
         }
         
-        imagePicker.allowsEditing = canEdit
-        imagePicker.showsCameraControls = true
-        imagePicker.delegate = target as ChatViewController
-        target.presentViewController(imagePicker, animated: true, completion: nil)
+        cameraUI.allowsEditing = canEdit
+        cameraUI.showsCameraControls = true
+        if target is ChatViewController {
+            cameraUI.delegate = target as ChatViewController
+        } else if target is ProfileViewController {
+            cameraUI.delegate = target as ProfileViewController
+        }
+        target.presentViewController(cameraUI, animated: true, completion: nil)
         
         return true
     }
