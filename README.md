@@ -2,7 +2,7 @@
 An Example iOS Chat Application with Parse, written in Swift
 
 ## Screenshots
-![screenshot1](Screenshots/screenshot1.png =50x)
+![screenshot1](Screenshots/screenshot1.png =250x)
 ![screenshot2](Screenshots/screenshot2.png =50x)
 ![screenshot3](Screenshots/screenshot3.png =50x)
 
