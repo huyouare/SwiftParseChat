@@ -11,7 +11,7 @@ import MobileCoreServices
 
 class Camera {
     
-    class func shouldStartCamera(target: AnyObject, canEdit: Bool) -> Bool {
+    class func shouldStartCamera(target: AnyObject, canEdit: Bool, frontFacing: Bool) -> Bool {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) == false {
             return false
         }
