@@ -2,9 +2,9 @@
 An Example iOS Chat Application with Parse, written in Swift
 
 ## Screenshots
-<img src="./Screenshots/screenshot1.png" alt="screenshot1" width="250" />
-<img src="./Screenshots/screenshot2.png" alt="screenshot2" width="250" />
-<img src="./Screenshots/screenshot3.png" alt="screenshot3" width="250" />
+<img src="./Screenshots/screenshot1.png" alt="screenshot1" width="200" />
+<img src="./Screenshots/screenshot2.png" alt="screenshot2" width="200" />
+<img src="./Screenshots/screenshot3.png" alt="screenshot3" width="200" />
 
 ## Overview
 This is a re-write of https://github.com/relatedcode/NotificationChat using Swift and Storyboards. Supports Facebook login.
