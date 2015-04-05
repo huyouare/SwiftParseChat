@@ -1,6 +1,9 @@
 # SwiftParseChat
 An Example iOS Chat Application with Parse, written in Swift
 
+## Screenshots
+![screenshot1](Screenshots/screenshot1.png)
+
 This is a re-write of https://github.com/relatedcode/NotificationChat using Swift and Storyboards. Supports Facebook login.
 Uses Alamofire for Swift HTTP requests, and APAddressBook for easier address book contacts. Please Star this repo if you find it useful.
 
