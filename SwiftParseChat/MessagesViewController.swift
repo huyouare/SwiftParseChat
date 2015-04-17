@@ -55,7 +55,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 self.messages.removeAll(keepCapacity: false)
-                self.messages += objects as [PFObject]!
+                self.messages += objects as! [PFObject]!
                 self.tableView.reloadData()
                 self.updateEmptyView()
                 self.updateTabCounter()
@@ -77,7 +77,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
         for message in self.messages {
             total += message[PF_MESSAGES_COUNTER].integerValue
         }
-        var item = self.tabBarController?.tabBar.items?[1] as UITabBarItem
+        var item = self.tabBarController?.tabBar.items?[1] as! UITabBarItem
         item.badgeValue = (total == 0) ? nil : "\(total)"
     }
     
@@ -91,7 +91,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
         self.messages.removeAll(keepCapacity: false)
         self.tableView.reloadData()
         
-        var item = self.tabBarController?.tabBar.items?[1] as UITabBarItem
+        var item = self.tabBarController?.tabBar.items?[1] as! UITabBarItem
         item.badgeValue = nil
     }
     
@@ -104,21 +104,21 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "messagesChatSegue" {
-            let chatVC = segue.destinationViewController as ChatViewController
+            let chatVC = segue.destinationViewController as! ChatViewController
             chatVC.hidesBottomBarWhenPushed = true
-            let groupId = sender as String
+            let groupId = sender as! String
             chatVC.groupId = groupId
         } else if segue.identifier == "selectSingleSegue" {
-            let selectSingleVC = segue.destinationViewController.topViewController as SelectSingleViewController
+            let selectSingleVC = segue.destinationViewController.topViewController as! SelectSingleViewController
             selectSingleVC.delegate = self
         } else if segue.identifier == "selectMultipleSegue" {
-            let selectMultipleVC = segue.destinationViewController.topViewController as SelectMultipleViewController
+            let selectMultipleVC = segue.destinationViewController.topViewController as! SelectMultipleViewController
             selectMultipleVC.delegate = self
         } else if segue.identifier == "addressBookSegue" {
-            let addressBookVC = segue.destinationViewController.topViewController as AddressBookViewController
+            let addressBookVC = segue.destinationViewController.topViewController as! AddressBookViewController
             addressBookVC.delegate = self
         } else if segue.identifier == "facebookFriendsSegue" {
-            let facebookFriendsVC = segue.destinationViewController.topViewController as FacebookFriendsViewController
+            let facebookFriendsVC = segue.destinationViewController.topViewController as! FacebookFriendsViewController
             facebookFriendsVC.delegate = self
         }
     }
@@ -184,7 +184,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("messagesCell") as MessagesCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("messagesCell") as! MessagesCell
         cell.bindData(self.messages[indexPath.row])
         return cell
     }
@@ -207,7 +207,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let message = self.messages[indexPath.row] as PFObject
-        self.openChat(message[PF_MESSAGES_GROUPID] as String)
+        self.openChat(message[PF_MESSAGES_GROUPID] as! String)
     }
 
 }

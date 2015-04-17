@@ -39,7 +39,7 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 self.users.removeAll(keepCapacity: false)
-                self.users += objects as [PFUser]!
+                self.users += objects as! [PFUser]!
                 self.tableView.reloadData()
             } else {
                 ProgressHUD.showError("Network error")
@@ -58,7 +58,7 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 self.users.removeAll(keepCapacity: false)
-                self.users += objects as [PFUser]!
+                self.users += objects as! [PFUser]!
                 self.tableView.reloadData()
             } else {
                 ProgressHUD.showError("Network error")
@@ -81,7 +81,7 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         
         let user = self.users[indexPath.row]
         cell.textLabel?.text = user[PF_USER_FULLNAME] as? String
@@ -105,9 +105,9 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "searchChatSegue" {
-            let chatVC = segue.destinationViewController as ChatViewController
+            let chatVC = segue.destinationViewController as! ChatViewController
             chatVC.hidesBottomBarWhenPushed = true
-            let groupId = sender as String
+            let groupId = sender as! String
             chatVC.groupId = groupId
         }
     }
@@ -115,7 +115,7 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
     // MARK: - UISearchBarDelegate
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if countElements(searchText) > 0 {
+        if count(searchText) > 0 {
             self.searchUsers(searchText.lowercaseString)
         } else {
             self.loadUsers()

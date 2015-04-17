@@ -38,7 +38,7 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
             self.addressBook.loadContacts({ (contacts: [AnyObject]!, error: NSError!) -> Void in
                 self.users1.removeAll(keepCapacity: false)
                 if contacts != nil {
-                    for contact in contacts as [APContact]! {
+                    for contact in contacts as! [APContact]! {
                         self.users1.append(contact)
                     }
                     self.loadUsers()
@@ -66,7 +66,7 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
         
         for user in users1 {
             if let userEmails = user.emails {
-                emails += userEmails as [String]
+                emails += userEmails as! [String]
             }
         }
         
@@ -80,9 +80,9 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 self.users2.removeAll(keepCapacity: false)
-                for user in objects as [PFUser]! {
+                for user in objects as! [PFUser]! {
                     self.users2.append(user)
-                    self.removeUser(user[PF_USER_EMAILCOPY] as String)
+                    self.removeUser(user[PF_USER_EMAILCOPY] as! String)
                 }
                 self.tableView.reloadData()
             } else {
@@ -96,7 +96,7 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
         
         for user in users1 {
             if let userEmails = user.emails {
-                for email in userEmails as [String] {
+                for email in userEmails as! [String] {
                     if email == removeEmail {
                         removeUsers.append(user)
                         break
@@ -136,7 +136,7 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         
         if indexPath.section == 0 {
             let user = users2[indexPath.row]
@@ -177,9 +177,9 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "privateChatSegue" {
-            let chatVC = segue.destinationViewController as ChatViewController
+            let chatVC = segue.destinationViewController as! ChatViewController
             chatVC.hidesBottomBarWhenPushed = true
-            let groupId = sender as String
+            let groupId = sender as! String
             chatVC.groupId = groupId
         }
     }
@@ -187,8 +187,8 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
     // MARK: - Invite helper method
     
     func inviteUser(user: APContact) {
-        let emailsCount = countElements(user.emails)
-        let phonesCount = countElements(user.phones)
+        let emailsCount = count(user.emails)
+        let phonesCount = count(user.phones)
         
         if emailsCount > 0 && phonesCount > 0 {
             let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Email invitation", "SMS invitation")
@@ -221,7 +221,7 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
         if MFMailComposeViewController.canSendMail() {
             var mailCompose = MFMailComposeViewController()
             // TODO: Use one email rather than all emails
-            mailCompose.setToRecipients(user.emails as [String]!)
+            mailCompose.setToRecipients(user.emails as! [String]!)
             mailCompose.setSubject("")
             mailCompose.setMessageBody(MESSAGE_INVITE, isHTML: true)
             mailCompose.mailComposeDelegate = self
@@ -246,7 +246,7 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
         if MFMessageComposeViewController.canSendText() {
             var messageCompose = MFMessageComposeViewController()
             // TODO: Use primary phone rather than all numbers
-            messageCompose.recipients = user.phones as [String]!
+            messageCompose.recipients = user.phones as! [String]!
             messageCompose.body = MESSAGE_INVITE
             messageCompose.messageComposeDelegate = self
             self.presentViewController(messageCompose, animated: true, completion: nil)

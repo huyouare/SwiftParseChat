@@ -16,8 +16,8 @@ class Messages {
         
         let groupId = (id1 < id2) ? "\(id1)\(id2)" : "\(id2)\(id1)"
         
-        createMessageItem(user1, groupId: groupId, description: user2[PF_USER_FULLNAME] as String)
-        createMessageItem(user2, groupId: groupId, description: user1[PF_USER_FULLNAME] as String)
+        createMessageItem(user1, groupId: groupId, description: user2[PF_USER_FULLNAME] as! String)
+        createMessageItem(user2, groupId: groupId, description: user1[PF_USER_FULLNAME] as! String)
         
         return groupId
     }
@@ -39,10 +39,10 @@ class Messages {
         }
         
         for user in users {
-            if countElements(description) > 0 {
+            if count(description) > 0 {
                 description = description + " & "
             }
-            description = description + (user[PF_USER_FULLNAME] as String)
+            description = description + (user[PF_USER_FULLNAME] as! String)
         }
         
         for user in users {
@@ -96,8 +96,8 @@ class Messages {
         query.limit = 1000
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
-                for message in objects as [PFObject]! {
-                    var user = message[PF_MESSAGES_USER] as PFUser
+                for message in objects as! [PFObject]! {
+                    var user = message[PF_MESSAGES_USER] as! PFUser
                     if user.objectId != PFUser.currentUser().objectId {
                         message.incrementKey(PF_MESSAGES_COUNTER) // Increment by 1
                         message[PF_MESSAGES_LASTUSER] = PFUser.currentUser()
@@ -124,7 +124,7 @@ class Messages {
         query.whereKey(PF_MESSAGES_USER, equalTo: PFUser.currentUser())
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
-                for message in objects as [PFObject]! {
+                for message in objects as! [PFObject]! {
                     message[PF_MESSAGES_COUNTER] = 0
                     message.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError!) -> Void in
                         if error != nil {

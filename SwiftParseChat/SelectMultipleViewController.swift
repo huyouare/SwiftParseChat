@@ -40,7 +40,7 @@ class SelectMultipleViewController: UITableViewController {
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 self.users.removeAll(keepCapacity: false)
-                self.users += objects as [PFUser]!
+                self.users += objects as! [PFUser]!
                 self.tableView.reloadData()
             } else {
                 ProgressHUD.showError("Network error")
@@ -86,7 +86,7 @@ class SelectMultipleViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
 
         let user = self.users[indexPath.row]
         cell.textLabel?.text = user[PF_USER_FULLNAME] as? String

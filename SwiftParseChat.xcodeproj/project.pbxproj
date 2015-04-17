@@ -43,14 +43,6 @@
 		831C197A1A9823A8000FD6D0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C19791A9823A8000FD6D0 /* Constants.swift */; };
 		832554E81A9B39A60022F867 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832554E71A9B39A60022F867 /* ChatViewController.swift */; };
 		8348BEB31A9AB16200A50EE6 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831C19531A9814B0000FD6D0 /* Parse.framework */; };
-		8348BEBE1A9AB1E000A50EE6 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEB51A9AB1E000A50EE6 /* FrameView.swift */; };
-		8348BEBF1A9AB1E000A50EE6 /* HUDAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEB61A9AB1E000A50EE6 /* HUDAssets.swift */; };
-		8348BEC01A9AB1E000A50EE6 /* HUDContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEB71A9AB1E000A50EE6 /* HUDContentView.swift */; };
-		8348BEC11A9AB1E000A50EE6 /* HUDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEB81A9AB1E000A50EE6 /* HUDController.swift */; };
-		8348BEC21A9AB1E000A50EE6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8348BEB91A9AB1E000A50EE6 /* Images.xcassets */; };
-		8348BEC31A9AB1E000A50EE6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8348BEBA1A9AB1E000A50EE6 /* Info.plist */; };
-		8348BEC41A9AB1E000A50EE6 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEBC1A9AB1E000A50EE6 /* Window.swift */; };
-		8348BEC51A9AB1E000A50EE6 /* WindowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEBD1A9AB1E000A50EE6 /* WindowRootViewController.swift */; };
 		8348BEC71A9AB31500A50EE6 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8348BEC61A9AB31500A50EE6 /* PushNotification.swift */; };
 		8348BECA1A9AC1D300A50EE6 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A20E81A99E372003248CE /* ProgressHUD.m */; };
 		8365C3921A9D77F0003FB374 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8365C3911A9D77F0003FB374 /* Default-568h@2x.png */; };
@@ -178,15 +170,6 @@
 		831C19771A981AF6000FD6D0 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		831C19791A9823A8000FD6D0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		832554E71A9B39A60022F867 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		8348BEB51A9AB1E000A50EE6 /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
-		8348BEB61A9AB1E000A50EE6 /* HUDAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDAssets.swift; sourceTree = "<group>"; };
-		8348BEB71A9AB1E000A50EE6 /* HUDContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDContentView.swift; sourceTree = "<group>"; };
-		8348BEB81A9AB1E000A50EE6 /* HUDController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDController.swift; sourceTree = "<group>"; };
-		8348BEB91A9AB1E000A50EE6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		8348BEBA1A9AB1E000A50EE6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8348BEBB1A9AB1E000A50EE6 /* PKHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKHUD.h; sourceTree = "<group>"; };
-		8348BEBC1A9AB1E000A50EE6 /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
-		8348BEBD1A9AB1E000A50EE6 /* WindowRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowRootViewController.swift; sourceTree = "<group>"; };
 		8348BEC61A9AB31500A50EE6 /* PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
 		8365C2D31A9C4B77003FB374 /* SwiftParseChat-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SwiftParseChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		8365C3911A9D77F0003FB374 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -463,7 +446,6 @@
 				83ED1DE11AA413E500198FBF /* APAddressBook */,
 				83B4F5C51AA1718300C09791 /* JSQSystemSoundPlayer */,
 				83B4F5281AA1713B00C09791 /* JSQMessagesViewController */,
-				8348BEB41A9AB1E000A50EE6 /* PKHUD */,
 				839A20E31A99E244003248CE /* libstdc++.6.dylib */,
 				839A20E11A99E20D003248CE /* Accounts.framework */,
 				839A20DF1A99E207003248CE /* Social.framework */,
@@ -489,22 +471,6 @@
 			);
 			name = Frameworks;
 			path = ../Frameworks;
-			sourceTree = "<group>";
-		};
-		8348BEB41A9AB1E000A50EE6 /* PKHUD */ = {
-			isa = PBXGroup;
-			children = (
-				8348BEB51A9AB1E000A50EE6 /* FrameView.swift */,
-				8348BEB61A9AB1E000A50EE6 /* HUDAssets.swift */,
-				8348BEB71A9AB1E000A50EE6 /* HUDContentView.swift */,
-				8348BEB81A9AB1E000A50EE6 /* HUDController.swift */,
-				8348BEB91A9AB1E000A50EE6 /* Images.xcassets */,
-				8348BEBA1A9AB1E000A50EE6 /* Info.plist */,
-				8348BEBB1A9AB1E000A50EE6 /* PKHUD.h */,
-				8348BEBC1A9AB1E000A50EE6 /* Window.swift */,
-				8348BEBD1A9AB1E000A50EE6 /* WindowRootViewController.swift */,
-			);
-			path = PKHUD;
 			sourceTree = "<group>";
 		};
 		839A20E51A99E372003248CE /* ProgressHUD */ = {
@@ -892,10 +858,8 @@
 				83B4F5BD1AA1713B00C09791 /* JSQMessagesToolbarContentView.xib in Resources */,
 				831C19231A97F5CA000FD6D0 /* LaunchScreen.xib in Resources */,
 				831C19201A97F5CA000FD6D0 /* Images.xcassets in Resources */,
-				8348BEC21A9AB1E000A50EE6 /* Images.xcassets in Resources */,
 				83B4F5B31AA1713B00C09791 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				831C19461A98085B000FD6D0 /* tab_messages@2x.png in Resources */,
-				8348BEC31A9AB1E000A50EE6 /* Info.plist in Resources */,
 				83B4F5B51AA1713B00C09791 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -970,9 +934,7 @@
 				83B4F5AB1AA1713B00C09791 /* JSQMessagesAvatarImage.m in Sources */,
 				8311CFF31AA97FDD0081674A /* AddressBookViewController.swift in Sources */,
 				831C19781A981AF6000FD6D0 /* Utilities.swift in Sources */,
-				8348BEBF1A9AB1E000A50EE6 /* HUDAssets.swift in Sources */,
 				83B4F5AF1AA1713B00C09791 /* JSQMessagesCellTextView.m in Sources */,
-				8348BEC01A9AB1E000A50EE6 /* HUDContentView.swift in Sources */,
 				83B4F5A01AA1713B00C09791 /* JSQMessagesAvatarImageFactory.m in Sources */,
 				83B4F5981AA1713B00C09791 /* NSString+JSQMessages.m in Sources */,
 				83ED1DF41AA413E500198FBF /* APSocialProfile.m in Sources */,
@@ -1014,7 +976,6 @@
 				83B8DB961AA986EE00ADE3BB /* FacebookFriendsViewController.swift in Sources */,
 				83B4F59C1AA1713B00C09791 /* UIView+JSQMessages.m in Sources */,
 				83F02B7C1AA6C3F1008428DF /* MessagesViewController.swift in Sources */,
-				8348BEC41A9AB1E000A50EE6 /* Window.swift in Sources */,
 				8348BEC71A9AB31500A50EE6 /* PushNotification.swift in Sources */,
 				83ED1DF31AA413E500198FBF /* APPhoneWithLabel.m in Sources */,
 				83B4F5AD1AA1713B00C09791 /* JSQPhotoMediaItem.m in Sources */,
@@ -1022,15 +983,12 @@
 				831C197A1A9823A8000FD6D0 /* Constants.swift in Sources */,
 				83B4F5A61AA1713B00C09791 /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.m in Sources */,
 				831C194A1A98090E000FD6D0 /* GroupsViewController.swift in Sources */,
-				8348BEBE1A9AB1E000A50EE6 /* FrameView.swift in Sources */,
 				83B4F5CF1AA2AD4600C09791 /* Camera.swift in Sources */,
 				83B4F5991AA1713B00C09791 /* UIColor+JSQMessages.m in Sources */,
 				83B4F5B41AA1713B00C09791 /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
 				83B4F5A91AA1713B00C09791 /* JSQMediaItem.m in Sources */,
-				8348BEC51A9AB1E000A50EE6 /* WindowRootViewController.swift in Sources */,
 				83ED1DF61AA45CAA00198FBF /* Images.swift in Sources */,
 				831C19171A97F5CA000FD6D0 /* AppDelegate.swift in Sources */,
-				8348BEC11A9AB1E000A50EE6 /* HUDController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
