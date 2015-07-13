@@ -33,22 +33,15 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
         let user = PFUser.currentUser()
         var query = PFQuery(className: PF_USER_CLASS_NAME)
         query.whereKey(PF_USER_OBJECTID, notEqualTo: user.objectId)
-        
-        
-        
+
         query.orderByAscending(PF_USER_FULLNAME)
         query.limit = 1000
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil{
                 self.users.removeAll(keepCapacity: false)
-                for obj in objects {
-                    if let username = (obj as! PFUser)[PF_USER_FULLNAME] as? String {
-                        self.users.append(obj as! PFUser)
-                    }
-                }
-                
-                //self.users += objects as! [PFUser]!
+                self.users += objects as! [PFUser]!
                 self.tableView.reloadData()
+                
             } else {
                 ProgressHUD.showError("Network error")
             }
