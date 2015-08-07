@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import AddressBook
+import APAddressBook
 import MessageUI
+import Parse
 
 class PrivateViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
     
@@ -73,11 +74,11 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
         var user = PFUser.currentUser()
         
         var query = PFQuery(className: PF_USER_CLASS_NAME)
-        query.whereKey(PF_USER_OBJECTID, notEqualTo: user.objectId)
+        query.whereKey(PF_USER_OBJECTID, notEqualTo: user!.objectId!)
         query.whereKey(PF_USER_EMAILCOPY, containedIn: emails)
         query.orderByAscending(PF_USER_FULLNAME)
         query.limit = 1000
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 self.users2.removeAll(keepCapacity: false)
                 for user in objects as! [PFUser]! {
@@ -163,7 +164,7 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
         if indexPath.section == 0 {
             let user1 = PFUser.currentUser()
             let user2 = users2[indexPath.row]
-            let groupId = Messages.startPrivateChat(user1, user2: user2)
+            let groupId = Messages.startPrivateChat(user1!, user2: user2)
             
             self.performSegueWithIdentifier("privateChatSegue", sender: groupId)
         }

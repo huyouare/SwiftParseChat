@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class MessagesViewController: UITableViewController, UIActionSheetDelegate, SelectSingleViewControllerDelegate, SelectMultipleViewControllerDelegate, AddressBookViewControllerDelegate, FacebookFriendsViewControllerDelegate {
     
@@ -49,10 +50,10 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     
     func loadMessages() {
         var query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
-        query.whereKey(PF_MESSAGES_USER, equalTo: PFUser.currentUser())
+        query.whereKey(PF_MESSAGES_USER, equalTo: PFUser.currentUser()!)
         query.includeKey(PF_MESSAGES_LASTUSER)
         query.orderByDescending(PF_MESSAGES_UPDATEDACTION)
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 self.messages.removeAll(keepCapacity: false)
                 self.messages += objects as! [PFObject]!
@@ -75,7 +76,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     func updateTabCounter() {
         var total = 0
         for message in self.messages {
-            total += message[PF_MESSAGES_COUNTER].integerValue
+            total += message[PF_MESSAGES_COUNTER]!.integerValue
         }
         var item = self.tabBarController?.tabBar.items?[1] as! UITabBarItem
         item.badgeValue = (total == 0) ? nil : "\(total)"
@@ -146,7 +147,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     
     func didSelectSingleUser(user2: PFUser) {
         let user1 = PFUser.currentUser()
-        let groupId = Messages.startPrivateChat(user1, user2: user2)
+        let groupId = Messages.startPrivateChat(user1!, user2: user2)
         self.openChat(groupId)
     }
     
@@ -161,7 +162,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     
     func didSelectAddressBookUser(user2: PFUser) {
         let user1 = PFUser.currentUser()
-        let groupId = Messages.startPrivateChat(user1, user2: user2)
+        let groupId = Messages.startPrivateChat(user1!, user2: user2)
         self.openChat(groupId)
     }
     
@@ -169,7 +170,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     
     func didSelectFacebookUser(user2: PFUser) {
         let user1 = PFUser.currentUser()
-        let groupId = Messages.startPrivateChat(user1, user2: user2)
+        let groupId = Messages.startPrivateChat(user1!, user2: user2)
         self.openChat(groupId)
     }
     

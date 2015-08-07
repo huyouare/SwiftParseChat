@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
+import JSQMessagesViewController
 
 class MessagesCell: UITableViewCell {
     
@@ -36,7 +39,7 @@ class MessagesCell: UITableViewCell {
             timeElapsedLabel.text = dateText
         }
         
-        let counter = message[PF_MESSAGES_COUNTER].integerValue
+        let counter = message[PF_MESSAGES_COUNTER]!.integerValue
         counterLabel.text = (counter == 0) ? "" : "\(counter) new"
     }
     

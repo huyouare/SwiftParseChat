@@ -7,7 +7,7 @@
 //
 
 import UIKit
-// Parse loaded from SwiftParseChat-Bridging-Header.h
+import Parse
 
 class GroupsViewController: UITableViewController, UIAlertViewDelegate {
     
@@ -35,8 +35,8 @@ class GroupsViewController: UITableViewController, UIAlertViewDelegate {
     
     func loadGroups() {
         var query = PFQuery(className: PF_GROUPS_CLASS_NAME)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]!, error: NSError!)  in
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?)
+            -> Void in
             if error == nil {
                 self.groups.removeAll()
                 self.groups.extend(objects as! [PFObject]!)
@@ -65,7 +65,7 @@ class GroupsViewController: UITableViewController, UIAlertViewDelegate {
                 if count(text) > 0 {
                     var object = PFObject(className: PF_GROUPS_CLASS_NAME)
                     object[PF_GROUPS_NAME] = text
-                    object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) -> Void in
+                    object.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
                         if success {
                             self.loadGroups()
                         } else {
@@ -95,15 +95,15 @@ class GroupsViewController: UITableViewController, UIAlertViewDelegate {
         cell.textLabel?.text = group[PF_GROUPS_NAME] as? String
         
         var query = PFQuery(className: PF_CHAT_CLASS_NAME)
-        query.whereKey(PF_CHAT_GROUPID, equalTo: group.objectId)
+        query.whereKey(PF_CHAT_GROUPID, equalTo: group.objectId!)
         query.orderByDescending(PF_CHAT_CREATEDAT)
         query.limit = 1000
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
-            if let chat = objects.first as? PFObject {
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
+            if let chat = objects!.first as? PFObject {
                 let date = NSDate()
-                let seconds = date.timeIntervalSinceDate(chat.createdAt)
+                let seconds = date.timeIntervalSinceDate(chat.createdAt!)
                 let elapsed = Utilities.timeElapsed(seconds);
-                let countString = (objects.count > 1) ? "\(objects.count) messages" : "\(objects.count) message"
+                let countString = (objects!.count > 1) ? "\(objects!.count) messages" : "\(objects!.count) message"
                 cell.detailTextLabel?.text = "\(countString) \(elapsed)"
             } else {
                 cell.detailTextLabel?.text = "0 messages"
@@ -120,9 +120,9 @@ class GroupsViewController: UITableViewController, UIAlertViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         var group = self.groups[indexPath.row]
-        let groupId = group.objectId as String
+        let groupId = group.objectId! as String
         
-        Messages.createMessageItem(PFUser(), groupId: groupId, description: group[PF_GROUPS_NAME] as! String)
+        Messages.createMessageItem(PFUser.currentUser()!, groupId: groupId, description: group[PF_GROUPS_NAME] as! String)
         
         self.performSegueWithIdentifier("groupChatSegue", sender: groupId)
     }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import ParseFacebookUtils
 
 protocol FacebookFriendsViewControllerDelegate {
     func didSelectFacebookUser(user: PFUser)
@@ -53,7 +55,7 @@ class FacebookFriendsViewController: UITableViewController {
                 query.whereKey(PF_USER_FACEBOOKID, containedIn: fbIds)
                 query.orderByAscending(PF_USER_FULLNAME)
                 query.limit = 1000
-                query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]!, error: NSError!) -> Void in
+                query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]?, error: NSError?) -> Void in
                     if error == nil {
                         self.users.removeAll(keepCapacity: false)
                         self.users += objects as! [PFUser]!

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 protocol SelectSingleViewControllerDelegate {
     func didSelectSingleUser(user: PFUser)
@@ -43,16 +44,18 @@ class SelectSingleViewController: UITableViewController, UISearchBarDelegate {
     func loadUsers() {
         let user = PFUser.currentUser()
         var query = PFQuery(className: PF_USER_CLASS_NAME)
-        query.whereKey(PF_USER_OBJECTID, notEqualTo: user.objectId)
+        query.whereKey(PF_USER_OBJECTID, notEqualTo: user!.objectId!)
 
         query.orderByAscending(PF_USER_FULLNAME)
         query.limit = 1000
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil{
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
                 self.users.removeAll(keepCapacity: false)
-                for obj in objects {
-                    if let username = (obj as! PFUser)[PF_USER_FULLNAME] as? String {
-                        self.users.append(obj as! PFUser)
+                if let array = objects as? [PFUser] {
+                    for obj in array {
+                        if let username = (obj as PFUser)[PF_USER_FULLNAME] as? String {
+                            self.users.append(obj as PFUser)
+                        }
                     }
                 }
                 
@@ -68,10 +71,10 @@ class SelectSingleViewController: UITableViewController, UISearchBarDelegate {
     func searchUsers(searchLower: String) {
         let user = PFUser.currentUser()
         var query = PFQuery(className: PF_USER_CLASS_NAME)
-        query.whereKey(PF_USER_OBJECTID, notEqualTo: user.objectId)
+        query.whereKey(PF_USER_OBJECTID, notEqualTo: user!.objectId!)
         query.whereKey(PF_USER_FULLNAME_LOWER, containsString: searchLower)
         query.orderByAscending(PF_USER_FULLNAME)
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 self.users.removeAll(keepCapacity: false)
                 self.users += objects as! [PFUser]!
