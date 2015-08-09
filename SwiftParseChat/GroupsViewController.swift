@@ -15,6 +15,10 @@ class GroupsViewController: UITableViewController, UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl!.addTarget(self, action: "loadGroups", forControlEvents: .ValueChanged)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -26,11 +30,6 @@ class GroupsViewController: UITableViewController, UIAlertViewDelegate {
         else {
             Utilities.loginUser(self)
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func loadGroups() {
@@ -45,6 +44,7 @@ class GroupsViewController: UITableViewController, UIAlertViewDelegate {
                 ProgressHUD.showError("Network error")
                 println(error)
             }
+            self.refreshControl!.endRefreshing()
         }
     }
     

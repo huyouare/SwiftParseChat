@@ -25,7 +25,7 @@ class MessagesCell: UITableViewCell {
         
         let lastUser = message[PF_MESSAGES_LASTUSER] as? PFUser
         userImage.file = lastUser?[PF_USER_PICTURE] as? PFFile
-        userImage.loadInBackground(nil)
+        userImage.loadInBackground()
         
         descriptionLabel.text = message[PF_MESSAGES_DESCRIPTION] as? String
         lastMessageLabel.text = message[PF_MESSAGES_LASTMESSAGE] as? String
