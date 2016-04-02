@@ -8,6 +8,8 @@
 
 import UIKit
 import Alamofire
+import Parse
+import ParseFacebookUtils
 
 class WelcomeViewController: UIViewController {
     
@@ -23,17 +25,17 @@ class WelcomeViewController: UIViewController {
     
     @IBAction func facebookLogin(sender: UIButton) {
         ProgressHUD.show("Signing in...", interaction: false)
-        PFFacebookUtils.logInWithPermissions(["public_profile", "email", "user_friends"], block: { (user: PFUser!, error: NSError!) -> Void in
+        PFFacebookUtils.logInWithPermissions(["public_profile", "email", "user_friends"], block: { (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
-                if user[PF_USER_FACEBOOKID] == nil {
-                    self.requestFacebook(user)
+                if user![PF_USER_FACEBOOKID] == nil {
+                    self.requestFacebook(user!)
                 } else {
-                    self.userLoggedIn(user)
+                    self.userLoggedIn(user!)
                 }
             } else {
                 if error != nil {
                     println(error)
-                    if let info = error.userInfo {
+                    if let info = error!.userInfo {
                         println(info)
                     }
                 }
@@ -65,13 +67,13 @@ class WelcomeViewController: UIViewController {
             (request, response, data, error) in
             
             if error == nil {
-                var image = UIImage(data: data! as! NSData)!
+                var image = UIImage(data: data! as NSData)!
                 
                 if image.size.width > 280 {
                     image = Images.resizeImage(image, width: 280, height: 280)!
                 }
                 var filePicture = PFFile(name: "picture.jpg", data: UIImageJPEGRepresentation(image, 0.6))
-                filePicture.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) -> Void in
+                filePicture.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
                     if error != nil {
                         ProgressHUD.showError("Error saving photo")
                     }
@@ -81,7 +83,7 @@ class WelcomeViewController: UIViewController {
                     image = Images.resizeImage(image, width: 60, height: 60)!
                 }
                 var fileThumbnail = PFFile(name: "thumbnail.jpg", data: UIImageJPEGRepresentation(image, 0.6))
-                fileThumbnail.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) -> Void in
+                fileThumbnail.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
                     if error != nil {
                         ProgressHUD.showError("Error saving thumbnail")
                     }
@@ -93,7 +95,7 @@ class WelcomeViewController: UIViewController {
                 user[PF_USER_FACEBOOKID] = userData["id"]
                 user[PF_USER_PICTURE] = filePicture
                 user[PF_USER_THUMBNAIL] = fileThumbnail
-                user.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError!) -> Void in
+                user.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError?) -> Void in
                     if error == nil {
                         self.userLoggedIn(user)
                     } else {

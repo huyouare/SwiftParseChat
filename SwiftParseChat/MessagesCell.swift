@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
+import JSQMessagesViewController
 
 class MessagesCell: UITableViewCell {
     
@@ -22,7 +25,7 @@ class MessagesCell: UITableViewCell {
         
         let lastUser = message[PF_MESSAGES_LASTUSER] as? PFUser
         userImage.file = lastUser?[PF_USER_PICTURE] as? PFFile
-        userImage.loadInBackground(nil)
+        userImage.loadInBackground()
         
         descriptionLabel.text = message[PF_MESSAGES_DESCRIPTION] as? String
         lastMessageLabel.text = message[PF_MESSAGES_LASTMESSAGE] as? String
@@ -36,7 +39,7 @@ class MessagesCell: UITableViewCell {
             timeElapsedLabel.text = dateText
         }
         
-        let counter = message[PF_MESSAGES_COUNTER].integerValue
+        let counter = message[PF_MESSAGES_COUNTER]!.integerValue
         counterLabel.text = (counter == 0) ? "" : "\(counter) new"
     }
     

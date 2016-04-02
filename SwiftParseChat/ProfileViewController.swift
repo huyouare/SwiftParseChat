@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
 class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -46,24 +48,26 @@ class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePic
     
     func loadUser() {
         var user = PFUser.currentUser()
-        
-        userImageView.file = user[PF_USER_PICTURE] as? PFFile
-        userImageView.loadInBackground { (image: UIImage!, error: NSError!) -> Void in
-            if error != nil {
-                println(error)
+        if let user = user {
+            userImageView.file = user[PF_USER_PICTURE] as? PFFile
+            
+            userImageView.loadInBackground { (image: UIImage?, error: NSError?) -> Void in
+                if error != nil {
+                    println(error)
+                }
             }
+            
+            nameField.text = user[PF_USER_FULLNAME] as! String
         }
-        
-        nameField.text = user[PF_USER_FULLNAME] as! String
     }
     
     func saveUser() {
         let fullName = nameField.text
         if count(fullName) > 0 {
-            var user = PFUser.currentUser()
+            var user = PFUser.currentUser()!
             user[PF_USER_FULLNAME] = fullName
             user[PF_USER_FULLNAME_LOWER] = fullName.lowercaseString
-            user.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError!) -> Void in
+            user.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError?) -> Void in
                 if error == nil {
                     ProgressHUD.showSuccess("Saved")
                 } else {
@@ -121,7 +125,7 @@ class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePic
         }
         
         var pictureFile = PFFile(name: "picture.jpg", data: UIImageJPEGRepresentation(image, 0.6))
-        pictureFile.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError!) -> Void in
+        pictureFile.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
             if error != nil {
                 ProgressHUD.showError("Network error")
             }
@@ -134,16 +138,16 @@ class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePic
         }
         
         var thumbnailFile = PFFile(name: "thumbnail.jpg", data: UIImageJPEGRepresentation(image, 0.6))
-        thumbnailFile.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError!) -> Void in
+        thumbnailFile.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
             if error != nil {
                 ProgressHUD.showError("Network error")
             }
         }
         
-        var user = PFUser.currentUser()
+        var user = PFUser.currentUser()!
         user[PF_USER_PICTURE] = pictureFile
         user[PF_USER_THUMBNAIL] = thumbnailFile
-        user.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError!) -> Void in
+        user.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
             if error != nil {
                 ProgressHUD.showError("Network error")
             }

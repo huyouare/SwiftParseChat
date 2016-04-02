@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class SearchViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
@@ -32,11 +33,11 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
     func loadUsers() {
         let user = PFUser.currentUser()
         var query = PFQuery(className: PF_USER_CLASS_NAME)
-        query.whereKey(PF_USER_OBJECTID, notEqualTo: user.objectId)
+        query.whereKey(PF_USER_OBJECTID, notEqualTo: user!.objectId!)
 
         query.orderByAscending(PF_USER_FULLNAME)
         query.limit = 1000
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil{
                 self.users.removeAll(keepCapacity: false)
                 self.users += objects as! [PFUser]!
@@ -53,11 +54,11 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
         let user = PFUser.currentUser()
         
         var query = PFQuery(className: PF_USER_CLASS_NAME)
-        query.whereKey(PF_USER_OBJECTID, notEqualTo: user.objectId)
+        query.whereKey(PF_USER_OBJECTID, notEqualTo: user!.objectId!)
         query.whereKey(PF_USER_FULLNAME_LOWER, containsString: searchString)
         query.orderByAscending(PF_USER_FULLNAME)
         query.limit = 1000
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 self.users.removeAll(keepCapacity: false)
                 self.users += objects as! [PFUser]!
@@ -98,7 +99,7 @@ class SearchViewController: UITableViewController, UITableViewDelegate, UITableV
         
         let user1 = PFUser.currentUser()
         let user2 = users[indexPath.row]
-        let groupId = Messages.startPrivateChat(user1, user2: user2)
+        let groupId = Messages.startPrivateChat(user1!, user2: user2)
         
         self.performSegueWithIdentifier("searchChatSegue", sender: groupId)
     }

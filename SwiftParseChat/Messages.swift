@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Parse
 
 class Messages {
     
@@ -29,7 +30,7 @@ class Messages {
         var userIds = [String]()
         
         for user in users {
-            userIds.append(user.objectId)
+            userIds.append(user.objectId!)
         }
         
         let sorted = userIds.sorted { $0.localizedCaseInsensitiveCompare($1) == NSComparisonResult.OrderedAscending }
@@ -56,9 +57,9 @@ class Messages {
         var query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
         query.whereKey(PF_MESSAGES_USER, equalTo: user)
         query.whereKey(PF_MESSAGES_GROUPID, equalTo: groupId)
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
-                if objects.count == 0 {
+                if objects!.count == 0 {
                     var message = PFObject(className: PF_MESSAGES_CLASS_NAME)
                     message[PF_MESSAGES_USER] = user;
                     message[PF_MESSAGES_GROUPID] = groupId;
@@ -67,7 +68,7 @@ class Messages {
                     message[PF_MESSAGES_LASTMESSAGE] = "";
                     message[PF_MESSAGES_COUNTER] = 0
                     message[PF_MESSAGES_UPDATEDACTION] = NSDate()
-                    message.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError!) -> Void in
+                    message.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError?) -> Void in
                         if (error != nil) {
                             println("Messages.createMessageItem save error.")
                             println(error)
@@ -82,7 +83,7 @@ class Messages {
     }
     
     class func deleteMessageItem(message: PFObject) {
-        message.deleteInBackgroundWithBlock { (succeeded: Bool, error: NSError!) -> Void in
+        message.deleteInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
             if error != nil {
                 println("UpdateMessageCounter save error.")
                 println(error)
@@ -94,16 +95,16 @@ class Messages {
         var query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
         query.whereKey(PF_MESSAGES_GROUPID, equalTo: groupId)
         query.limit = 1000
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 for message in objects as! [PFObject]! {
                     var user = message[PF_MESSAGES_USER] as! PFUser
-                    if user.objectId != PFUser.currentUser().objectId {
+                    if user.objectId != PFUser.currentUser()!.objectId {
                         message.incrementKey(PF_MESSAGES_COUNTER) // Increment by 1
                         message[PF_MESSAGES_LASTUSER] = PFUser.currentUser()
                         message[PF_MESSAGES_LASTMESSAGE] = lastMessage
                         message[PF_MESSAGES_UPDATEDACTION] = NSDate()
-                        message.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError!) -> Void in
+                        message.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError?) -> Void in
                             if error != nil {
                                 println("UpdateMessageCounter save error.")
                                 println(error)
@@ -121,12 +122,12 @@ class Messages {
     class func clearMessageCounter(groupId: String) {
         var query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
         query.whereKey(PF_MESSAGES_GROUPID, equalTo: groupId)
-        query.whereKey(PF_MESSAGES_USER, equalTo: PFUser.currentUser())
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+        query.whereKey(PF_MESSAGES_USER, equalTo: PFUser.currentUser()!)
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 for message in objects as! [PFObject]! {
                     message[PF_MESSAGES_COUNTER] = 0
-                    message.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError!) -> Void in
+                    message.saveInBackgroundWithBlock({ (succeeded: Bool, error: NSError?) -> Void in
                         if error != nil {
                             println("ClearMessageCounter save error.")
                             println(error)

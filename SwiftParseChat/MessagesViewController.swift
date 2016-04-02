@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import Parse
 
 class MessagesViewController: UITableViewController, UIActionSheetDelegate, SelectSingleViewControllerDelegate, SelectMultipleViewControllerDelegate, AddressBookViewControllerDelegate, FacebookFriendsViewControllerDelegate {
     
     var messages = [PFObject]()
-    // UITableViewController already declares refreshControl
     
     @IBOutlet var composeButton: UIBarButtonItem!
     @IBOutlet var emptyView: UIView!
@@ -24,15 +24,10 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadMessages", name: "reloadMessages", object: nil)
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: "loadMessages", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl!.addTarget(self, action: "loadMessages", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView?.addSubview(self.refreshControl!)
         
         self.emptyView?.hidden = true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -49,10 +44,10 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     
     func loadMessages() {
         var query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
-        query.whereKey(PF_MESSAGES_USER, equalTo: PFUser.currentUser())
+        query.whereKey(PF_MESSAGES_USER, equalTo: PFUser.currentUser()!)
         query.includeKey(PF_MESSAGES_LASTUSER)
         query.orderByDescending(PF_MESSAGES_UPDATEDACTION)
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+        query.findObjectsInBackgroundWithBlock{ (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 self.messages.removeAll(keepCapacity: false)
                 self.messages += objects as! [PFObject]!
@@ -62,7 +57,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
             } else {
                 ProgressHUD.showError("Network error")
             }
-            self.refreshControl?.endRefreshing()
+            self.refreshControl!.endRefreshing()
         }
     }
     
@@ -75,9 +70,9 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     func updateTabCounter() {
         var total = 0
         for message in self.messages {
-            total += message[PF_MESSAGES_COUNTER].integerValue
+            total += message[PF_MESSAGES_COUNTER]!.integerValue
         }
-        var item = self.tabBarController?.tabBar.items?[1] as! UITabBarItem
+        var item = self.tabBarController!.tabBar.items![1] as! UITabBarItem
         item.badgeValue = (total == 0) ? nil : "\(total)"
     }
     
@@ -90,14 +85,13 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     func cleanup() {
         self.messages.removeAll(keepCapacity: false)
         self.tableView.reloadData()
-        
-        var item = self.tabBarController?.tabBar.items?[1] as! UITabBarItem
-        item.badgeValue = nil
+        self.updateTabCounter()
+        self.updateEmptyView()
     }
     
     @IBAction func compose(sender: UIBarButtonItem) {
         var actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Single recipient", "Multiple recipients", "Address Book", "Facebook Friends")
-        actionSheet.showFromTabBar(self.tabBarController?.tabBar)
+        actionSheet.showFromTabBar(self.tabBarController!.tabBar)
     }
 
     // MARK: - Prepare for segue to chatVC
@@ -145,7 +139,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     // MARK: - SelectSingleDelegate
     
     func didSelectSingleUser(user2: PFUser) {
-        let user1 = PFUser.currentUser()
+        let user1 = PFUser.currentUser()!
         let groupId = Messages.startPrivateChat(user1, user2: user2)
         self.openChat(groupId)
     }
@@ -160,7 +154,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     // MARK: - AddressBookDelegate
     
     func didSelectAddressBookUser(user2: PFUser) {
-        let user1 = PFUser.currentUser()
+        let user1 = PFUser.currentUser()!
         let groupId = Messages.startPrivateChat(user1, user2: user2)
         self.openChat(groupId)
     }
@@ -168,7 +162,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     // MARK: - FacebookFriendsDelegate
     
     func didSelectFacebookUser(user2: PFUser) {
-        let user1 = PFUser.currentUser()
+        let user1 = PFUser.currentUser()!
         let groupId = Messages.startPrivateChat(user1, user2: user2)
         self.openChat(groupId)
     }

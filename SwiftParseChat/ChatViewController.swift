@@ -9,6 +9,8 @@
 import UIKit
 import Foundation
 import MediaPlayer
+import Parse
+import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -34,9 +36,10 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var user = PFUser.currentUser()
-        self.senderId = user.objectId
-        self.senderDisplayName = user[PF_USER_FULLNAME] as! String
+        if let user = PFUser.currentUser() {
+            self.senderId = user.objectId
+            self.senderDisplayName = user[PF_USER_FULLNAME] as! String
+        }
         
         outgoingBubbleImage = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
         incomingBubbleImage = bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
@@ -68,19 +71,19 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
             
             var query = PFQuery(className: PF_CHAT_CLASS_NAME)
             query.whereKey(PF_CHAT_GROUPID, equalTo: groupId)
-            if lastMessage != nil {
-                query.whereKey(PF_CHAT_CREATEDAT, greaterThan: lastMessage?.date)
+            if let lastMessage = lastMessage {
+                query.whereKey(PF_CHAT_CREATEDAT, greaterThan: lastMessage.date)
             }
             query.includeKey(PF_CHAT_USER)
             query.orderByDescending(PF_CHAT_CREATEDAT)
             query.limit = 50
-            query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]!, error: NSError!) -> Void in
+            query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]?, error: NSError?) -> Void in
                 if error == nil {
                     self.automaticallyScrollsToMostRecentMessage = false
                     for object in (objects as! [PFObject]!).reverse() {
                         self.addMessage(object)
                     }
-                    if objects.count > 0 {
+                    if objects!.count > 0 {
                         self.finishReceivingMessage()
                         self.scrollToBottomAnimated(false)
                     }
@@ -106,19 +109,20 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
             message = JSQMessage(senderId: user.objectId, senderDisplayName: name, date: object.createdAt, text: (object[PF_CHAT_TEXT] as? String))
         }
         
-        if videoFile != nil {
-            var mediaItem = JSQVideoMediaItem(fileURL: NSURL(string: videoFile!.url), isReadyToPlay: true)
+        if let videoFile = videoFile {
+            var mediaItem = JSQVideoMediaItem(fileURL: NSURL(string: videoFile.url!), isReadyToPlay: true)
+            mediaItem.appliesMediaViewMaskAsOutgoing = (user.objectId == self.senderId)
             message = JSQMessage(senderId: user.objectId, senderDisplayName: name, date: object.createdAt, media: mediaItem)
         }
         
-        if pictureFile != nil {
+        if let pictureFile = pictureFile {
             var mediaItem = JSQPhotoMediaItem(image: nil)
             mediaItem.appliesMediaViewMaskAsOutgoing = (user.objectId == self.senderId)
             message = JSQMessage(senderId: user.objectId, senderDisplayName: name, date: object.createdAt, media: mediaItem)
             
-            pictureFile!.getDataInBackgroundWithBlock({ (imageData: NSData!, error: NSError!) -> Void in
+            pictureFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
                 if error == nil {
-                    mediaItem.image = UIImage(data: imageData)
+                    mediaItem.image = UIImage(data: imageData!)
                     self.collectionView.reloadData()
                 }
             })
@@ -134,9 +138,9 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
         
         if let video = video {
             text = "[Video message]"
-            videoFile = PFFile(name: "video.mp4", data: NSFileManager.defaultManager().contentsAtPath(video.path!))
+            videoFile = PFFile(name: "video.mp4", data: NSFileManager.defaultManager().contentsAtPath(video.path!)!)
             
-            videoFile.saveInBackgroundWithBlock({ (succeeed: Bool, error: NSError!) -> Void in
+            videoFile.saveInBackgroundWithBlock({ (succeeed: Bool, error: NSError?) -> Void in
                 if error != nil {
                     ProgressHUD.showError("Network error")
                 }
@@ -146,7 +150,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
         if let picture = picture {
             text = "[Picture message]"
             pictureFile = PFFile(name: "picture.jpg", data: UIImageJPEGRepresentation(picture, 0.6))
-            pictureFile.saveInBackgroundWithBlock({ (suceeded: Bool, error: NSError!) -> Void in
+            pictureFile.saveInBackgroundWithBlock({ (suceeded: Bool, error: NSError?) -> Void in
                 if error != nil {
                     ProgressHUD.showError("Picture save error")
                 }
@@ -163,7 +167,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
         if let pictureFile = pictureFile {
             object[PF_CHAT_PICTURE] = pictureFile
         }
-        object.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError!) -> Void in
+        object.saveInBackgroundWithBlock{ (succeeded: Bool, error: NSError?) -> Void in
             if error == nil {
                 JSQSystemSoundPlayer.jsq_playMessageSentSound()
                 self.loadMessages()
@@ -185,6 +189,8 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
     }
     
     override func didPressAccessoryButton(sender: UIButton!) {
+        self.view.endEditing(true)
+        
         var action = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Take photo", "Choose existing photo", "Choose existing video")
         action.showInView(self.view)
     }
@@ -205,17 +211,17 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         var user = self.users[indexPath.item]
-        if self.avatars[user.objectId] == nil {
+        if self.avatars[user.objectId!] == nil {
             var thumbnailFile = user[PF_USER_THUMBNAIL] as? PFFile
-            thumbnailFile?.getDataInBackgroundWithBlock({ (imageData: NSData!, error: NSError!) -> Void in
+            thumbnailFile?.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
                 if error == nil {
-                    self.avatars[user.objectId as String] = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(data: imageData), diameter: 30)
+                    self.avatars[user.objectId!] = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(data: imageData!), diameter: 30)
                     self.collectionView.reloadData()
                 }
             })
             return blankAvatarImage
         } else {
-            return self.avatars[user.objectId]
+            return self.avatars[user.objectId!]
         }
     }
     
@@ -233,7 +239,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
             return nil
         }
         
-        if indexPath.item - 1 > 0 {
+        if indexPath.item > 0 {
             var previousMessage = self.messages[indexPath.item - 1]
             if previousMessage.senderId == message.senderId {
                 return nil
@@ -279,7 +285,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
             return 0
         }
         
-        if indexPath.item - 1 > 0 {
+        if indexPath.item > 0 {
             var previousMessage = self.messages[indexPath.item - 1]
             if previousMessage.senderId == message.senderId {
                 return 0

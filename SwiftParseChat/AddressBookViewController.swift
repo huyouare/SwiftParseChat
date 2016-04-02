@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import AddressBook
+import APAddressBook
 import MessageUI
+import Parse
 
 protocol AddressBookViewControllerDelegate {
     func didSelectAddressBookUser(user: PFUser)
@@ -82,11 +83,11 @@ class AddressBookViewController: UITableViewController, UIActionSheetDelegate, M
         var user = PFUser.currentUser()
         
         var query = PFQuery(className: PF_USER_CLASS_NAME)
-        query.whereKey(PF_USER_OBJECTID, notEqualTo: user.objectId)
+        query.whereKey(PF_USER_OBJECTID, notEqualTo: user!.objectId!)
         query.whereKey(PF_USER_EMAILCOPY, containedIn: emails)
         query.orderByAscending(PF_USER_FULLNAME)
         query.limit = 1000
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 self.users2.removeAll(keepCapacity: false)
                 for user in objects as! [PFUser]! {

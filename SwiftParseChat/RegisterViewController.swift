@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class RegisterViewController: UITableViewController, UITextFieldDelegate {
     
@@ -78,13 +79,13 @@ class RegisterViewController: UITableViewController, UITextFieldDelegate {
         user[PF_USER_EMAILCOPY] = email
         user[PF_USER_FULLNAME] = name
         user[PF_USER_FULLNAME_LOWER] = name.lowercaseString
-        user.signUpInBackgroundWithBlock { (succeeded: Bool, error: NSError!) -> Void in
+        user.signUpInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
             if error == nil {
                 PushNotication.parsePushUserAssign()
                 ProgressHUD.showSuccess("Succeeded.")
                 self.dismissViewControllerAnimated(true, completion: nil)
             } else {
-                if let userInfo = error.userInfo {
+                if let userInfo = error!.userInfo {
                     ProgressHUD.showError(userInfo["error"] as! String)
                 }
             }

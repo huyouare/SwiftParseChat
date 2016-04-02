@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: UITableViewController, UITextFieldDelegate {
 
@@ -59,13 +60,13 @@ class LoginViewController: UITableViewController, UITextFieldDelegate {
         }
         
         ProgressHUD.show("Signing in...", interaction: true)
-        PFUser.logInWithUsernameInBackground(email, password: password) { (user: PFUser!, error: NSError!) -> Void in
+        PFUser.logInWithUsernameInBackground(email, password: password) { (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 PushNotication.parsePushUserAssign()
-                ProgressHUD.showSuccess("Welcome back, \(user[PF_USER_FULLNAME])!")
+                ProgressHUD.showSuccess("Welcome back, \(user![PF_USER_FULLNAME])")
                 self.dismissViewControllerAnimated(true, completion: nil)
             } else {
-                if let info = error.userInfo {
+                if let info = error!.userInfo {
                     ProgressHUD.showError(info["error"] as! String)
                 }
             }
