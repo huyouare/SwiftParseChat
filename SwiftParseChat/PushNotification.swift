@@ -30,9 +30,9 @@ class PushNotication {
         }
     }
     
-    class func sendPushNotification(roomId: String, text: String) {
+    class func sendPushNotification(groupId: String, text: String) {
         var query = PFQuery(className: PF_MESSAGES_CLASS_NAME)
-        query.whereKey(PF_MESSAGES_ROOMID, equalTo: roomId)
+        query.whereKey(PF_MESSAGES_GROUPID, equalTo: groupId)
         query.whereKey(PF_MESSAGES_USER, equalTo: PFUser.currentUser())
         query.includeKey(PF_MESSAGES_USER)
         query.limit = 1000

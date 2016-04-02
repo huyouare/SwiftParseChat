@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UITableViewController {
+class LoginViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
@@ -16,6 +16,8 @@ class LoginViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard"))
+        self.emailField.delegate = self
+        self.passwordField.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -32,11 +34,24 @@ class LoginViewController: UITableViewController {
         self.view.endEditing(true)
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.emailField {
+            self.passwordField.becomeFirstResponder()
+        } else if textField == self.passwordField {
+            self.login()
+        }
+        return true
+    }
+    
     @IBAction func loginButtonPressed(sender: UIButton) {
+        self.login();
+    }
+    
+    func login() {
         let email = emailField.text.lowercaseString
         let password = passwordField.text
         
-        if countElements(email) == 0 {
+        if count(email) == 0 {
             ProgressHUD.showError("Email field is empty.")
             return
         } else {
@@ -51,10 +66,9 @@ class LoginViewController: UITableViewController {
                 self.dismissViewControllerAnimated(true, completion: nil)
             } else {
                 if let info = error.userInfo {
-                    ProgressHUD.showError(info["error"] as String)
+                    ProgressHUD.showError(info["error"] as! String)
                 }
             }
         }
-        
     }
 }

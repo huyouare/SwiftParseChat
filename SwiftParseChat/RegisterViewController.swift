@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UITableViewController {
+class RegisterViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet var nameField: UITextField!
     @IBOutlet var emailField: UITextField!
@@ -17,6 +17,9 @@ class RegisterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard"))
+        self.nameField.delegate = self
+        self.emailField.delegate = self
+        self.passwordField.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -33,24 +36,39 @@ class RegisterViewController: UITableViewController {
         self.view.endEditing(true)
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.nameField {
+            self.emailField.becomeFirstResponder()
+        } else if textField == self.emailField {
+            self.passwordField.becomeFirstResponder()
+        } else if textField == self.passwordField {
+            self.register()
+        }
+        return true
+    }
+    
     @IBAction func registerButtonPressed(sender: UIButton) {
+        self.register()
+    }
+    
+    func register() {
         let name = nameField.text
         let email = emailField.text
         let password = passwordField.text.lowercaseString
         
-        if countElements(name) == 0 {
+        if count(name) == 0 {
             ProgressHUD.showError("Name must be set.")
             return
         }
-        if countElements(password) == 0 {
+        if count(password) == 0 {
             ProgressHUD.showError("Password must be set.")
             return
         }
-        if countElements(email) == 0 {
+        if count(email) == 0 {
             ProgressHUD.showError("Email must be set.")
             return
         }
-
+        
         ProgressHUD.show("Please wait...", interaction: false)
         
         var user = PFUser()
@@ -67,11 +85,10 @@ class RegisterViewController: UITableViewController {
                 self.dismissViewControllerAnimated(true, completion: nil)
             } else {
                 if let userInfo = error.userInfo {
-                    ProgressHUD.showError(userInfo["error"] as String)
+                    ProgressHUD.showError(userInfo["error"] as! String)
                 }
             }
         }
-
     }
 
 }

@@ -31,11 +31,13 @@ class WelcomeViewController: UIViewController {
                     self.userLoggedIn(user)
                 }
             } else {
-                println(error)
-                if let info = error.userInfo {
-                    println(info)
-                    ProgressHUD.showError(info["error"] as? String)
+                if error != nil {
+                    println(error)
+                    if let info = error.userInfo {
+                        println(info)
+                    }
                 }
+                ProgressHUD.showError("Facebook sign in error")
             }
         })
     }
@@ -44,7 +46,7 @@ class WelcomeViewController: UIViewController {
         var request = FBRequest.requestForMe()
         request.startWithCompletionHandler { (connection: FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
             if error == nil {
-                var userData = result as [String: AnyObject]!
+                var userData = result as! [String: AnyObject]!
                 self.processFacebook(user, userData: userData)
             } else {
                 PFUser.logOut()
@@ -54,7 +56,7 @@ class WelcomeViewController: UIViewController {
     }
     
     func processFacebook(user: PFUser, userData: [String: AnyObject]) {
-        let facebookUserId = userData["id"] as String
+        let facebookUserId = userData["id"] as! String
         var link = "http://graph.facebook.com/\(facebookUserId)/picture"
         let url = NSURL(string: link)
         var request = NSURLRequest(URL: url!)
@@ -63,7 +65,7 @@ class WelcomeViewController: UIViewController {
             (request, response, data, error) in
             
             if error == nil {
-                var image = UIImage(data: data! as NSData)!
+                var image = UIImage(data: data! as! NSData)!
                 
                 if image.size.width > 280 {
                     image = Images.resizeImage(image, width: 280, height: 280)!
@@ -87,7 +89,7 @@ class WelcomeViewController: UIViewController {
                 
                 user[PF_USER_EMAILCOPY] = userData["email"]
                 user[PF_USER_FULLNAME] = userData["name"]
-                user[PF_USER_FULLNAME_LOWER] = (userData["name"] as String).lowercaseString
+                user[PF_USER_FULLNAME_LOWER] = (userData["name"] as! String).lowercaseString
                 user[PF_USER_FACEBOOKID] = userData["id"]
                 user[PF_USER_PICTURE] = filePicture
                 user[PF_USER_THUMBNAIL] = fileThumbnail
@@ -98,15 +100,15 @@ class WelcomeViewController: UIViewController {
                         PFUser.logOut()
                         if let info = error!.userInfo {
                             ProgressHUD.showError("Login error")
-                            println(info["error"] as String)
+                            println(info["error"] as! String)
                         }
                     }
                 })
             } else {
                 PFUser.logOut()
                 if let info = error!.userInfo {
-                    ProgressHUD.showError("Login error")
-                    println(info["error"] as String)
+                    ProgressHUD.showError("Failed to fetch Facebook photo")
+                    println(info["error"] as! String)
                 }
             }
         }

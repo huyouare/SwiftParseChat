@@ -54,12 +54,12 @@ class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePic
             }
         }
         
-        nameField.text = user[PF_USER_FULLNAME] as String
+        nameField.text = user[PF_USER_FULLNAME] as! String
     }
     
     func saveUser() {
         let fullName = nameField.text
-        if countElements(fullName) > 0 {
+        if count(fullName) > 0 {
             var user = PFUser.currentUser()
             user[PF_USER_FULLNAME] = fullName
             user[PF_USER_FULLNAME_LOWER] = fullName.lowercaseString
@@ -115,7 +115,7 @@ class ProfileViewController: UIViewController, UIActionSheetDelegate, UIImagePic
     // MARK: - UIImagePickerControllerDelegate
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        var image = info[UIImagePickerControllerEditedImage] as UIImage
+        var image = info[UIImagePickerControllerEditedImage] as! UIImage
         if image.size.width > 280 {
             image = Images.resizeImage(image, width: 280, height: 280)!
         }

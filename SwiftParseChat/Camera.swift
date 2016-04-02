@@ -11,32 +11,46 @@ import MobileCoreServices
 
 class Camera {
     
-    class func shouldStartCamera(target: AnyObject, canEdit: Bool) -> Bool {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+    class func shouldStartCamera(target: AnyObject, canEdit: Bool, frontFacing: Bool) -> Bool {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) == false {
             return false
         }
         
         let type = kUTTypeImage as String
-        let imagePicker = UIImagePickerController()
-        let available = contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.Camera) as [String]!, type)
+        let cameraUI = UIImagePickerController()
+        
+        let available = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) && contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.Camera) as! [String]!, type)
         
         if available {
-            imagePicker.mediaTypes = [type]
-            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+            cameraUI.mediaTypes = [type]
+            cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
             
-            if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Rear) {
-                imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Rear
-            } else if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Front) {
-                imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+            /* Prioritize front or rear camera */
+            if (frontFacing == true) {
+                if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Front) {
+                    cameraUI.cameraDevice = UIImagePickerControllerCameraDevice.Front
+                } else if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Rear) {
+                    cameraUI.cameraDevice = UIImagePickerControllerCameraDevice.Rear
+                }
+            } else {
+                if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Rear) {
+                    cameraUI.cameraDevice = UIImagePickerControllerCameraDevice.Rear
+                } else if UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Front) {
+                    cameraUI.cameraDevice = UIImagePickerControllerCameraDevice.Front
+                }
             }
         } else {
             return false
         }
         
-        imagePicker.allowsEditing = canEdit
-        imagePicker.showsCameraControls = true
-        imagePicker.delegate = target as ChatViewController
-        target.presentViewController(imagePicker, animated: true, completion: nil)
+        cameraUI.allowsEditing = canEdit
+        cameraUI.showsCameraControls = true
+        if target is ChatViewController {
+            cameraUI.delegate = target as! ChatViewController
+        } else if target is ProfileViewController {
+            cameraUI.delegate = target as! ProfileViewController
+        }
+        target.presentViewController(cameraUI, animated: true, completion: nil)
         
         return true
     }
@@ -49,11 +63,11 @@ class Camera {
         let type = kUTTypeImage as String
         let imagePicker = UIImagePickerController()
         
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) && contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.PhotoLibrary) as [String]!, type) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) && contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.PhotoLibrary) as! [String]!, type) {
             imagePicker.mediaTypes = [type]
             imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         }
-        else if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) && contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.SavedPhotosAlbum) as [String]!, type) {
+        else if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) && contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.SavedPhotosAlbum) as! [String]!, type) {
             imagePicker.mediaTypes = [type]
             imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
         }
@@ -63,9 +77,9 @@ class Camera {
         
         imagePicker.allowsEditing = canEdit
         if target is ChatViewController {
-            imagePicker.delegate = target as ChatViewController
+            imagePicker.delegate = target as! ChatViewController
         } else if target is ProfileViewController {
-            imagePicker.delegate = target as ProfileViewController
+            imagePicker.delegate = target as! ProfileViewController
         }
         target.presentViewController(imagePicker, animated: true, completion: nil)
         
@@ -80,11 +94,11 @@ class Camera {
         let type = kUTTypeMovie as String
         let imagePicker = UIImagePickerController()
         
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) && contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.PhotoLibrary) as [String]!, type) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) && contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.PhotoLibrary) as! [String]!, type) {
             imagePicker.mediaTypes = [type]
             imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         }
-        else if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) && contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.SavedPhotosAlbum) as [String]!, type) {
+        else if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) && contains(UIImagePickerController.availableMediaTypesForSourceType(UIImagePickerControllerSourceType.SavedPhotosAlbum) as! [String]!, type) {
             imagePicker.mediaTypes = [type]
             imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
         }
@@ -93,7 +107,7 @@ class Camera {
         }
         
         imagePicker.allowsEditing = canEdit
-        imagePicker.delegate = target as ChatViewController
+        imagePicker.delegate = target as! ChatViewController
         target.presentViewController(imagePicker, animated: true, completion: nil)
         
         return true

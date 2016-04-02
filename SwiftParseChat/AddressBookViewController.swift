@@ -1,8 +1,8 @@
 //
-//  PrivateViewController.swift
+//  AddressBookViewController.swift
 //  SwiftParseChat
 //
-//  Created by Jesse Hu on 2/20/15.
+//  Created by Jesse Hu on 3/6/15.
 //  Copyright (c) 2015 Jesse Hu. All rights reserved.
 //
 
@@ -10,12 +10,19 @@ import UIKit
 import AddressBook
 import MessageUI
 
-class PrivateViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
-    
+protocol AddressBookViewControllerDelegate {
+    func didSelectAddressBookUser(user: PFUser)
+}
+
+class AddressBookViewController: UITableViewController, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
+
     var users1 = [APContact]()
     var users2 = [PFUser]()
     var indexSelected: NSIndexPath!
-
+    var delegate: AddressBookViewControllerDelegate!
+    
+    // activity: UIActivityIndicatorView
+    
     let addressBook = APAddressBook()
     
     override func viewDidLoad() {
@@ -36,9 +43,11 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
 
             self.addressBook.sortDescriptors = [NSSortDescriptor(key: "firstName", ascending: true), NSSortDescriptor(key: "lastName", ascending: true)]
             self.addressBook.loadContacts({ (contacts: [AnyObject]!, error: NSError!) -> Void in
+                // TODO: Add actiivtyIndicator
+                // self.activity.stopAnimating()
                 self.users1.removeAll(keepCapacity: false)
-                if contacts != nil {
-                    for contact in contacts as! [APContact]! {
+                if let contacts = contacts as? [APContact] {
+                    for contact in contacts {
                         self.users1.append(contact)
                     }
                     self.loadUsers()
@@ -95,8 +104,8 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
         var removeUsers = [APContact]()
         
         for user in users1 {
-            if let userEmails = user.emails {
-                for email in userEmails as! [String] {
+            if let userEmails = user.emails as? [String] {
+                for email in userEmails {
                     if email == removeEmail {
                         removeUsers.append(user)
                         break
@@ -109,7 +118,11 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
         self.users1 = filtered
     }
     
-    // MARK: - UITableViewDataSource 
+    @IBAction func cancelButtonPressed(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: - UITableViewDataSource
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
@@ -161,26 +174,15 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if indexPath.section == 0 {
-            let user1 = PFUser.currentUser()
-            let user2 = users2[indexPath.row]
-            let groupId = Messages.startPrivateChat(user1, user2: user2)
-            
-            self.performSegueWithIdentifier("privateChatSegue", sender: groupId)
+            self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                if self.delegate != nil {
+                    self.delegate.didSelectAddressBookUser(self.users2[indexPath.row])
+                }
+            })
         }
         else if indexPath.section == 1 {
             self.indexSelected = indexPath
             self.inviteUser(self.users1[indexPath.row])
-        }
-    }
-    
-    // MARK: - Prepare for segue to private chatVC
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "privateChatSegue" {
-            let chatVC = segue.destinationViewController as! ChatViewController
-            chatVC.hidesBottomBarWhenPushed = true
-            let groupId = sender as! String
-            chatVC.groupId = groupId
         }
     }
     
@@ -263,5 +265,5 @@ class PrivateViewController: UITableViewController, UITableViewDelegate, UITable
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
 }

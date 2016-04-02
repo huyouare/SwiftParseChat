@@ -15,7 +15,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
     var timer: NSTimer = NSTimer()
     var isLoading: Bool = false
     
-    var roomId: String = ""
+    var groupId: String = ""
     
     var users = [PFUser]()
     var messages = [JSQMessage]()
@@ -36,16 +36,16 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
         
         var user = PFUser.currentUser()
         self.senderId = user.objectId
-        self.senderDisplayName = user[PF_USER_FULLNAME] as String
+        self.senderDisplayName = user[PF_USER_FULLNAME] as! String
         
-        outgoingBubbleImage = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
-        incomingBubbleImage = bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleGreenColor())
+        outgoingBubbleImage = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleBlueColor())
+        incomingBubbleImage = bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
         
-        blankAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "chat_blank"), diameter: 30)
+        blankAvatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "profile_blank"), diameter: 30)
         
         isLoading = false
         self.loadMessages()
-        Messages.clearMessageCounter(roomId);
+        Messages.clearMessageCounter(groupId);
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -67,7 +67,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
             var lastMessage = messages.last
             
             var query = PFQuery(className: PF_CHAT_CLASS_NAME)
-            query.whereKey(PF_CHAT_ROOMID, equalTo: roomId)
+            query.whereKey(PF_CHAT_GROUPID, equalTo: groupId)
             if lastMessage != nil {
                 query.whereKey(PF_CHAT_CREATEDAT, greaterThan: lastMessage?.date)
             }
@@ -77,7 +77,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
             query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]!, error: NSError!) -> Void in
                 if error == nil {
                     self.automaticallyScrollsToMostRecentMessage = false
-                    for object in (objects as [PFObject]!).reverse() {
+                    for object in (objects as! [PFObject]!).reverse() {
                         self.addMessage(object)
                     }
                     if objects.count > 0 {
@@ -96,8 +96,8 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
     func addMessage(object: PFObject) {
         var message: JSQMessage!
         
-        var user = object[PF_CHAT_USER] as PFUser
-        var name = user[PF_USER_FULLNAME] as String
+        var user = object[PF_CHAT_USER] as! PFUser
+        var name = user[PF_USER_FULLNAME] as! String
         
         var videoFile = object[PF_CHAT_VIDEO] as? PFFile
         var pictureFile = object[PF_CHAT_PICTURE] as? PFFile
@@ -134,7 +134,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
         
         if let video = video {
             text = "[Video message]"
-            videoFile = PFFile(name: "video.move", data: NSFileManager.defaultManager().contentsAtPath(video.path!))
+            videoFile = PFFile(name: "video.mp4", data: NSFileManager.defaultManager().contentsAtPath(video.path!))
             
             videoFile.saveInBackgroundWithBlock({ (succeeed: Bool, error: NSError!) -> Void in
                 if error != nil {
@@ -155,7 +155,7 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
         
         var object = PFObject(className: PF_CHAT_CLASS_NAME)
         object[PF_CHAT_USER] = PFUser.currentUser()
-        object[PF_CHAT_ROOMID] = self.roomId
+        object[PF_CHAT_GROUPID] = self.groupId
         object[PF_CHAT_TEXT] = text
         if let videoFile = videoFile {
             object[PF_CHAT_VIDEO] = videoFile
@@ -172,8 +172,8 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
             }
         }
         
-        PushNotication.sendPushNotification(roomId, text: text)
-        Messages.updateMessageCounter(roomId, lastMessage: text)
+        PushNotication.sendPushNotification(groupId, text: text)
+        Messages.updateMessageCounter(groupId, lastMessage: text)
         
         self.finishSendingMessage()
     }
@@ -253,13 +253,13 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as JSQMessagesCollectionViewCell
+        var cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as! JSQMessagesCollectionViewCell
         
         var message = self.messages[indexPath.item]
         if message.senderId == self.senderId {
-            cell.textView.textColor = UIColor.blackColor()
+            cell.textView?.textColor = UIColor.whiteColor()
         } else {
-            cell.textView.textColor = UIColor.whiteColor()
+            cell.textView?.textColor = UIColor.blackColor()
         }
         return cell
     }
@@ -322,11 +322,11 @@ class ChatViewController: JSQMessagesViewController, UICollectionViewDataSource,
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         if buttonIndex != actionSheet.cancelButtonIndex {
-            if buttonIndex == 0 {
-                Camera.shouldStartCamera(self, canEdit: true)
-            } else if buttonIndex == 1 {
-                Camera.shouldStartPhotoLibrary(self, canEdit: true)
+            if buttonIndex == 1 {
+                Camera.shouldStartCamera(self, canEdit: true, frontFacing: true)
             } else if buttonIndex == 2 {
+                Camera.shouldStartPhotoLibrary(self, canEdit: true)
+            } else if buttonIndex == 3 {
                 Camera.shouldStartVideoLibrary(self, canEdit: true)
             }
         }
